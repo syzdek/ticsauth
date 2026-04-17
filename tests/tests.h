@@ -84,9 +84,9 @@ typedef struct _ticsauth_test_data     test_data_t;
 
 
 struct _ticsauth_test_data
-{  const uint8_t *      data;
-   const char *         digest;
+{  const char *         digest;
    const char *         hmac;
+   const uint8_t *      data;
    const uint8_t *      key;
    size_t               data_len;
    size_t               key_len;
