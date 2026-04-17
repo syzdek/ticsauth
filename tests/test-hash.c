@@ -141,6 +141,16 @@ test_hash_ctx(
          test_data_t *                 rec );
 
 
+static void
+test_hmac_result(
+         const char *                  title,
+         int                           test_num,
+         int                           algo,
+         test_data_t *                 rec,
+         const char *                  digest,
+         int                           err );
+
+
 extern int
 test_hash_seg(
          int                           test_num,
@@ -332,7 +342,6 @@ test_hash_ctx(
    int               rc;
    int               err;
    int               count;
-   size_t            idx;
    uint8_t           md[TICS_MD_SIZE];
    char              digest[(TICS_MD_SIZE*2)+1];
    tics_hash_t *     ctx;
@@ -364,25 +373,48 @@ test_hash_ctx(
       if ((strcmp(rec->digest, digest)))
          err = TICS_EMDMATCH;
 
-   if ( ((verbose)) || (err != rec->error) )
-   {  printf("%2i. %s digest context test\n", test_num, tics_algo2str(algo));
-      printf("    Expected: %s\n", rec->digest);
-      printf("    Result:   %s\n", digest);
-      if (verbose > 1)
-      {  printf("    Data:    ");
-         for(idx = 0; (idx < rec->data_len); idx++)
-         {  if ( ((idx % 20) == 0) && ((idx)) )
-               printf("\n             ");
-            printf(" %02x", rec->data[idx]);
-         };
-         printf("\n");
-      };
-      if ((err))
-         printf("    Error:    %s\n", tics_strerror(err));
-      printf("\n");
-   };
+   test_hmac_result("context", test_num, algo, rec, digest, err);
 
    return( (err != rec->error) ? TEST_ERROR : 0 );
+}
+
+
+void
+test_hmac_result(
+         const char *                  title,
+         int                           test_num,
+         int                           algo,
+         test_data_t *                 rec,
+         const char *                  digest,
+         int                           err )
+{
+   size_t            idx;
+
+   if ( (!(verbose)) && (!(err)) )
+      return;
+
+   printf("%2i. %s digest %s test\n", test_num, tics_algo2str(algo), title);
+   printf("    Expected: %s\n", rec->digest);
+   if ( (!(err)) && (!(digest)) )
+   {  printf("    skipping...\n");
+      printf("\n");
+      return;
+   };
+   printf("    Result:   %s\n", digest);
+   if (verbose > 1)
+   {  printf("    Data:    ");
+      for(idx = 0; (idx < rec->data_len); idx++)
+      {  if ( ((idx % 20) == 0) && ((idx)) )
+            printf("\n             ");
+         printf(" %02x", rec->data[idx]);
+      };
+      printf("\n");
+   };
+   if ( (verbose > 1) || ((err)) )
+      printf("    Data Len: %zu\n", rec->data_len);
+   if ((err))
+      printf("    Error:    %s\n", tics_strerror(err));
+   printf("\n");
 }
 
 
@@ -407,12 +439,7 @@ test_hash_seg(
    err   = 0;
 
    if ((rec->skip_seg))
-   {  if ((verbose))
-      {  printf("%2i. %s digest string test\n", test_num, tics_algo2str(algo));
-         printf("    Expected: %s\n", rec->digest);
-         printf("    skipping...\n");
-         printf("\n");
-      };
+   {  test_hmac_result("segment", test_num, algo, rec, NULL, err);
       return(TEST_SKIP);
    };
 
@@ -451,23 +478,7 @@ test_hash_seg(
             err = TICS_EMDMATCH;
    };
 
-   if ( ((verbose)) || ((err)) )
-   {  printf("%2i. %s digest segment test\n", test_num, tics_algo2str(algo));
-      printf("    Expected: %s\n", rec->digest);
-      printf("    Result:   %s\n", digest);
-      if (verbose > 1)
-      {  printf("    Data:    ");
-         for(idx = 0; (idx < rec->data_len); idx++)
-         {  if ( ((idx % 20) == 0) && ((idx)) )
-               printf("\n             ");
-            printf(" %02x", rec->data[idx]);
-         };
-         printf("\n");
-      };
-      if ((err))
-         printf("    Error:    %s\n", tics_strerror(err));
-      printf("\n");
-   };
+   test_hmac_result("segment", test_num, algo, rec, digest, err);
 
    return( (err != rec->error) ? TEST_ERROR : 0 );
 }
@@ -480,7 +491,6 @@ test_hash_str(
          test_data_t *                 rec )
 {
    int               err;
-   size_t            idx;
    uint8_t *         res;
    uint8_t           md[TICS_MD_SIZE];
    char              digest[(TICS_MD_SIZE*2)+1];
@@ -490,12 +500,7 @@ test_hash_str(
    err = 0;
 
    if (rec->repeat != 1)
-   {  if ((verbose))
-      {  printf("%2i. %s digest string test\n", test_num, tics_algo2str(algo));
-         printf("    Expected: %s\n", rec->digest);
-         printf("    skipping...\n");
-         printf("\n");
-      };
+   {  test_hmac_result("string", test_num, algo, rec, digest, err);
       return(TEST_SKIP);
    };
 
@@ -511,25 +516,7 @@ test_hash_str(
    {  err++;
    };
 
-   if ( ((verbose)) || ((err)) )
-   {  printf("%2i. %s digest string test\n", test_num, tics_algo2str(algo));
-      printf("    Expected: %s\n", rec->digest);
-      printf("    Result:   %s\n", digest);
-      if (verbose > 1)
-      {  printf("    Data:    ");
-         for(idx = 0; (idx < rec->data_len); idx++)
-         {  if ( ((idx % 20) == 0) && ((idx)) )
-               printf("\n             ");
-            printf(" %02x", rec->data[idx]);
-         };
-         printf("\n");
-      };
-      if (!(res))
-         printf("    Error:    %s\n", tics_strerror(TICS_EUNKNOWN));
-      else if ((err))
-         printf("    Error:    digests do not patch\n");
-      printf("\n");
-   };
+   test_hmac_result("string", test_num, algo, rec, digest, err);
 
    err   = (((err)) && (!(rec->error))) || ((!(err)) && ((rec->error)))
          ? 1
