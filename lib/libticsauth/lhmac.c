@@ -265,7 +265,7 @@ tics_hmac_update(
    size_t      idx;
 
    assert(ctx  != NULL);
-   assert( ((!(data)) && (!(len))) || (((data)) && ((len))) );
+   assert( ((!(data)) && (!(len))) || ((data)) );
 
    if ((ctx->flags & TICS_HMAC_ERROR))
       return(TICS_EUNKNOWN);
