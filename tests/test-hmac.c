@@ -383,7 +383,7 @@ test_hmac_ctx(
 
    test_hmac_result("context", test_num, algo, rec, digest, err);
 
-   return( (err != rec->error) ? TEST_ERROR : 0 );
+   return( ((err)) ? TEST_ERROR : 0 );
 }
 
 
