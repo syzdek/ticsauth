@@ -65,7 +65,6 @@ test_data_t * data_sha1 = (test_data_t [])
       .data_len      = 8,
       .key_len       = 20,
       .repeat        = 1,
-      .error         = 0,
    },
    {  .data          = (const uint8_t *)"what do ya want for nothing?",
       .digest        = "8f820394f95335182045da24f34de52bf8bc3432",   // Generated with OpenSSL
@@ -74,7 +73,6 @@ test_data_t * data_sha1 = (test_data_t [])
       .data_len      = 28,
       .key_len       = 4,
       .repeat        = 1,
-      .error         = 0,
    },
    {  .data          = (const uint8_t []) { 0xdd },
       .digest        = NULL,
@@ -86,7 +84,6 @@ test_data_t * data_sha1 = (test_data_t [])
       .data_len      = 1,
       .key_len       = 20,
       .repeat        = 50,
-      .error         = 0,
    },
    {  .data          = (const uint8_t []) { 0xcd },
       .digest        = NULL,
@@ -98,7 +95,6 @@ test_data_t * data_sha1 = (test_data_t [])
       .data_len      = 1,
       .key_len       = 25,
       .repeat        = 50,
-      .error         = 0,
    },
    {  .data          = (const uint8_t *)"Test With Truncation",
       .digest        = "8bc9d47812a5d90d01586a1d9ab3319acbcc4ded",   // generated with OpenSSL
@@ -110,7 +106,6 @@ test_data_t * data_sha1 = (test_data_t [])
       .data_len      = 20,
       .key_len       = 20,
       .repeat        = 1,
-      .error         = 0,
    },
    {  .data          = (const uint8_t *)
                        "Test Using Larger Than Block-Size Key - Hash Key First",
@@ -129,7 +124,6 @@ test_data_t * data_sha1 = (test_data_t [])
       .data_len      = 54,
       .key_len       = 80,
       .repeat        = 1,
-      .error         = 0,
    },
    {  .data          = (const uint8_t *)
                        "Test Using Larger Than Block-Size Key and Larger "
@@ -150,7 +144,6 @@ test_data_t * data_sha1 = (test_data_t [])
       .data_len      = 73,
       .key_len       = 80,
       .repeat        = 1,
-      .error         = 0,
    },
    {  .data       = (const uint8_t *)"abc",
       .digest     = "a9993e364706816aba3e25717850c26c9cd0d89d",   // RFC 3174
@@ -159,7 +152,6 @@ test_data_t * data_sha1 = (test_data_t [])
       .data_len   = 0,
       .key_len    = 0,
       .repeat     = 1,
-      .error      = 0,
    },
    {  .data       = (const uint8_t *)
                     "abcdbcdecdefdefgefghfghighijhi"
@@ -170,7 +162,6 @@ test_data_t * data_sha1 = (test_data_t [])
       .data_len   = 0,
       .key_len    = 0,
       .repeat     = 1,
-      .error      = 0,
    },
    {  .data       = (const uint8_t *)"a",
       .digest     = "34aa973cd4c4daa4f61eeb2bdbad27316534016f",   // RFC 3174
@@ -179,7 +170,6 @@ test_data_t * data_sha1 = (test_data_t [])
       .data_len   = 0,
       .key_len    = 0,
       .repeat     = 1000000,
-      .error      = 0,
    },
    {  .data       = (const uint8_t *)
                     "01234567012345670123456701234567"
@@ -190,7 +180,6 @@ test_data_t * data_sha1 = (test_data_t [])
       .data_len   = 0,
       .key_len    = 0,
       .repeat     = 10,
-      .error      = 0,
    },
    {  .data       = (const uint8_t *)
                     "The quick brown fox jumps over the lazy dog",
@@ -200,7 +189,6 @@ test_data_t * data_sha1 = (test_data_t [])
       .data_len   = 0,
       .key_len    = 0,
       .repeat     = 1,
-      .error      = 0,
    },
    {  .data       = (const uint8_t *)
                     "The quick brown fox jumps over the lazy cog",
@@ -210,7 +198,6 @@ test_data_t * data_sha1 = (test_data_t [])
       .data_len   = 0,
       .key_len    = 0,
       .repeat     = 1,
-      .error      = 0,
    },
    {  .data       = (const uint8_t *)"",
       .digest     = "da39a3ee5e6b4b0d3255bfef95601890afd80709",   // Wikipedia: SHA-1
@@ -219,7 +206,6 @@ test_data_t * data_sha1 = (test_data_t [])
       .data_len   = 0,
       .key_len    = 0,
       .repeat     = 1,
-      .error      = 0,
    },
 
 
@@ -233,7 +219,6 @@ test_data_t * data_sha1 = (test_data_t [])
       .data_len   = 0,
       .key_len    = 0,
       .repeat     = 1,
-      .error      = 0,
    },
    {  .data       = (const uint8_t *)
                     "abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghijklmnh"
@@ -245,7 +230,6 @@ test_data_t * data_sha1 = (test_data_t [])
       .key_len    = 0,
       .repeat     = 16777216,
       .skip_seg   = 1,
-      .error      = 0,
    },
 
 
@@ -265,7 +249,6 @@ test_data_t * data_sha1 = (test_data_t [])
       .data_len   = 69,
       .key_len    = 0,
       .repeat     = 1,
-      .error      = 0,
    },
    {  .data       = (const uint8_t []){
                     0x49, 0x49, 0x2e, 0x20, 0x59, 0x6f, 0x75, 0x20, 0x73,
@@ -281,7 +264,6 @@ test_data_t * data_sha1 = (test_data_t [])
       .data_len   = 61,
       .key_len    = 0,
       .repeat     = 1,
-      .error      = 0,
    },
    {  .data       = (const uint8_t []){
                     0x49, 0x49, 0x49, 0x2e, 0x20, 0x52, 0x65, 0x6d, 0x65,
@@ -295,7 +277,6 @@ test_data_t * data_sha1 = (test_data_t [])
       .data_len   = 42,
       .key_len    = 0,
       .repeat     = 1,
-      .error      = 0,
    },
    {  .data       = (const uint8_t []){
                     0x49, 0x56, 0x2e, 0x20, 0x48, 0x6f, 0x6e, 0x6f, 0x72,
@@ -309,7 +290,6 @@ test_data_t * data_sha1 = (test_data_t [])
       .data_len   = 38,
       .key_len    = 0,
       .repeat     = 1,
-      .error      = 0,
    },
    {  .data       = (const uint8_t []){
                     0x56, 0x2e, 0x20, 0x59, 0x6f, 0x75, 0x20, 0x73, 0x68,
@@ -321,7 +301,6 @@ test_data_t * data_sha1 = (test_data_t [])
       .data_len   = 22,
       .key_len    = 0,
       .repeat     = 1,
-      .error      = 0,
    },
    {  .data       = (const uint8_t []){
                     0x56, 0x49, 0x2e, 0x20, 0x59, 0x6f, 0x75, 0x20, 0x73,
@@ -334,7 +313,6 @@ test_data_t * data_sha1 = (test_data_t [])
       .data_len   = 34,
       .key_len    = 0,
       .repeat     = 1,
-      .error      = 0,
    },
    {  .data       = (const uint8_t []){
                     0x56, 0x49, 0x49, 0x2e, 0x20, 0x59, 0x6f, 0x75, 0x20,
@@ -346,7 +324,6 @@ test_data_t * data_sha1 = (test_data_t [])
       .data_len   = 25,
       .key_len    = 0,
       .repeat     = 1,
-      .error      = 0,
    },
    {  .data       = (const uint8_t []){
                     0x56, 0x49, 0x49, 0x49, 0x2e, 0x20, 0x59, 0x6f, 0x75,
@@ -362,7 +339,6 @@ test_data_t * data_sha1 = (test_data_t [])
       .data_len   = 61,
       .key_len    = 0,
       .repeat     = 1,
-      .error      = 0,
    },
    {  .data       = (const uint8_t []){
                     0x49, 0x58, 0x2e, 0x20, 0x59, 0x6f, 0x75, 0x20, 0x73,
@@ -377,7 +353,6 @@ test_data_t * data_sha1 = (test_data_t [])
       .data_len   = 49,
       .key_len    = 0,
       .repeat     = 1,
-      .error      = 0,
    },
    {  .data       = (const uint8_t []){
                     0x58, 0x2e, 0x20, 0x59, 0x6f, 0x75, 0x20, 0x73, 0x68,
@@ -392,7 +367,6 @@ test_data_t * data_sha1 = (test_data_t [])
       .data_len   = 47,
       .key_len    = 0,
       .repeat     = 1,
-      .error      = 0,
    },
 
 
@@ -403,7 +377,6 @@ test_data_t * data_sha1 = (test_data_t [])
       .data_len   = 0,
       .key_len    = 0,
       .repeat     = 0,
-      .error      = 0,
    }
 };
 

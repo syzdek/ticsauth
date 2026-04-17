@@ -91,9 +91,7 @@ struct _ticsauth_test_data
    size_t               data_len;
    size_t               key_len;
    int                  skip_seg;
-   int                  __pad_int;
    int                  repeat;
-   int                  error;
 };
 
 
