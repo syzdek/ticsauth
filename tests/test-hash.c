@@ -134,7 +134,7 @@ main(
          char *                        argv[] );
 
 
-extern int
+static int
 test_hash_ctx(
          int                           test_num,
          int                           algo,
@@ -151,14 +151,14 @@ test_hmac_result(
          int                           err );
 
 
-extern int
+static int
 test_hash_seg(
          int                           test_num,
          int                           algo,
          test_data_t *                 rec );
 
 
-extern int
+static int
 test_hash_str(
          int                           test_num,
          int                           algo,
