@@ -375,7 +375,7 @@ test_hash_ctx(
 
    test_hmac_result("context", test_num, algo, rec, digest, err);
 
-   return( (err != rec->error) ? TEST_ERROR : 0 );
+   return( ((err)) ? TEST_ERROR : 0 );
 }
 
 
@@ -480,7 +480,7 @@ test_hash_seg(
 
    test_hmac_result("segment", test_num, algo, rec, digest, err);
 
-   return( (err != rec->error) ? TEST_ERROR : 0 );
+   return( ((err)) ? TEST_ERROR : 0 );
 }
 
 
@@ -511,16 +511,12 @@ test_hash_str(
    if ((res = tics_hash(algo, rec->data, rec->data_len, md)))
    {  tics_hash_md2base16(algo, md, digest, sizeof(digest));
       if ((strcmp(rec->digest, digest)))
-         err++;
+         err = TICS_EMDMATCH;
    } else
-   {  err++;
+   {  err = TICS_EUNKNOWN;
    };
 
    test_hmac_result("string", test_num, algo, rec, digest, err);
-
-   err   = (((err)) && (!(rec->error))) || ((!(err)) && ((rec->error)))
-         ? 1
-         : 0;
 
    return( ((err)) ? TEST_ERROR : 0 );
 }
