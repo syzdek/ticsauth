@@ -518,7 +518,7 @@ test_hmac_seg(
 
    test_hmac_result("segment", test_num, algo, rec, digest, err);
 
-   return( (err != rec->error) ? TEST_ERROR : 0 );
+   return( ((err)) ? TEST_ERROR : 0 );
 }
 
 
@@ -551,14 +551,10 @@ test_hmac_str(
    if ((res = tics_hmac(algo, rec->key, rec->key_len, rec->data, rec->data_len, md)))
    {  tics_hash_md2base16(algo, md, digest, sizeof(digest));
       if ((strcmp(rec->hmac, digest)))
-         err++;
+         err = TICS_EMDMATCH;
    } else
-   {  err++;
+   {  err = TICS_EUNKNOWN;
    };
-
-   err   = (((err)) && (!(rec->error))) || ((!(err)) && ((rec->error)))
-         ? 1
-         : 0;
 
    test_hmac_result("string", test_num, algo, rec, digest, err);
 
