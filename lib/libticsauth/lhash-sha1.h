@@ -57,7 +57,7 @@ struct _tics_hash_ctx_sha1
 {  uint32_t                msg_digest[6];       // message digest
    uint64_t                len;                 // message length in bits
    int32_t                 msg_block_idx;       // Index into message block array
-   uint32_t                error;               // error computing digest
+   int32_t                 error;               // error computing digest
    uint8_t                 msg_block[64];       // 512-bit message blocks
 };
 
