@@ -184,6 +184,8 @@ extern int quiet;
 
 extern test_data_t            test_digests[];
 
+extern test_data_t *          data_md5;
+extern test_data_t *          data_sha1;
 extern test_data_t *          data_sha224;
 extern test_data_t *          data_sha256;
 

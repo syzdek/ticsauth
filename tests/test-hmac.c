@@ -119,9 +119,6 @@ test_hmac_str(
 int verbose    = 0;
 int quiet      = 0;
 
-extern test_data_t *          data_md5;
-extern test_data_t *          data_sha1;
-
 
 /////////////////
 //             //
