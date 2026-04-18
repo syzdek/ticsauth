@@ -121,6 +121,20 @@
 #  define TEST_HASH           TICS_HASH_SHA224
 #  define TEST_FUNC           TEST_FUNC_STR
 //
+// hash: sha256
+#elif defined(TEST_SHA256_CTX)
+#  define PROGRAM_SUFFIX      "-sha256-ctx"
+#  define TEST_HASH           TICS_HASH_SHA256
+#  define TEST_FUNC           TEST_FUNC_CTX
+#elif defined(TEST_SHA256_SEG)
+#  define PROGRAM_SUFFIX      "-sha256-seg"
+#  define TEST_HASH           TICS_HASH_SHA256
+#  define TEST_FUNC           TEST_FUNC_SEG
+#elif defined(TEST_SHA256_STR)
+#  define PROGRAM_SUFFIX      "-sha256-str"
+#  define TEST_HASH           TICS_HASH_SHA256
+#  define TEST_FUNC           TEST_FUNC_STR
+//
 // default
 #endif
 
@@ -131,6 +145,8 @@
 #   define TEST_DATA  data_sha1
 #elif (TEST_HASH == TICS_HASH_SHA224)
 #   define TEST_DATA  data_sha224
+#elif (TEST_HASH == TICS_HASH_SHA256)
+#   define TEST_DATA  data_sha256
 #endif
 
 
@@ -169,6 +185,7 @@ extern int quiet;
 extern test_data_t            test_digests[];
 
 extern test_data_t *          data_sha224;
+extern test_data_t *          data_sha256;
 
 
 //////////////////
