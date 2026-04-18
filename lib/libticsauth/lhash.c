@@ -72,6 +72,8 @@ tics_hash(
    switch (algo)
    {  case TICS_HASH_MD5:     return(tics_md5(data, data_len, md));
       case TICS_HASH_SHA1:    return(tics_sha1(data, data_len, md));
+      case TICS_HASH_SHA224:  return(tics_sha224(data, data_len, md));
+      case TICS_HASH_SHA256:  return(tics_sha256(data, data_len, md));
       default:                break;
    }
 
@@ -174,6 +176,8 @@ tics_hash_reset(
    switch (ctx->algo = algo)
    {  case TICS_HASH_MD5:     return(tics_md5_reset(&ctx->hash.md5));
       case TICS_HASH_SHA1:    return(tics_sha1_reset(&ctx->hash.sha1));
+      case TICS_HASH_SHA224:  return(tics_sha224_reset(&ctx->hash.sha256));
+      case TICS_HASH_SHA256:  return(tics_sha256_reset(&ctx->hash.sha256));
       default:                break;
    }
 
@@ -192,6 +196,8 @@ tics_hash_result(
    switch(ctx->algo)
    {  case TICS_HASH_MD5:     return(tics_md5_result(&ctx->hash.md5, md));
       case TICS_HASH_SHA1:    return(tics_sha1_result(&ctx->hash.sha1, md));
+      case TICS_HASH_SHA224:  return(tics_sha224_result(&ctx->hash.sha256, md));
+      case TICS_HASH_SHA256:  return(tics_sha256_result(&ctx->hash.sha256, md));
       default:                break;
    };
    return(TICS_EALGO);
@@ -221,6 +227,8 @@ tics_hash_size(
    switch(algo)
    {  case TICS_HASH_MD5:     return(TICS_MD_SIZE_MD5);
       case TICS_HASH_SHA1:    return(TICS_MD_SIZE_SHA1);
+      case TICS_HASH_SHA224:  return(TICS_MD_SIZE_SHA224);
+      case TICS_HASH_SHA256:  return(TICS_MD_SIZE_SHA256);
       default:                break;
    };
    return(TICS_EALGO);
@@ -240,6 +248,8 @@ tics_hash_update(
    switch(ctx->algo)
    {  case TICS_HASH_MD5:     return(tics_md5_update(&ctx->hash.md5,  data, len));
       case TICS_HASH_SHA1:    return(tics_sha1_update(&ctx->hash.sha1, data, len));
+      case TICS_HASH_SHA224:  return(tics_sha224_update(&ctx->hash.sha256, data, len));
+      case TICS_HASH_SHA256:  return(tics_sha256_update(&ctx->hash.sha256, data, len));
       default:                break;
    };
    return(TICS_EALGO);

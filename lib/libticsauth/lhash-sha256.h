@@ -30,8 +30,8 @@
  *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  *  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-#ifndef __LIB_LIBTICSAUTH_LHASH_H
-#define __LIB_LIBTICSAUTH_LHASH_H 1
+#ifndef __LIB_LIBTICSAUTH_LHASH_SHA256_H
+#define __LIB_LIBTICSAUTH_LHASH_SHA256_H 1
 
 ///////////////
 //           //
@@ -42,10 +42,6 @@
 
 #include <sys/types.h>
 
-#include "lhash-md5.h"
-#include "lhash-sha1.h"
-#include "lhash-sha256.h"
-
 
 //////////////////
 //              //
@@ -54,13 +50,15 @@
 //////////////////
 // MARK: - Data Types
 
-struct _tics_hash_ctx
-{  uint64_t                         algo;
-   union
-   {  tics_hash_md5_t               md5;
-      tics_hash_sha1_t              sha1;
-      tics_hash_sha256_t            sha256;
-   } hash;
+typedef struct _tics_hash_ctx_sha256   tics_hash_sha256_t;
+typedef struct _tics_hash_ctx_sha256   tics_hash_sha224_t;
+
+
+struct _tics_hash_ctx_sha256
+{  uint32_t                h[8];             // message digest
+   uint64_t                len;              // message length in bits
+   uint64_t                msg_block_idx;    // Index into message block array
+   uint8_t                 msg_block[64];    // 512-bit message blocks
 };
 
 
@@ -70,6 +68,65 @@ struct _tics_hash_ctx
 //              //
 //////////////////
 // MARK: - Prototypes
+
+//--------------------//
+// SHA-224 prototypes //
+//--------------------//
+#pragma mark SHA-224 prototypes
+
+extern void *
+tics_sha224(
+         const void *                  data,
+         size_t                        data_len,
+         uint8_t *                     md );
+
+
+extern int
+tics_sha224_reset(
+         tics_hash_sha256_t *          ctx );
+
+
+extern int
+tics_sha224_result(
+         tics_hash_sha256_t *          ctx,
+         uint8_t *                     md );
+
+
+extern int
+tics_sha224_update(
+         tics_hash_sha256_t *          ctx,
+         const void *                  data,
+         size_t                        data_len );
+
+
+//--------------------//
+// SHA-256 prototypes //
+//--------------------//
+#pragma mark SHA-256 prototypes
+
+extern void *
+tics_sha256(
+         const void *                  data,
+         size_t                        data_len,
+         uint8_t *                     md );
+
+
+extern int
+tics_sha256_reset(
+         tics_hash_sha256_t *          ctx );
+
+
+extern int
+tics_sha256_result(
+         tics_hash_sha256_t *          ctx,
+         uint8_t *                     md );
+
+
+extern int
+tics_sha256_update(
+         tics_hash_sha256_t *          ctx,
+         const void *                  data,
+         size_t                        data_len );
 
 
 #endif /* end of header */
