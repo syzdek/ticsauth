@@ -57,64 +57,8 @@
 ///////////////////
 // MARK: - Definitions
 
-#undef TEST_HMAC_FUNC_CTX
-#undef TEST_HMAC_FUNC_SEG
-#undef TEST_HMAC_FUNC_STR
-#define TEST_HMAC_FUNC_CTX    1
-#define TEST_HMAC_FUNC_SEG    2
-#define TEST_HMAC_FUNC_STR    3
-
 #undef PROGRAM_NAME
-#undef TEST_FUNC_CTX
-#undef TEST_FUNC_SEG
-#undef TEST_FUNC_STR
-#undef TEST_HMAC_ALGO
-#undef TEST_HMAC_DATA
-
-//
-// hash: md5
-#if defined(TEST_HMAC_MD5_CTX)
-#  define PROGRAM_NAME        "hash-md5-ctx"
-#  define TEST_HMAC_ALGO      TICS_HASH_MD5
-#  define TEST_HMAC_FUNC      TEST_HMAC_FUNC_CTX
-#elif defined(TEST_HMAC_MD5_SEG)
-#  define PROGRAM_NAME        "hash-md5-seg"
-#  define TEST_HMAC_ALGO      TICS_HASH_MD5
-#  define TEST_HMAC_FUNC      TEST_HMAC_FUNC_SEG
-#elif defined(TEST_HMAC_MD5_STR)
-#  define PROGRAM_NAME        "hash-md5-str"
-#  define TEST_HMAC_ALGO      TICS_HASH_MD5
-#  define TEST_HMAC_FUNC      TEST_HMAC_FUNC_STR
-//
-// hash: sha1
-#elif defined(TEST_HMAC_SHA1_CTX)
-#  define PROGRAM_NAME        "hash-sha1-ctx"
-#  define TEST_HMAC_ALGO      TICS_HASH_SHA1
-#  define TEST_HMAC_FUNC      TEST_HMAC_FUNC_CTX
-#elif defined(TEST_HMAC_SHA1_SEG)
-#  define PROGRAM_NAME        "hash-sha1-seg"
-#  define TEST_HMAC_ALGO      TICS_HASH_SHA1
-#  define TEST_HMAC_FUNC      TEST_HMAC_FUNC_SEG
-#elif defined(TEST_HMAC_SHA1_STR)
-#  define PROGRAM_NAME        "hash-sha1-str"
-#  define TEST_HMAC_ALGO      TICS_HASH_SHA1
-#  define TEST_HMAC_FUNC      TEST_HMAC_FUNC_STR
-//
-// default
-#else
-#  define PROGRAM_NAME        "hash-sha1-str"
-#  define TEST_HMAC_ALGO      TICS_HASH_SHA1
-#  define TEST_HMAC_FUNC      TEST_HMAC_FUNC_STR
-#endif
-
-
-#if (TEST_HMAC_ALGO == TICS_HASH_MD5)
-#   define TEST_HMAC_DATA  data_md5
-#elif (TEST_HMAC_ALGO == TICS_HASH_SHA1)
-#   define TEST_HMAC_DATA  data_sha1
-#else
-#   define TEST_HMAC_DATA  data_sha1
-#endif
+#define PROGRAM_NAME "hmac" PROGRAM_SUFFIX
 
 
 #define TEST_ERROR   1
@@ -214,9 +158,9 @@ main(
       { NULL, 0, NULL, 0 }
    };
 
-   func     = TEST_HMAC_FUNC;
-   algo     = TEST_HMAC_ALGO;
-   data     = TEST_HMAC_DATA;
+   func     = TEST_FUNC;
+   algo     = TEST_HASH;
+   data     = TEST_DATA;
 
    while((c = getopt_long(argc, argv, short_opt, long_opt, &opt_index)) != -1)
    {  switch(c)
@@ -227,13 +171,13 @@ main(
          // these are not intended to be used, but rather to prevent
          // compiler warnings for unused code.
          case '0':
-            func = TEST_HMAC_FUNC_CTX;
+            func = TEST_FUNC_CTX;
             break;
          case '1':
-            func = TEST_HMAC_FUNC_SEG;
+            func = TEST_FUNC_SEG;
             break;
          case '2':
-            func = TEST_HMAC_FUNC_STR;
+            func = TEST_FUNC_STR;
             break;
 
          case 'h':
@@ -292,9 +236,9 @@ main(
       rec.digest  = argv[optind+1];
       rec.repeat   = 1;
       switch(func)
-      {  case TEST_HMAC_FUNC_CTX:   return(test_hmac_ctx(1, algo, &rec));
-         case TEST_HMAC_FUNC_SEG:   return(test_hmac_seg(1, algo, &rec));
-         case TEST_HMAC_FUNC_STR:   return(test_hmac_str(1, algo, &rec));
+      {  case TEST_FUNC_CTX:   return(test_hmac_ctx(1, algo, &rec));
+         case TEST_FUNC_SEG:   return(test_hmac_seg(1, algo, &rec));
+         case TEST_FUNC_STR:   return(test_hmac_str(1, algo, &rec));
          default:
             fprintf(stderr, "%s: unknown test\n", PROGRAM_NAME);
             return(1);
@@ -307,9 +251,9 @@ main(
          continue;
       tests++;
       switch(func)
-      {  case TEST_HMAC_FUNC_CTX:   rc = test_hmac_ctx(tests, algo, &data[idx]); break;
-         case TEST_HMAC_FUNC_SEG:   rc = test_hmac_seg(tests, algo, &data[idx]); break;
-         case TEST_HMAC_FUNC_STR:   rc = test_hmac_str(tests, algo, &data[idx]); break;
+      {  case TEST_FUNC_CTX:   rc = test_hmac_ctx(tests, algo, &data[idx]); break;
+         case TEST_FUNC_SEG:   rc = test_hmac_seg(tests, algo, &data[idx]); break;
+         case TEST_FUNC_STR:   rc = test_hmac_str(tests, algo, &data[idx]); break;
          default:
             fprintf(stderr, "%s: unknown test\n", PROGRAM_NAME);
             return(1);

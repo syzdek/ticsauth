@@ -180,84 +180,84 @@ lib_libticsauth_la_SOURCES		= include/ticsauth.h \
 # macros for tests/hash-md5-ctx
 tests_hash_md5_ctx_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
 tests_hash_md5_ctx_LDADD		= $(lib_LTLIBRARIES)
-tests_hash_md5_ctx_CFLAGS		= $(AM_CFLAGS) -DTEST_HASH_MD5_CTX=1
+tests_hash_md5_ctx_CFLAGS		= $(AM_CFLAGS) -DTEST_MD5_CTX=1
 tests_hash_md5_ctx_SOURCES		= tests/tests.h tests/test-hash.c tests/data-md5.c
 
 
 # macros for tests/hash-md5-seg
 tests_hash_md5_seg_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
 tests_hash_md5_seg_LDADD		= $(lib_LTLIBRARIES)
-tests_hash_md5_seg_CFLAGS		= $(AM_CFLAGS) -DTEST_HASH_MD5_SEG=1
+tests_hash_md5_seg_CFLAGS		= $(AM_CFLAGS) -DTEST_MD5_SEG=1
 tests_hash_md5_seg_SOURCES		= tests/tests.h tests/test-hash.c tests/data-md5.c
 
 
 # macros for tests/hash-md5-str
 tests_hash_md5_str_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
 tests_hash_md5_str_LDADD		= $(lib_LTLIBRARIES)
-tests_hash_md5_str_CFLAGS		= $(AM_CFLAGS) -DTEST_HASH_MD5_STR=1
+tests_hash_md5_str_CFLAGS		= $(AM_CFLAGS) -DTEST_MD5_STR=1
 tests_hash_md5_str_SOURCES		= tests/tests.h tests/test-hash.c tests/data-md5.c
 
 
 # macros for tests/hash-sha1-ctx
 tests_hash_sha1_ctx_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 tests_hash_sha1_ctx_LDADD		= $(lib_LTLIBRARIES)
-tests_hash_sha1_ctx_CFLAGS		= $(AM_CFLAGS) -DTEST_HASH_SHA1_CTX=1
+tests_hash_sha1_ctx_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA1_CTX=1
 tests_hash_sha1_ctx_SOURCES		= tests/tests.h tests/test-hash.c tests/data-sha1.c
 
 
 # macros for tests/hash-sha1-seg
 tests_hash_sha1_seg_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 tests_hash_sha1_seg_LDADD		= $(lib_LTLIBRARIES)
-tests_hash_sha1_seg_CFLAGS		= $(AM_CFLAGS) -DTEST_HASH_SHA1_SEG=1
+tests_hash_sha1_seg_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA1_SEG=1
 tests_hash_sha1_seg_SOURCES		= tests/tests.h tests/test-hash.c tests/data-sha1.c
 
 
 # macros for tests/hash-sha1-str
 tests_hash_sha1_str_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 tests_hash_sha1_str_LDADD		= $(lib_LTLIBRARIES)
-tests_hash_sha1_str_CFLAGS		= $(AM_CFLAGS) -DTEST_HASH_SHA1_STR=1
+tests_hash_sha1_str_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA1_STR=1
 tests_hash_sha1_str_SOURCES		= tests/tests.h tests/test-hash.c tests/data-sha1.c
 
 
 # macros for tests/hmac-md5-ctx
 tests_hmac_md5_ctx_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
 tests_hmac_md5_ctx_LDADD		= $(lib_LTLIBRARIES)
-tests_hmac_md5_ctx_CFLAGS		= $(AM_CFLAGS) -DTEST_HMAC_MD5_CTX=1
+tests_hmac_md5_ctx_CFLAGS		= $(AM_CFLAGS) -DTEST_MD5_CTX=1
 tests_hmac_md5_ctx_SOURCES		= tests/tests.h tests/test-hmac.c tests/data-md5.c
 
 
 # macros for tests/hmac-md5-seg
 tests_hmac_md5_seg_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
 tests_hmac_md5_seg_LDADD		= $(lib_LTLIBRARIES)
-tests_hmac_md5_seg_CFLAGS		= $(AM_CFLAGS) -DTEST_HMAC_MD5_SEG=1
+tests_hmac_md5_seg_CFLAGS		= $(AM_CFLAGS) -DTEST_MD5_SEG=1
 tests_hmac_md5_seg_SOURCES		= tests/tests.h tests/test-hmac.c tests/data-md5.c
 
 
 # macros for tests/hmac-md5-str
 tests_hmac_md5_str_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
 tests_hmac_md5_str_LDADD		= $(lib_LTLIBRARIES)
-tests_hmac_md5_str_CFLAGS		= $(AM_CFLAGS) -DTEST_HMAC_MD5_STR=1
+tests_hmac_md5_str_CFLAGS		= $(AM_CFLAGS) -DTEST_MD5_STR=1
 tests_hmac_md5_str_SOURCES		= tests/tests.h tests/test-hmac.c tests/data-md5.c
 
 
 # macros for tests/hmac-sha1-ctx
 tests_hmac_sha1_ctx_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 tests_hmac_sha1_ctx_LDADD		= $(lib_LTLIBRARIES)
-tests_hmac_sha1_ctx_CFLAGS		= $(AM_CFLAGS) -DTEST_HMAC_SHA1_CTX=1
+tests_hmac_sha1_ctx_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA1_CTX=1
 tests_hmac_sha1_ctx_SOURCES		= tests/tests.h tests/test-hmac.c tests/data-sha1.c
 
 
 # macros for tests/hmac-sha1-seg
 tests_hmac_sha1_seg_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 tests_hmac_sha1_seg_LDADD		= $(lib_LTLIBRARIES)
-tests_hmac_sha1_seg_CFLAGS		= $(AM_CFLAGS) -DTEST_HMAC_SHA1_SEG=1
+tests_hmac_sha1_seg_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA1_SEG=1
 tests_hmac_sha1_seg_SOURCES		= tests/tests.h tests/test-hmac.c tests/data-sha1.c
 
 
 # macros for tests/hmac-sha1-str
 tests_hmac_sha1_str_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 tests_hmac_sha1_str_LDADD		= $(lib_LTLIBRARIES)
-tests_hmac_sha1_str_CFLAGS		= $(AM_CFLAGS) -DTEST_HMAC_SHA1_STR=1
+tests_hmac_sha1_str_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA1_STR=1
 tests_hmac_sha1_str_SOURCES		= tests/tests.h tests/test-hmac.c tests/data-sha1.c
 
 

@@ -710,6 +710,7 @@
 		A00BA1182F87664D00F126F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = "TEST_SHA1_CTX=1";
 				HEADER_SEARCH_PATHS = include;
 			};
 			name = Debug;
@@ -717,6 +718,7 @@
 		A00BA1192F87664D00F126F5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = "TEST_SHA1_CTX=1";
 				HEADER_SEARCH_PATHS = include;
 			};
 			name = Release;

@@ -73,6 +73,51 @@
 #endif
 
 
+#define TEST_FUNC_CTX    1
+#define TEST_FUNC_SEG    2
+#define TEST_FUNC_STR    3
+
+
+//
+// hash: md5
+#if defined(TEST_MD5_CTX)
+#  define PROGRAM_SUFFIX      "-md5-ctx"
+#  define TEST_HASH           TICS_HASH_MD5
+#  define TEST_FUNC           TEST_FUNC_CTX
+#elif defined(TEST_MD5_SEG)
+#  define PROGRAM_SUFFIX      "-md5-seg"
+#  define TEST_HASH           TICS_HASH_MD5
+#  define TEST_FUNC           TEST_FUNC_SEG
+#elif defined(TEST_MD5_STR)
+#  define PROGRAM_SUFFIX      "-md5-str"
+#  define TEST_HASH           TICS_HASH_MD5
+#  define TEST_FUNC           TEST_FUNC_STR
+//
+// hash: sha1
+#elif defined(TEST_SHA1_CTX)
+#  define PROGRAM_SUFFIX      "-sha1-ctx"
+#  define TEST_HASH           TICS_HASH_SHA1
+#  define TEST_FUNC           TEST_FUNC_CTX
+#elif defined(TEST_SHA1_SEG)
+#  define PROGRAM_SUFFIX      "-sha1-seg"
+#  define TEST_HASH           TICS_HASH_SHA1
+#  define TEST_FUNC           TEST_FUNC_SEG
+#elif defined(TEST_SHA1_STR)
+#  define PROGRAM_SUFFIX      "-sha1-str"
+#  define TEST_HASH           TICS_HASH_SHA1
+#  define TEST_FUNC           TEST_FUNC_STR
+//
+// default
+#endif
+
+
+#if (TEST_HASH == TICS_HASH_MD5)
+#   define TEST_DATA  data_md5
+#elif (TEST_HASH == TICS_HASH_SHA1)
+#   define TEST_DATA  data_sha1
+#endif
+
+
 /////////////////
 //             //
 //  Datatypes  //
