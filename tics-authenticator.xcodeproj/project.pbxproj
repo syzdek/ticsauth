@@ -48,6 +48,8 @@
 		A06E09BD2F90AB2500F342A5 /* data-md5.c in Sources */ = {isa = PBXBuildFile; fileRef = A06E09AA2F90AB2500F342A5 /* data-md5.c */; };
 		A06E09C12F90AB2500F342A5 /* data-sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = A06E09AB2F90AB2500F342A5 /* data-sha1.c */; };
 		A06E09C32F91A30900F342A5 /* test-hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = A06E09C22F91A30900F342A5 /* test-hmac.c */; };
+		A06E09C72F92DE6D00F342A5 /* data-sha224.c in Sources */ = {isa = PBXBuildFile; fileRef = A06E09C52F92DE6D00F342A5 /* data-sha224.c */; };
+		A06E09C92F92DE6D00F342A5 /* data-sha224.c in Sources */ = {isa = PBXBuildFile; fileRef = A06E09C52F92DE6D00F342A5 /* data-sha224.c */; };
 		A06E09D32F9329B700F342A5 /* lhash-sha256.h in Headers */ = {isa = PBXBuildFile; fileRef = A06E09D12F9329B700F342A5 /* lhash-sha256.h */; };
 		A06E09D42F9329B700F342A5 /* lhash-sha256.c in Sources */ = {isa = PBXBuildFile; fileRef = A06E09D22F9329B700F342A5 /* lhash-sha256.c */; };
 /* End PBXBuildFile section */
@@ -174,6 +176,7 @@
 		A06E09AB2F90AB2500F342A5 /* data-sha1.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "data-sha1.c"; sourceTree = "<group>"; };
 		A06E09C22F91A30900F342A5 /* test-hmac.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "test-hmac.c"; sourceTree = "<group>"; };
 		A06E09C42F91FCE000F342A5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A06E09C52F92DE6D00F342A5 /* data-sha224.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "data-sha224.c"; sourceTree = "<group>"; };
 		A06E09D12F9329B700F342A5 /* lhash-sha256.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "lhash-sha256.h"; sourceTree = "<group>"; };
 		A06E09D22F9329B700F342A5 /* lhash-sha256.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "lhash-sha256.c"; sourceTree = "<group>"; };
 		A0A6CFAF2F8AF4790003659C /* acinclude.m4 */ = {isa = PBXFileReference; explicitFileType = text.script; path = acinclude.m4; sourceTree = "<group>"; };
@@ -318,6 +321,7 @@
 				A06E08BD2F8BD8CA00F342A5 /* tests.h */,
 				A06E09AA2F90AB2500F342A5 /* data-md5.c */,
 				A06E09AB2F90AB2500F342A5 /* data-sha1.c */,
+				A06E09C52F92DE6D00F342A5 /* data-sha224.c */,
 				A06E08DC2F8BDD9C00F342A5 /* hash-tests-data.c */,
 				A06E08E32F8D47D800F342A5 /* test-hash.c */,
 				A06E09C22F91A30900F342A5 /* test-hmac.c */,
@@ -538,6 +542,7 @@
 				A06E09BD2F90AB2500F342A5 /* data-md5.c in Sources */,
 				A06E09C12F90AB2500F342A5 /* data-sha1.c in Sources */,
 				A06E09A52F8F349500F342A5 /* test-hash.c in Sources */,
+				A06E09C92F92DE6D00F342A5 /* data-sha224.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,6 +553,7 @@
 				A06E09B72F90AB2500F342A5 /* data-md5.c in Sources */,
 				A06E09C32F91A30900F342A5 /* test-hmac.c in Sources */,
 				A06E09BB2F90AB2500F342A5 /* data-sha1.c in Sources */,
+				A06E09C72F92DE6D00F342A5 /* data-sha224.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

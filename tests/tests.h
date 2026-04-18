@@ -107,6 +107,20 @@
 #  define TEST_HASH           TICS_HASH_SHA1
 #  define TEST_FUNC           TEST_FUNC_STR
 //
+// hash: sha224
+#elif defined(TEST_SHA224_CTX)
+#  define PROGRAM_SUFFIX      "-sha224-ctx"
+#  define TEST_HASH           TICS_HASH_SHA224
+#  define TEST_FUNC           TEST_FUNC_CTX
+#elif defined(TEST_SHA224_SEG)
+#  define PROGRAM_SUFFIX      "-sha224-seg"
+#  define TEST_HASH           TICS_HASH_SHA224
+#  define TEST_FUNC           TEST_FUNC_SEG
+#elif defined(TEST_SHA224_STR)
+#  define PROGRAM_SUFFIX      "-sha224-str"
+#  define TEST_HASH           TICS_HASH_SHA224
+#  define TEST_FUNC           TEST_FUNC_STR
+//
 // default
 #endif
 
@@ -115,6 +129,8 @@
 #   define TEST_DATA  data_md5
 #elif (TEST_HASH == TICS_HASH_SHA1)
 #   define TEST_DATA  data_sha1
+#elif (TEST_HASH == TICS_HASH_SHA224)
+#   define TEST_DATA  data_sha224
 #endif
 
 
@@ -151,6 +167,8 @@ extern int verbose;
 extern int quiet;
 
 extern test_data_t            test_digests[];
+
+extern test_data_t *          data_sha224;
 
 
 //////////////////
