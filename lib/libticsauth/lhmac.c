@@ -121,6 +121,10 @@ tics_hmac_init(
 
    assert(ctxp != NULL);
    assert( (((key)) && ((key_len))) || ((!(key)) && (!(key_len))) );
+   if (ctxp == NULL)
+      return(TICS_EARGS);
+   if ( (((key)) && (!(key_len))) || ((!(key)) && ((key_len))) )
+      return(TICS_EARGS);
 
    if ((ctx = malloc(sizeof(tics_hmac_t))) == NULL)
       return(TICS_ENOMEM);
@@ -156,6 +160,8 @@ tics_hmac_reset(
    ssize_t  md_len;
 
    assert(ctx != NULL);
+   if (ctx == NULL)
+      return(TICS_EARGS);
 
    if ( (algo != (int)ctx->algo) && (!(reset_key)) )
       return(TICS_EARGS);
@@ -204,6 +210,10 @@ tics_hmac_result(
 
    assert(ctx != NULL);
    assert(md  != NULL);
+   if (ctx == NULL)
+      return(TICS_EARGS);
+   if (md == NULL)
+      return(TICS_EARGS);
 
    if ((ctx->flags & TICS_HMAC_ERROR))
       return(TICS_EUNKNOWN);
@@ -253,6 +263,10 @@ tics_hmac_result16(
    uint8_t     md[TICS_MD_SIZE];
    assert(ctx != NULL);
    assert(str != NULL);
+   if (ctx == NULL)
+      return(TICS_EARGS);
+   if (str == NULL)
+      return(TICS_EARGS);
    if ((rc = tics_hmac_result(ctx, md)) != TICS_SUCCESS)
       return(rc);
    return(tics_hash_md2base16((int)ctx->algo, md, str, strlen));
@@ -270,6 +284,8 @@ tics_hmac_update(
 
    assert(ctx  != NULL);
    assert( ((!(data)) && (!(len))) || ((data)) );
+   if (ctx == NULL)
+      return(TICS_EARGS);
 
    if ((ctx->flags & TICS_HMAC_ERROR))
       return(TICS_EUNKNOWN);
@@ -332,6 +348,10 @@ tics_hmac_update_key(
 
    assert(ctx != NULL);
    assert(key != NULL);
+   if (ctx == NULL)
+      return(TICS_EARGS);
+   if (key == NULL)
+      return(TICS_EARGS);
 
    if ((ctx->flags & TICS_HMAC_KEYED) != 0)
       return(TICS_EHMACKEY);
