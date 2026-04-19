@@ -59,6 +59,7 @@ struct _tics_hash_ctx
    union
    {  tics_hash_md5_t               md5;
       tics_hash_sha1_t              sha1;
+      tics_hash_sha224_t            sha224;
       tics_hash_sha256_t            sha256;
    } hash;
 };
