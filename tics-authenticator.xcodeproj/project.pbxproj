@@ -53,7 +53,9 @@
 		A06E09C92F92DE6D00F342A5 /* data-sha224.c in Sources */ = {isa = PBXBuildFile; fileRef = A06E09C52F92DE6D00F342A5 /* data-sha224.c */; };
 		A06E09CA2F92DE6D00F342A5 /* data-sha256.c in Sources */ = {isa = PBXBuildFile; fileRef = A06E09C62F92DE6D00F342A5 /* data-sha256.c */; };
 		A06E09CD2F9326CB00F342A5 /* data-sha384.c in Sources */ = {isa = PBXBuildFile; fileRef = A06E09CB2F9326CB00F342A5 /* data-sha384.c */; };
+		A06E09CE2F9326CB00F342A5 /* data-sha512.c in Sources */ = {isa = PBXBuildFile; fileRef = A06E09CC2F9326CB00F342A5 /* data-sha512.c */; };
 		A06E09CF2F9326CB00F342A5 /* data-sha384.c in Sources */ = {isa = PBXBuildFile; fileRef = A06E09CB2F9326CB00F342A5 /* data-sha384.c */; };
+		A06E09D02F9326CB00F342A5 /* data-sha512.c in Sources */ = {isa = PBXBuildFile; fileRef = A06E09CC2F9326CB00F342A5 /* data-sha512.c */; };
 		A06E09D32F9329B700F342A5 /* lhash-sha256.h in Headers */ = {isa = PBXBuildFile; fileRef = A06E09D12F9329B700F342A5 /* lhash-sha256.h */; };
 		A06E09D42F9329B700F342A5 /* lhash-sha256.c in Sources */ = {isa = PBXBuildFile; fileRef = A06E09D22F9329B700F342A5 /* lhash-sha256.c */; };
 		A06E09D72F9424AD00F342A5 /* lhash-sha512.h in Headers */ = {isa = PBXBuildFile; fileRef = A06E09D52F9424AD00F342A5 /* lhash-sha512.h */; };
@@ -185,6 +187,7 @@
 		A06E09C52F92DE6D00F342A5 /* data-sha224.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "data-sha224.c"; sourceTree = "<group>"; };
 		A06E09C62F92DE6D00F342A5 /* data-sha256.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "data-sha256.c"; sourceTree = "<group>"; };
 		A06E09CB2F9326CB00F342A5 /* data-sha384.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "data-sha384.c"; sourceTree = "<group>"; };
+		A06E09CC2F9326CB00F342A5 /* data-sha512.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "data-sha512.c"; sourceTree = "<group>"; };
 		A06E09D12F9329B700F342A5 /* lhash-sha256.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "lhash-sha256.h"; sourceTree = "<group>"; };
 		A06E09D22F9329B700F342A5 /* lhash-sha256.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "lhash-sha256.c"; sourceTree = "<group>"; };
 		A06E09D52F9424AD00F342A5 /* lhash-sha512.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "lhash-sha512.h"; sourceTree = "<group>"; };
@@ -336,6 +339,7 @@
 				A06E09C52F92DE6D00F342A5 /* data-sha224.c */,
 				A06E09C62F92DE6D00F342A5 /* data-sha256.c */,
 				A06E09CB2F9326CB00F342A5 /* data-sha384.c */,
+				A06E09CC2F9326CB00F342A5 /* data-sha512.c */,
 				A06E08DC2F8BDD9C00F342A5 /* hash-tests-data.c */,
 				A06E08E32F8D47D800F342A5 /* test-hash.c */,
 				A06E09C22F91A30900F342A5 /* test-hmac.c */,
@@ -557,6 +561,7 @@
 			files = (
 				A06E09BD2F90AB2500F342A5 /* data-md5.c in Sources */,
 				A06E09CD2F9326CB00F342A5 /* data-sha384.c in Sources */,
+				A06E09CE2F9326CB00F342A5 /* data-sha512.c in Sources */,
 				A06E09C12F90AB2500F342A5 /* data-sha1.c in Sources */,
 				A06E09A52F8F349500F342A5 /* test-hash.c in Sources */,
 				A06E09C92F92DE6D00F342A5 /* data-sha224.c in Sources */,
@@ -570,6 +575,7 @@
 			files = (
 				A06E09B72F90AB2500F342A5 /* data-md5.c in Sources */,
 				A06E09CF2F9326CB00F342A5 /* data-sha384.c in Sources */,
+				A06E09D02F9326CB00F342A5 /* data-sha512.c in Sources */,
 				A06E09C32F91A30900F342A5 /* test-hmac.c in Sources */,
 				A06E09BB2F90AB2500F342A5 /* data-sha1.c in Sources */,
 				A06E09C72F92DE6D00F342A5 /* data-sha224.c in Sources */,
