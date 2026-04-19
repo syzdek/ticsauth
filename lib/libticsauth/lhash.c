@@ -178,13 +178,62 @@ tics_hash_reset(
    memset(ctx, 0, sizeof(tics_hash_t));
 
    switch (ctx->algo = algo)
-   {  case TICS_HASH_MD5:     return(tics_md5_reset(&ctx->hash.md5));
-      case TICS_HASH_SHA1:    return(tics_sha1_reset(&ctx->hash.sha1));
-      case TICS_HASH_SHA224:  return(tics_sha224_reset(&ctx->hash.sha224));
-      case TICS_HASH_SHA256:  return(tics_sha256_reset(&ctx->hash.sha256));
-      case TICS_HASH_SHA384:  return(tics_sha384_reset(&ctx->hash.sha384));
-      case TICS_HASH_SHA512:  return(tics_sha512_reset(&ctx->hash.sha512));
-      default:                break;
+   {  case TICS_HASH_MD5:
+         ctx->md_len          = TICS_MD_SIZE_MD5;
+         ctx->hmac_pad_len    = TICS_HMAC_PAD_LEN_MD5;
+         ctx->state_size      = sizeof(tics_hash_md5_t);
+         ctx->func_reset      = (int(*)(void *))&tics_md5_reset;
+         ctx->func_result     = (int(*)(void *, uint8_t *))&tics_md5_result;
+         ctx->func_update     = (int(*)(void *, const void *, size_t))&tics_md5_update;
+         return(tics_md5_reset(&ctx->hash.md5));
+
+      case TICS_HASH_SHA1:
+         ctx->md_len          = TICS_MD_SIZE_SHA1;
+         ctx->hmac_pad_len    = TICS_HMAC_PAD_LEN_SHA1;
+         ctx->state_size      = sizeof(tics_hash_sha1_t);
+         ctx->func_reset      = (int(*)(void *))&tics_sha1_reset;
+         ctx->func_result     = (int(*)(void *, uint8_t *))&tics_sha1_result;
+         ctx->func_update     = (int(*)(void *, const void *, size_t))&tics_sha1_update;
+         return(tics_sha1_reset(&ctx->hash.sha1));
+
+      case TICS_HASH_SHA224:
+         ctx->md_len          = TICS_MD_SIZE_SHA224;
+         ctx->hmac_pad_len    = TICS_HMAC_PAD_LEN_SHA224;
+         ctx->state_size      = sizeof(tics_hash_sha224_t);
+         ctx->func_reset      = (int(*)(void *))&tics_sha224_reset;
+         ctx->func_result     = (int(*)(void *, uint8_t *))&tics_sha224_result;
+         ctx->func_update     = (int(*)(void *, const void *, size_t))&tics_sha224_update;
+         return(tics_sha224_reset(&ctx->hash.sha224));
+
+      case TICS_HASH_SHA256:
+         ctx->md_len          = TICS_MD_SIZE_SHA256;
+         ctx->hmac_pad_len    = TICS_HMAC_PAD_LEN_SHA256;
+         ctx->state_size      = sizeof(tics_hash_sha256_t);
+         ctx->func_reset      = (int(*)(void *))&tics_sha256_reset;
+         ctx->func_result     = (int(*)(void *, uint8_t *))&tics_sha256_result;
+         ctx->func_update     = (int(*)(void *, const void *, size_t))&tics_sha256_update;
+         return(tics_sha256_reset(&ctx->hash.sha256));
+
+      case TICS_HASH_SHA384:
+         ctx->md_len          = TICS_MD_SIZE_SHA384;
+         ctx->hmac_pad_len    = TICS_HMAC_PAD_LEN_SHA384;
+         ctx->state_size      = sizeof(tics_hash_sha384_t);
+         ctx->func_reset      = (int(*)(void *))&tics_sha384_reset;
+         ctx->func_result     = (int(*)(void *, uint8_t *))&tics_sha384_result;
+         ctx->func_update     = (int(*)(void *, const void *, size_t))&tics_sha384_update;
+         return(tics_sha384_reset(&ctx->hash.sha384));
+
+      case TICS_HASH_SHA512:
+         ctx->md_len          = TICS_MD_SIZE_SHA512;
+         ctx->hmac_pad_len    = TICS_HMAC_PAD_LEN_SHA512;
+         ctx->state_size      = sizeof(tics_hash_sha512_t);
+         ctx->func_reset      = (int(*)(void *))&tics_sha512_reset;
+         ctx->func_result     = (int(*)(void *, uint8_t *))&tics_sha512_result;
+         ctx->func_update     = (int(*)(void *, const void *, size_t))&tics_sha512_update;
+         return(tics_sha512_reset(&ctx->hash.sha512));
+
+      default:
+         break;
    }
 
    return(TICS_EALGO);
@@ -198,17 +247,7 @@ tics_hash_result(
 {
    assert(ctx != NULL);
    assert(md  != NULL);
-
-   switch(ctx->algo)
-   {  case TICS_HASH_MD5:     return(tics_md5_result(&ctx->hash.md5, md));
-      case TICS_HASH_SHA1:    return(tics_sha1_result(&ctx->hash.sha1, md));
-      case TICS_HASH_SHA224:  return(tics_sha224_result(&ctx->hash.sha224, md));
-      case TICS_HASH_SHA256:  return(tics_sha256_result(&ctx->hash.sha256, md));
-      case TICS_HASH_SHA384:  return(tics_sha384_result(&ctx->hash.sha384, md));
-      case TICS_HASH_SHA512:  return(tics_sha512_result(&ctx->hash.sha512, md));
-      default:                break;
-   };
-   return(TICS_EALGO);
+   return(ctx->func_result(&ctx->hash, md));
 }
 
 
@@ -255,16 +294,7 @@ tics_hash_update(
    assert(data != NULL);
    if (!(len))
       return(TICS_SUCCESS);
-   switch(ctx->algo)
-   {  case TICS_HASH_MD5:     return(tics_md5_update(&ctx->hash.md5,  data, len));
-      case TICS_HASH_SHA1:    return(tics_sha1_update(&ctx->hash.sha1, data, len));
-      case TICS_HASH_SHA224:  return(tics_sha224_update(&ctx->hash.sha224, data, len));
-      case TICS_HASH_SHA256:  return(tics_sha256_update(&ctx->hash.sha256, data, len));
-      case TICS_HASH_SHA384:  return(tics_sha384_update(&ctx->hash.sha384, data, len));
-      case TICS_HASH_SHA512:  return(tics_sha512_update(&ctx->hash.sha512, data, len));
-      default:                break;
-   };
-   return(TICS_EALGO);
+   return(ctx->func_update(&ctx->hash, data, len));
 }
 
 

@@ -56,7 +56,13 @@
 // MARK: - Data Types
 
 struct _tics_hash_ctx
-{  uint64_t                         algo;
+{  size_t                           algo;
+   size_t                           md_len;
+   size_t                           hmac_pad_len;
+   size_t                           state_size;
+   int(*func_reset)(void *);
+   int(*func_result)(void *, uint8_t *);
+   int(*func_update)(void *, const void *, size_t);
    union
    {  tics_hash_md5_t               md5;
       tics_hash_sha1_t              sha1;
