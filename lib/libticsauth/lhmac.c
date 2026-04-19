@@ -84,7 +84,7 @@ tics_hmac(
    if (!(md))
       md = md_buff;
 
-   if (tics_hmac_reset(&ctx, algo, 1) != TICS_SUCCESS)
+   if (tics_hmac_reset(&ctx, algo) != TICS_SUCCESS)
       return(NULL);
    if (tics_hmac_update_key(&ctx, key, key_len) != TICS_SUCCESS)
       return(NULL);
@@ -130,9 +130,7 @@ tics_hmac_init(
       return(TICS_ENOMEM);
    memset(ctx, 0, sizeof(tics_hmac_t));
 
-   ctx->algo = algo;
-
-   if ((rc = tics_hmac_reset(ctx, algo, 1)) != TICS_SUCCESS)
+   if ((rc = tics_hmac_reset(ctx, algo)) != TICS_SUCCESS)
    {  tics_hmac_free(ctx);
       return(rc);
    };
@@ -151,10 +149,62 @@ tics_hmac_init(
 
 
 int
+tics_hmac_lock_key(
+         tics_hmac_t *                 ctx )
+{
+   int      rc;
+   size_t   idx;
+
+   assert(ctx != NULL);
+   if (ctx == NULL)
+      return(TICS_EARGS);
+
+   if ((ctx->flags & TICS_HMAC_KEYED))
+      return(TICS_SUCCESS);
+
+   // initialize HMAC calculations, if needed
+   ctx->flags |= TICS_HMAC_KEYED;
+
+   // calculate key digest if key length exceeds message digest length
+   if (ctx->key_len > ctx->pad_len)
+   {  if ((rc = tics_hash_result(&ctx->hash, ctx->key)) != TICS_SUCCESS)
+      {  ctx->flags |= TICS_HMAC_KEYERR;
+         return(rc);
+      };
+      ctx->key_len = ctx->md_len;
+   };
+
+   // generate ipad and opad
+   for(idx = 0; (idx < ctx->pad_len); idx++)
+   {  if (idx < ctx->key_len)
+      {  ctx->key_ipad[idx] = ctx->key[idx] ^ 0x36;
+         ctx->key_opad[idx] = ctx->key[idx] ^ 0x5c;
+      } else
+      {  ctx->key_ipad[idx] = 0x36;
+         ctx->key_opad[idx] = 0x5c;
+      };
+   };
+
+   // reset hash for use with input data
+   if ((rc = tics_hash_reset(&ctx->hash, (int)ctx->algo)) != TICS_SUCCESS)
+   {  ctx->flags |= TICS_HMAC_ERROR;
+      return(rc);
+   };
+
+   // initialize digest using ipad
+   if ((rc = tics_hash_update(&ctx->hash, ctx->key_ipad, ctx->pad_len)) != TICS_SUCCESS)
+   {  ctx->flags |= TICS_HMAC_ERROR;
+      return(rc);
+   };
+
+   return(TICS_SUCCESS);
+}
+
+
+int
 tics_hmac_reset(
          tics_hmac_t *                 ctx,
-         int                           algo,
-         int                           reset_key )
+         int                           algo )
 {
    int      rc;
    ssize_t  md_len;
@@ -163,14 +213,10 @@ tics_hmac_reset(
    if (ctx == NULL)
       return(TICS_EARGS);
 
-   if ( (algo != (int)ctx->algo) && (!(reset_key)) )
-      return(TICS_EARGS);
-
    if ((md_len = tics_hash_size(algo)) < 0)
       return((int)md_len);
 
-   if ((reset_key))
-      memset(ctx, 0, sizeof(tics_hmac_t));
+   memset(ctx, 0, sizeof(tics_hmac_t));
 
    // reset hash state
    if ((rc = tics_hash_reset(&ctx->hash, algo)) != TICS_SUCCESS)
@@ -178,22 +224,34 @@ tics_hmac_reset(
    ctx->algo      = algo;
    ctx->md_len    = (size_t)md_len;
    ctx->flags    &= ~TICS_HMAC_DATERR;
-   switch(algo)
-   {  case TICS_HASH_MD5:     ctx->pad_len = TICS_HMAC_PAD_LEN_MD5; break;
-      case TICS_HASH_SHA1:    ctx->pad_len = TICS_HMAC_PAD_LEN_SHA1; break;
-      case TICS_HASH_SHA224:  ctx->pad_len = TICS_HMAC_PAD_LEN_SHA224; break;
-      case TICS_HASH_SHA256:  ctx->pad_len = TICS_HMAC_PAD_LEN_SHA256; break;
-      case TICS_HASH_SHA384:  ctx->pad_len = TICS_HMAC_PAD_LEN_SHA384; break;
-      case TICS_HASH_SHA512:  ctx->pad_len = TICS_HMAC_PAD_LEN_SHA512; break;
-      default:                return(TICS_EALGO);
+   ctx->pad_len   = ctx->hash.hmac_pad_len;
+
+   return(TICS_SUCCESS);
+}
+
+
+int
+tics_hmac_reset_message(
+         tics_hmac_t *                 ctx )
+{
+   int rc;
+
+   assert(ctx != NULL);
+   if (ctx == NULL)
+      return(TICS_EARGS);
+
+   if (!(ctx->flags & TICS_HMAC_KEYED))
+      return(TICS_SUCCESS);
+
+   if ((rc = tics_hash_reset(&ctx->hash, (int)ctx->algo)) != TICS_SUCCESS)
+      return(rc);
+
+   if ((rc = tics_hash_update(&ctx->hash, ctx->key_ipad, ctx->pad_len)) != TICS_SUCCESS)
+   {  ctx->flags |= TICS_HMAC_ERROR;
+      return(rc);
    };
 
-   if ((ctx->flags & TICS_HMAC_KEYED))
-   {  if ((rc = tics_hash_update(&ctx->hash, ctx->key_ipad, ctx->pad_len)) != TICS_SUCCESS)
-      {  ctx->flags |= TICS_HMAC_ERROR;
-         return(rc);
-      };
-   };
+   ctx->flags &= ~TICS_HMAC_DATERR;
 
    return(TICS_SUCCESS);
 }
@@ -280,7 +338,6 @@ tics_hmac_update(
          size_t                        len )
 {
    int         rc;
-   size_t      idx;
 
    assert(ctx  != NULL);
    assert( ((!(data)) && (!(len))) || ((data)) );
@@ -292,40 +349,8 @@ tics_hmac_update(
 
    // initialize HMAC calculations, if needed
    if (!(ctx->flags & TICS_HMAC_KEYED))
-   {  ctx->flags |= TICS_HMAC_KEYED;
-
-      // calculate key digest if key length exceeds message digest length
-      if (ctx->key_len > ctx->pad_len)
-      {  if ((rc = tics_hash_result(&ctx->hash, ctx->key)) != TICS_SUCCESS)
-         {  ctx->flags |= TICS_HMAC_KEYERR;
-            return(rc);
-         };
-         ctx->key_len = ctx->md_len;
-      };
-
-      // generate ipad and opad
-      for(idx = 0; (idx < ctx->pad_len); idx++)
-      {  if (idx < ctx->key_len)
-         {  ctx->key_ipad[idx] = ctx->key[idx] ^ 0x36;
-            ctx->key_opad[idx] = ctx->key[idx] ^ 0x5c;
-         } else
-         {  ctx->key_ipad[idx] = 0x36;
-            ctx->key_opad[idx] = 0x5c;
-         };
-      };
-
-      // reset hash for use with input data
-      if ((rc = tics_hash_reset(&ctx->hash, (int)ctx->algo)) != TICS_SUCCESS)
-      {  ctx->flags |= TICS_HMAC_ERROR;
+      if ((rc = tics_hmac_lock_key(ctx)) != TICS_SUCCESS)
          return(rc);
-      };
-
-      // initialize digest using ipad
-      if ((rc = tics_hash_update(&ctx->hash, ctx->key_ipad, ctx->pad_len)) != TICS_SUCCESS)
-      {  ctx->flags |= TICS_HMAC_ERROR;
-         return(rc);
-      };
-   };
 
    if (!(len))
       return(TICS_SUCCESS);

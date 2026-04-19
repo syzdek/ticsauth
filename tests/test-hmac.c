@@ -412,7 +412,7 @@ test_hmac_seg(
       err = rc;
 
    for(key_len = 1; ( (key_len <= rec->key_len) && (!(err)) ); key_len++)
-   {  if ((rc = tics_hmac_reset(ctx, algo, 1)) != TICS_SUCCESS)
+   {  if ((rc = tics_hmac_reset(ctx, algo)) != TICS_SUCCESS)
          err = rc;
 
       // load key incrementally
@@ -423,11 +423,11 @@ test_hmac_seg(
          if ((rc = tics_hmac_update_key(ctx, &rec->key[idx], len)) != TICS_SUCCESS)
             err = rc;
       };
-      tics_hmac_update(ctx, NULL, 0);
+      tics_hmac_lock_key(ctx);
 
       // load data with different chunk sizes
       for(data_len = 1; ( (data_len <= rec->data_len) && (!(err)) ); data_len++)
-      {  if ((rc = tics_hmac_reset(ctx, algo, 0)) != TICS_SUCCESS)
+      {  if ((rc = tics_hmac_reset_message(ctx)) != TICS_SUCCESS)
             err = rc;
 
          for(idx = 0; ( (idx < rec->data_len) && (!(err)) ); idx += data_len)

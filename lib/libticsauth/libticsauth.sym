@@ -13,7 +13,9 @@ tics_hash_update
 tics_hmac
 tics_hmac_free
 tics_hmac_init
+tics_hmac_lock_key
 tics_hmac_reset
+tics_hmac_reset_message
 tics_hmac_result
 tics_hmac_result16
 tics_hmac_update

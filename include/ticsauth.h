@@ -228,10 +228,19 @@ tics_hmac_init(
 
 
 _TICS_F int
+tics_hmac_lock_key(
+         tics_hmac_t *                 ctx );
+
+
+_TICS_F int
 tics_hmac_reset(
          tics_hmac_t *                 ctx,
-         int                           algo,
-         int                           reset_key );
+         int                           algo );
+
+
+_TICS_F int
+tics_hmac_reset_message(
+         tics_hmac_t *                 ctx );
 
 
 _TICS_F int
