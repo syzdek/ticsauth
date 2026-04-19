@@ -135,6 +135,20 @@
 #  define TEST_HASH           TICS_HASH_SHA256
 #  define TEST_FUNC           TEST_FUNC_STR
 //
+// hash: sha384
+#elif defined(TEST_SHA384_CTX)
+#  define PROGRAM_SUFFIX      "-sha384-ctx"
+#  define TEST_HASH           TICS_HASH_SHA384
+#  define TEST_FUNC           TEST_FUNC_CTX
+#elif defined(TEST_SHA384_SEG)
+#  define PROGRAM_SUFFIX      "-sha384-seg"
+#  define TEST_HASH           TICS_HASH_SHA384
+#  define TEST_FUNC           TEST_FUNC_SEG
+#elif defined(TEST_SHA384_STR)
+#  define PROGRAM_SUFFIX      "-sha384-str"
+#  define TEST_HASH           TICS_HASH_SHA384
+#  define TEST_FUNC           TEST_FUNC_STR
+//
 // default
 #endif
 
@@ -147,6 +161,8 @@
 #   define TEST_DATA  data_sha224
 #elif (TEST_HASH == TICS_HASH_SHA256)
 #   define TEST_DATA  data_sha256
+#elif (TEST_HASH == TICS_HASH_SHA384)
+#   define TEST_DATA  data_sha384
 #endif
 
 
@@ -188,6 +204,7 @@ extern test_data_t *          data_md5;
 extern test_data_t *          data_sha1;
 extern test_data_t *          data_sha224;
 extern test_data_t *          data_sha256;
+extern test_data_t *          data_sha384;
 
 
 //////////////////
