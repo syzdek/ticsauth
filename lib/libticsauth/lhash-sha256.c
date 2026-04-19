@@ -342,9 +342,9 @@ tics_sha224_update(
 
 
 //-------------------//
-// SHA-224 functions //
+// SHA-256 functions //
 //-------------------//
-#pragma mark SHA-224 functions
+#pragma mark SHA-256 functions
 
 void *
 tics_sha256(
