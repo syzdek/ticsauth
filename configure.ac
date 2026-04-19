@@ -35,7 +35,7 @@ AC_PREREQ([2.65])
 
 AC_COPYRIGHT([Copyright (C) 2026 David M. Syzdek <david@syzdek.net>.])
 AC_REVISION(0.1)
-AC_INIT([TICS Implements Complete Specifications Authenticator],[0.0],[david@syzdek.net],[ticsauth],[https://github.com/syzdek/ticsauth/])
+AC_INIT([TICS Authenticator],[0.0],[david@syzdek.net],[ticsauth],[https://github.com/syzdek/ticsauth/])
 
 AC_SUBST([RELEASE_MONTH],["January 2026"])
 
