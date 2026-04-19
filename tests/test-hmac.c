@@ -470,7 +470,6 @@ test_hmac_str(
          test_data_t *                 rec )
 {
    int               err;
-   uint8_t *         res;
    uint8_t           md[TICS_MD_SIZE];
    char              digest[(TICS_MD_SIZE*2)+1];
 
@@ -489,7 +488,7 @@ test_hmac_str(
    if (!(rec->data_len))
       for(rec->data_len = 0; ((rec->data[rec->data_len])); rec->data_len++);
 
-   if ((res = tics_hmac(algo, rec->key, rec->key_len, rec->data, rec->data_len, md)))
+   if ((tics_hmac(algo, rec->key, rec->key_len, rec->data, rec->data_len, md)))
    {  tics_hash_md2base16(algo, md, digest, sizeof(digest));
       if ((strcmp(rec->hmac, digest)))
          err = TICS_EMDMATCH;
