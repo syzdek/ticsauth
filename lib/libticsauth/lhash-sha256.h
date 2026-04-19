@@ -83,18 +83,18 @@ tics_sha224(
 
 extern int
 tics_sha224_reset(
-         tics_hash_sha256_t *          ctx );
+         tics_hash_sha224_t *          ctx );
 
 
 extern int
 tics_sha224_result(
-         tics_hash_sha256_t *          ctx,
+         tics_hash_sha224_t *          ctx,
          uint8_t *                     md );
 
 
 extern int
 tics_sha224_update(
-         tics_hash_sha256_t *          ctx,
+         tics_hash_sha224_t *          ctx,
          const void *                  data,
          size_t                        data_len );
 

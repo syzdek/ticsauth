@@ -72,19 +72,19 @@
 //////////////////
 // MARK: - Prototypes
 
-inline int
+inline static int
 tics_shaxxx_process_msg_block(
          tics_hash_sha256_t *          ctx );
 
 
-inline int
+inline static int
 tics_shaxxx_result(
          tics_hash_sha256_t *          ctx,
          uint8_t *                     md,
          size_t                        md_word_len );
 
 
-inline int
+inline static int
 tics_shaxxx_update(
          tics_hash_sha256_t *          ctx,
          const void *                  data,
