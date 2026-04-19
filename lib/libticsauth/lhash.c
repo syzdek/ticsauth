@@ -166,7 +166,7 @@ tics_hash_md2base16(
 
    if ((md_len = tics_hash_size(algo)) < 0)
       return(md_len);
-   if (strlen < (size_t)(md_len*2))
+   if (strlen < (size_t)((md_len*2)+1))
       return(TICS_EUNKNOWN);
 
    for(idx = 0; (idx < md_len); idx++)
