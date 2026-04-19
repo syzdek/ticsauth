@@ -157,10 +157,6 @@ tics_hmac_reset(
 
    assert(ctx != NULL);
 
-   algo = (algo == TICS_HASH_SAME)
-        ? (int)ctx->algo
-        : algo;
-
    if ( (algo != (int)ctx->algo) && (!(reset_key)) )
       return(TICS_EARGS);
 

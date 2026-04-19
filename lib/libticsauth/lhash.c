@@ -171,10 +171,6 @@ tics_hash_reset(
 {
    assert(ctx != NULL);
 
-   algo  = (algo == TICS_HASH_SAME)
-         ? (int)ctx->algo
-         : algo;
-
    memset(ctx, 0, sizeof(tics_hash_t));
 
    switch (ctx->algo = algo)

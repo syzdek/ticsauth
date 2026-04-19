@@ -84,7 +84,6 @@
 #define TICS_EHMACKEY               -8
 
 
-#define TICS_HASH_SAME              0
 #define TICS_HASH_MD5               5
 #define TICS_HASH_SHA1              1
 #define TICS_HASH_SHA224            224
