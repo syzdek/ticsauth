@@ -65,6 +65,8 @@ tics_hash(
    static uint8_t    buff[TICS_MD_SIZE];
 
    assert(data       != NULL);
+   if (data == NULL)
+      return(NULL);
 
    if (md == NULL)
       md = buff;
@@ -88,6 +90,8 @@ tics_hash_algo(
          tics_hash_t *                 ctx )
 {
    assert(ctx != NULL);
+   if (ctx == NULL)
+      return(TICS_EARGS);
    return((int)ctx->algo);
 }
 
@@ -97,6 +101,8 @@ tics_hash_ctx_size(
          tics_hash_t *                 ctx )
 {
    assert(ctx != NULL);
+   if (ctx == NULL)
+      return(TICS_EARGS);
    return(tics_hash_size((int)ctx->algo));
 }
 
@@ -122,6 +128,8 @@ tics_hash_init(
    tics_hash_t *     ctx;
 
    assert(ctxp != NULL);
+   if (ctxp == NULL)
+      return(TICS_EARGS);
 
    if ((ctx = malloc(sizeof(tics_hash_t))) == NULL)
       return(TICS_ENOMEM);
@@ -151,6 +159,10 @@ tics_hash_md2base16(
 
    assert(md   != NULL);
    assert(str  != NULL);
+   if (md == NULL)
+      return(TICS_EARGS);
+   if (str == NULL)
+      return(TICS_EARGS);
 
    if ((md_len = tics_hash_size(algo)) < 0)
       return(md_len);
@@ -170,6 +182,8 @@ tics_hash_reset(
          int                           algo )
 {
    assert(ctx != NULL);
+   if (ctx == NULL)
+      return(TICS_EARGS);
 
    memset(ctx, 0, sizeof(tics_hash_t));
 
@@ -243,6 +257,10 @@ tics_hash_result(
 {
    assert(ctx != NULL);
    assert(md  != NULL);
+   if (ctx == NULL)
+      return(TICS_EARGS);
+   if (md == NULL)
+      return(TICS_EARGS);
    return(ctx->func_result(&ctx->hash, md));
 }
 
@@ -257,6 +275,10 @@ tics_hash_result16(
    uint8_t     md[TICS_MD_SIZE];
    assert(ctx != NULL);
    assert(str != NULL);
+   if (ctx == NULL)
+      return(TICS_EARGS);
+   if (str == NULL)
+      return(TICS_EARGS);
    if ((rc = tics_hash_result(ctx, md)) != TICS_SUCCESS)
       return(rc);
    return(tics_hash_md2base16((int)ctx->algo, md, str, strlen));
@@ -288,6 +310,10 @@ tics_hash_update(
 {
    assert(ctx  != NULL);
    assert(data != NULL);
+   if (ctx == NULL)
+      return(TICS_EARGS);
+   if (data == NULL)
+      return(TICS_EARGS);
    if (!(len))
       return(TICS_SUCCESS);
    return(ctx->func_update(&ctx->hash, data, len));
