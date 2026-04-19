@@ -55,7 +55,7 @@
 #define TICS_HMAC_KEYERR         0x000001
 #define TICS_HMAC_DATERR         0x000002
 #define TICS_HMAC_ERROR          (TICS_HMAC_KEYERR | TICS_HMAC_DATERR)
-#define TICS_HMAC_KEYED          0x000004
+#define TICS_HMAC_KEY_LOCKED     0x000004
 
 
 //////////////////

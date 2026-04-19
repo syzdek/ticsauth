@@ -159,11 +159,11 @@ tics_hmac_lock_key(
    if (ctx == NULL)
       return(TICS_EARGS);
 
-   if ((ctx->flags & TICS_HMAC_KEYED))
+   if ((ctx->flags & TICS_HMAC_KEY_LOCKED))
       return(TICS_SUCCESS);
 
    // initialize HMAC calculations, if needed
-   ctx->flags |= TICS_HMAC_KEYED;
+   ctx->flags |= TICS_HMAC_KEY_LOCKED;
 
    // calculate key digest if key length exceeds message digest length
    if (ctx->key_len > ctx->pad_len)
@@ -240,7 +240,7 @@ tics_hmac_reset_message(
    if (ctx == NULL)
       return(TICS_EARGS);
 
-   if (!(ctx->flags & TICS_HMAC_KEYED))
+   if (!(ctx->flags & TICS_HMAC_KEY_LOCKED))
       return(TICS_SUCCESS);
 
    if ((rc = tics_hash_reset(&ctx->hash, (int)ctx->algo)) != TICS_SUCCESS)
@@ -348,7 +348,7 @@ tics_hmac_update(
       return(TICS_EUNKNOWN);
 
    // initialize HMAC calculations, if needed
-   if (!(ctx->flags & TICS_HMAC_KEYED))
+   if (!(ctx->flags & TICS_HMAC_KEY_LOCKED))
       if ((rc = tics_hmac_lock_key(ctx)) != TICS_SUCCESS)
          return(rc);
 
@@ -378,7 +378,7 @@ tics_hmac_update_key(
    if (key == NULL)
       return(TICS_EARGS);
 
-   if ((ctx->flags & TICS_HMAC_KEYED) != 0)
+   if ((ctx->flags & TICS_HMAC_KEY_LOCKED) != 0)
       return(TICS_EHMACKEY);
    if ((ctx->flags & TICS_HMAC_ERROR) != 0)
       return(TICS_EUNKNOWN);
