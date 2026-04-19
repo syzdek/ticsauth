@@ -198,6 +198,8 @@ lib_libticsauth_la_SOURCES		= include/ticsauth.h \
 					  lib/libticsauth/lhash-sha1.h \
 					  lib/libticsauth/lhash-sha256.c \
 					  lib/libticsauth/lhash-sha256.h \
+					  lib/libticsauth/lhash-sha512.c \
+					  lib/libticsauth/lhash-sha512.h \
 					  lib/libticsauth/lhmac.c \
 					  lib/libticsauth/lhmac.h \
 					  lib/libticsauth/lmisc.c

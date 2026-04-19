@@ -74,6 +74,8 @@ tics_hash(
       case TICS_HASH_SHA1:    return(tics_sha1(data, data_len, md));
       case TICS_HASH_SHA224:  return(tics_sha224(data, data_len, md));
       case TICS_HASH_SHA256:  return(tics_sha256(data, data_len, md));
+      case TICS_HASH_SHA384:  return(tics_sha384(data, data_len, md));
+      case TICS_HASH_SHA512:  return(tics_sha512(data, data_len, md));
       default:                break;
    }
 
@@ -123,6 +125,8 @@ tics_hash_init(
 
    if ((ctx = malloc(sizeof(tics_hash_t))) == NULL)
       return(TICS_ENOMEM);
+   memset(ctx, 0, sizeof(tics_hash_t));
+   ctx->algo = algo;
 
    if ((rc = tics_hash_reset(ctx, algo)) != TICS_SUCCESS)
    {  free(ctx);
@@ -178,6 +182,8 @@ tics_hash_reset(
       case TICS_HASH_SHA1:    return(tics_sha1_reset(&ctx->hash.sha1));
       case TICS_HASH_SHA224:  return(tics_sha224_reset(&ctx->hash.sha224));
       case TICS_HASH_SHA256:  return(tics_sha256_reset(&ctx->hash.sha256));
+      case TICS_HASH_SHA384:  return(tics_sha384_reset(&ctx->hash.sha384));
+      case TICS_HASH_SHA512:  return(tics_sha512_reset(&ctx->hash.sha512));
       default:                break;
    }
 
@@ -198,6 +204,8 @@ tics_hash_result(
       case TICS_HASH_SHA1:    return(tics_sha1_result(&ctx->hash.sha1, md));
       case TICS_HASH_SHA224:  return(tics_sha224_result(&ctx->hash.sha224, md));
       case TICS_HASH_SHA256:  return(tics_sha256_result(&ctx->hash.sha256, md));
+      case TICS_HASH_SHA384:  return(tics_sha384_result(&ctx->hash.sha384, md));
+      case TICS_HASH_SHA512:  return(tics_sha512_result(&ctx->hash.sha512, md));
       default:                break;
    };
    return(TICS_EALGO);
@@ -229,6 +237,8 @@ tics_hash_size(
       case TICS_HASH_SHA1:    return(TICS_MD_SIZE_SHA1);
       case TICS_HASH_SHA224:  return(TICS_MD_SIZE_SHA224);
       case TICS_HASH_SHA256:  return(TICS_MD_SIZE_SHA256);
+      case TICS_HASH_SHA384:  return(TICS_MD_SIZE_SHA384);
+      case TICS_HASH_SHA512:  return(TICS_MD_SIZE_SHA512);
       default:                break;
    };
    return(TICS_EALGO);
@@ -250,6 +260,8 @@ tics_hash_update(
       case TICS_HASH_SHA1:    return(tics_sha1_update(&ctx->hash.sha1, data, len));
       case TICS_HASH_SHA224:  return(tics_sha224_update(&ctx->hash.sha224, data, len));
       case TICS_HASH_SHA256:  return(tics_sha256_update(&ctx->hash.sha256, data, len));
+      case TICS_HASH_SHA384:  return(tics_sha384_update(&ctx->hash.sha384, data, len));
+      case TICS_HASH_SHA512:  return(tics_sha512_update(&ctx->hash.sha512, data, len));
       default:                break;
    };
    return(TICS_EALGO);

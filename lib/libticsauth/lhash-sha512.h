@@ -30,8 +30,8 @@
  *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  *  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-#ifndef __LIB_LIBTICSAUTH_LHASH_H
-#define __LIB_LIBTICSAUTH_LHASH_H 1
+#ifndef __LIB_LIBTICSAUTH_LHASH_SHA512_H
+#define __LIB_LIBTICSAUTH_LHASH_SHA512_H 1
 
 ///////////////
 //           //
@@ -42,11 +42,6 @@
 
 #include <sys/types.h>
 
-#include "lhash-md5.h"
-#include "lhash-sha1.h"
-#include "lhash-sha256.h"
-#include "lhash-sha512.h"
-
 
 //////////////////
 //              //
@@ -55,16 +50,16 @@
 //////////////////
 // MARK: - Data Types
 
-struct _tics_hash_ctx
-{  uint64_t                         algo;
-   union
-   {  tics_hash_md5_t               md5;
-      tics_hash_sha1_t              sha1;
-      tics_hash_sha224_t            sha224;
-      tics_hash_sha256_t            sha256;
-      tics_hash_sha384_t            sha384;
-      tics_hash_sha512_t            sha512;
-   } hash;
+typedef struct _tics_hash_ctx_sha512   tics_hash_sha512_t;
+typedef struct _tics_hash_ctx_sha512   tics_hash_sha384_t;
+
+
+struct _tics_hash_ctx_sha512
+{  uint64_t                h[8];             // message digest
+   uint64_t                len_high;         // message length in bits
+   uint64_t                len;              // message length in bits
+   uint64_t                msg_block_idx;    // Index into message block array
+   uint8_t                 msg_block[128];   // 1024-bit message blocks
 };
 
 
@@ -74,6 +69,65 @@ struct _tics_hash_ctx
 //              //
 //////////////////
 // MARK: - Prototypes
+
+//--------------------//
+// SHA-384 prototypes //
+//--------------------//
+#pragma mark SHA-384 prototypes
+
+extern void *
+tics_sha384(
+         const void *                  data,
+         size_t                        data_len,
+         uint8_t *                     md );
+
+
+extern int
+tics_sha384_reset(
+         tics_hash_sha384_t *          ctx );
+
+
+extern int
+tics_sha384_result(
+         tics_hash_sha384_t *          ctx,
+         uint8_t *                     md );
+
+
+extern int
+tics_sha384_update(
+         tics_hash_sha384_t *          ctx,
+         const void *                  data,
+         size_t                        data_len );
+
+
+//--------------------//
+// SHA-512 prototypes //
+//--------------------//
+#pragma mark SHA-512 prototypes
+
+extern void *
+tics_sha512(
+         const void *                  data,
+         size_t                        data_len,
+         uint8_t *                     md );
+
+
+extern int
+tics_sha512_reset(
+         tics_hash_sha512_t *          ctx );
+
+
+extern int
+tics_sha512_result(
+         tics_hash_sha512_t *          ctx,
+         uint8_t *                     md );
+
+
+extern int
+tics_sha512_update(
+         tics_hash_sha512_t *          ctx,
+         const void *                  data,
+         size_t                        data_len );
 
 
 #endif /* end of header */

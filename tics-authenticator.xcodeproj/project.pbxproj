@@ -54,6 +54,8 @@
 		A06E09CA2F92DE6D00F342A5 /* data-sha256.c in Sources */ = {isa = PBXBuildFile; fileRef = A06E09C62F92DE6D00F342A5 /* data-sha256.c */; };
 		A06E09D32F9329B700F342A5 /* lhash-sha256.h in Headers */ = {isa = PBXBuildFile; fileRef = A06E09D12F9329B700F342A5 /* lhash-sha256.h */; };
 		A06E09D42F9329B700F342A5 /* lhash-sha256.c in Sources */ = {isa = PBXBuildFile; fileRef = A06E09D22F9329B700F342A5 /* lhash-sha256.c */; };
+		A06E09D72F9424AD00F342A5 /* lhash-sha512.h in Headers */ = {isa = PBXBuildFile; fileRef = A06E09D52F9424AD00F342A5 /* lhash-sha512.h */; };
+		A06E09D82F9424AD00F342A5 /* lhash-sha512.c in Sources */ = {isa = PBXBuildFile; fileRef = A06E09D62F9424AD00F342A5 /* lhash-sha512.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,6 +184,8 @@
 		A06E09C62F92DE6D00F342A5 /* data-sha256.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "data-sha256.c"; sourceTree = "<group>"; };
 		A06E09D12F9329B700F342A5 /* lhash-sha256.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "lhash-sha256.h"; sourceTree = "<group>"; };
 		A06E09D22F9329B700F342A5 /* lhash-sha256.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "lhash-sha256.c"; sourceTree = "<group>"; };
+		A06E09D52F9424AD00F342A5 /* lhash-sha512.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "lhash-sha512.h"; sourceTree = "<group>"; };
+		A06E09D62F9424AD00F342A5 /* lhash-sha512.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "lhash-sha512.c"; sourceTree = "<group>"; };
 		A0A6CFAF2F8AF4790003659C /* acinclude.m4 */ = {isa = PBXFileReference; explicitFileType = text.script; path = acinclude.m4; sourceTree = "<group>"; };
 		A0A6CFB02F8AF4790003659C /* AUTHORS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AUTHORS.md; sourceTree = "<group>"; };
 		A0A6CFB12F8AF4790003659C /* autogen.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = autogen.sh; sourceTree = "<group>"; };
@@ -251,6 +255,8 @@
 				A06E08F82F8D756800F342A5 /* lhash-sha1.h */,
 				A06E09D22F9329B700F342A5 /* lhash-sha256.c */,
 				A06E09D12F9329B700F342A5 /* lhash-sha256.h */,
+				A06E09D62F9424AD00F342A5 /* lhash-sha512.c */,
+				A06E09D52F9424AD00F342A5 /* lhash-sha512.h */,
 				A06E08FA2F8DC79D00F342A5 /* lhmac.c */,
 				A06E08FE2F8DC9B800F342A5 /* lhmac.h */,
 				A06E08E12F8D3B2800F342A5 /* lmisc.c */,
@@ -380,6 +386,7 @@
 				A06E09D32F9329B700F342A5 /* lhash-sha256.h in Headers */,
 				A00540BC2F8806010092E27B /* ticsauth.h in Headers */,
 				A06E08FD2F8DC80B00F342A5 /* lhash.h in Headers */,
+				A06E09D72F9424AD00F342A5 /* lhash-sha512.h in Headers */,
 				A06E08F92F8D756800F342A5 /* lhash-sha1.h in Headers */,
 				A00540BB2F87FA790092E27B /* ticsauth_noinst.h in Headers */,
 				A00540B92F87FA160092E27B /* libticsauth.h in Headers */,
@@ -526,6 +533,7 @@
 				A06E09D42F9329B700F342A5 /* lhash-sha256.c in Sources */,
 				A06E08FB2F8DC79D00F342A5 /* lhmac.c in Sources */,
 				A06E093F2F8F242100F342A5 /* lhash-md5.c in Sources */,
+				A06E09D82F9424AD00F342A5 /* lhash-sha512.c in Sources */,
 				A00540BD2F88060E0092E27B /* lhash-sha1.c in Sources */,
 				A06E08E22F8D3B2800F342A5 /* lmisc.c in Sources */,
 			);
