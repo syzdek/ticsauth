@@ -175,8 +175,16 @@ tics_hmac_reset(
       return(rc);
    ctx->algo      = algo;
    ctx->md_len    = (size_t)md_len;
-   ctx->pad_len   = 64;
    ctx->flags    &= ~TICS_HMAC_DATERR;
+   switch(algo)
+   {  case TICS_HASH_MD5:     ctx->pad_len = TICS_HMAC_PAD_LEN_MD5; break;
+      case TICS_HASH_SHA1:    ctx->pad_len = TICS_HMAC_PAD_LEN_SHA1; break;
+      case TICS_HASH_SHA224:  ctx->pad_len = TICS_HMAC_PAD_LEN_SHA224; break;
+      case TICS_HASH_SHA256:  ctx->pad_len = TICS_HMAC_PAD_LEN_SHA256; break;
+      case TICS_HASH_SHA384:  ctx->pad_len = TICS_HMAC_PAD_LEN_SHA384; break;
+      case TICS_HASH_SHA512:  ctx->pad_len = TICS_HMAC_PAD_LEN_SHA512; break;
+      default:                return(TICS_EALGO);
+   };
 
    if ((ctx->flags & TICS_HMAC_KEYED))
    {  if ((rc = tics_hash_update(&ctx->hash, ctx->key_ipad, ctx->pad_len)) != TICS_SUCCESS)

@@ -100,6 +100,14 @@
 #define TICS_MD_SIZE_SHA384         48
 #define TICS_MD_SIZE_SHA512         64
 
+#define TICS_HMAC_PAD_LEN           128
+#define TICS_HMAC_PAD_LEN_MD5       64
+#define TICS_HMAC_PAD_LEN_SHA1      64
+#define TICS_HMAC_PAD_LEN_SHA224    64
+#define TICS_HMAC_PAD_LEN_SHA256    64
+#define TICS_HMAC_PAD_LEN_SHA384    128
+#define TICS_HMAC_PAD_LEN_SHA512    128
+
 
 //////////////////
 //              //

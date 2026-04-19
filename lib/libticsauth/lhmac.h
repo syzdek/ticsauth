@@ -57,8 +57,6 @@
 #define TICS_HMAC_ERROR          (TICS_HMAC_KEYERR | TICS_HMAC_DATERR)
 #define TICS_HMAC_KEYED          0x000004
 
-#define TICS_HMAC_KEY_PAD_LEN    64
-
 
 //////////////////
 //              //
@@ -73,8 +71,8 @@ struct _tics_hmac_ctx
    size_t                           md_len;
    size_t                           key_len;
    size_t                           pad_len;
-   uint8_t                          key_opad[TICS_HMAC_KEY_PAD_LEN];
-   uint8_t                          key_ipad[TICS_HMAC_KEY_PAD_LEN];
+   uint8_t                          key_opad[TICS_HMAC_PAD_LEN];
+   uint8_t                          key_ipad[TICS_HMAC_PAD_LEN];
    uint8_t                          key[TICS_MD_SIZE];
    tics_hash_t                      hash;
 };
