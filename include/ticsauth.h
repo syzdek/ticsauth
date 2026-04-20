@@ -267,7 +267,7 @@ tics_hmac_result(
 
 
 _TICS_F ssize_t
-tics_hmac_result16(
+tics_hmac_result_str(
          tics_hmac_t *                 ctx,
          char *                        str,
          size_t                        strlen );
