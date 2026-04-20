@@ -81,15 +81,6 @@ tics_hash(
 }
 
 
-int
-tics_hash_algo(
-         tics_hash_t *                 ctx )
-{
-   tics_assert(TICS_EARGS, ctx != NULL);
-   return((int)ctx->algo);
-}
-
-
 void
 tics_hash_free(
          tics_hash_t *                 ctx )

@@ -140,11 +140,6 @@ tics_hash(
          size_t                        md_len );
 
 
-_TICS_F int
-tics_hash_algo(
-         tics_hash_t *                 ctx );
-
-
 _TICS_F void
 tics_hash_free(
          tics_hash_t *                 ctx );
