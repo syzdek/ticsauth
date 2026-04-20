@@ -127,7 +127,7 @@ tics_hash_init(
    ctx->algo = algo;
 
    if ((rc = tics_hash_reset(ctx, algo)) != TICS_SUCCESS)
-   {  free(ctx);
+   {  tics_hash_free(ctx);
       return(rc);
    };
 
@@ -261,12 +261,15 @@ tics_hash_result16(
          size_t                        strlen )
 {
    int         rc;
+   ssize_t     res;
    uint8_t     md[TICS_MD_SIZE];
    tics_assert(TICS_EARGS, ctx != NULL);
    tics_assert(TICS_EARGS, str != NULL);
    if ((rc = tics_hash_result(ctx, md, sizeof(md))) != TICS_SUCCESS)
       return(rc);
-   return(tics_hash_md2base16((int)ctx->algo, md, str, strlen));
+   res = tics_hash_md2base16((int)ctx->algo, md, str, strlen);
+   memset(md, 0, sizeof(md));
+   return(res);
 }
 
 
