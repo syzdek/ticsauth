@@ -166,7 +166,7 @@ tics_hmac_lock_key(
    ctx->flags |= TICS_HMAC_KEY_LOCKED;
 
    // calculate key digest if key length exceeds message digest length
-   if (ctx->key_len > ctx->pad_len)
+   if ((ctx->flags & TICS_HMAC_KEY_HASHED))
    {  if ((rc = tics_hash_result(&ctx->hash, ctx->key)) != TICS_SUCCESS)
       {  ctx->flags |= TICS_HMAC_KEYERR;
          return(rc);
@@ -386,23 +386,26 @@ tics_hmac_update_key(
    if (len == 0)
       return(0);
 
-   if (ctx->key_len <= ctx->pad_len)
+   if (!(ctx->flags & TICS_HMAC_KEY_HASHED))
    {  if ( (((size_t)ctx->key_len + len) <= ctx->pad_len) && (len <= ctx->pad_len) )
       {  // append to end of existing key data if room remains
          memcpy(&ctx->key[ctx->key_len], key, len);
          ctx->key_len += (uint32_t)len;
       } else
       {  // add any existing key data to hash
-         if ((rc = tics_hash_update(&ctx->hash, ctx->key, ctx->key_len)) != TICS_SUCCESS)
-         {  ctx->flags |= TICS_HMAC_KEYERR;
-            return(rc);
+         if (ctx->key_len > 0)
+         {  if ((rc = tics_hash_update(&ctx->hash, ctx->key, ctx->key_len)) != TICS_SUCCESS)
+            {  ctx->flags |= TICS_HMAC_KEYERR;
+               return(rc);
+            };
          };
-         ctx->key_len = ctx->pad_len + 1;
+         ctx->key_len = ctx->hash.md_len;
+         ctx->flags     |= TICS_HMAC_KEY_HASHED;
       };
    };
 
    // enter additional key data to hash
-   if ((size_t)ctx->key_len > ctx->pad_len)
+   if ((ctx->flags & TICS_HMAC_KEY_HASHED))
    {  if ((rc = tics_hash_update(&ctx->hash, key, len)) != TICS_SUCCESS)
       {  ctx->flags |= TICS_HMAC_ERROR;
          return(rc);
