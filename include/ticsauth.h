@@ -186,7 +186,7 @@ _TICS_F ssize_t
 tics_hash_result16(
          tics_hash_t *                 ctx,
          char *                        str,
-         size_t                        strlen );
+         size_t                        str_len );
 
 
 _TICS_F ssize_t
