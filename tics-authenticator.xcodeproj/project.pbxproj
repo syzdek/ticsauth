@@ -154,7 +154,6 @@
 		A06E08962F8B655300F342A5 /* lhash.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = lhash.c; sourceTree = "<group>"; };
 		A06E08972F8B655300F342A5 /* libticsauth.sym */ = {isa = PBXFileReference; lastKnownFileType = text; path = libticsauth.sym; sourceTree = "<group>"; };
 		A06E08BD2F8BD8CA00F342A5 /* tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tests.h; sourceTree = "<group>"; };
-		A06E08DC2F8BDD9C00F342A5 /* hash-tests-data.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "hash-tests-data.c"; sourceTree = "<group>"; };
 		A06E08E12F8D3B2800F342A5 /* lmisc.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = lmisc.c; sourceTree = "<group>"; };
 		A06E08E32F8D47D800F342A5 /* test-hash.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "test-hash.c"; sourceTree = "<group>"; };
 		A06E08F82F8D756800F342A5 /* lhash-sha1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "lhash-sha1.h"; sourceTree = "<group>"; };
@@ -340,7 +339,6 @@
 				A06E09C62F92DE6D00F342A5 /* data-sha256.c */,
 				A06E09CB2F9326CB00F342A5 /* data-sha384.c */,
 				A06E09CC2F9326CB00F342A5 /* data-sha512.c */,
-				A06E08DC2F8BDD9C00F342A5 /* hash-tests-data.c */,
 				A06E08E32F8D47D800F342A5 /* test-hash.c */,
 				A06E09C22F91A30900F342A5 /* test-hmac.c */,
 				A06E09192F8E08D700F342A5 /* proofofconcept.c */,
