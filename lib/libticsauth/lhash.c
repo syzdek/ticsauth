@@ -62,12 +62,8 @@ tics_hash(
          size_t                        data_len,
          uint8_t *                     md )
 {
-   assert(data       != NULL);
-   assert(md         != NULL);
-   if (data == NULL)
-      return(NULL);
-   if (md == NULL)
-      return(NULL);
+   tics_assert(NULL, data  != NULL);
+   tics_assert(NULL, md    != NULL);
 
    switch (algo)
    {  case TICS_HASH_MD5:     return(tics_md5(data, data_len, md));
@@ -87,9 +83,7 @@ int
 tics_hash_algo(
          tics_hash_t *                 ctx )
 {
-   assert(ctx != NULL);
-   if (ctx == NULL)
-      return(TICS_EARGS);
+   tics_assert(TICS_EARGS, ctx != NULL);
    return((int)ctx->algo);
 }
 
@@ -98,9 +92,7 @@ ssize_t
 tics_hash_ctx_size(
          tics_hash_t *                 ctx )
 {
-   assert(ctx != NULL);
-   if (ctx == NULL)
-      return(TICS_EARGS);
+   tics_assert(TICS_EARGS, ctx != NULL);
    return(tics_hash_size((int)ctx->algo));
 }
 
@@ -125,9 +117,7 @@ tics_hash_init(
    int               rc;
    tics_hash_t *     ctx;
 
-   assert(ctxp != NULL);
-   if (ctxp == NULL)
-      return(TICS_EARGS);
+   tics_assert(TICS_EARGS, ctxp != NULL);
 
    if ((ctx = malloc(sizeof(tics_hash_t))) == NULL)
       return(TICS_ENOMEM);
@@ -155,12 +145,8 @@ tics_hash_md2base16(
    ssize_t        idx;
    ssize_t        md_len;
 
-   assert(md   != NULL);
-   assert(str  != NULL);
-   if (md == NULL)
-      return(TICS_EARGS);
-   if (str == NULL)
-      return(TICS_EARGS);
+   tics_assert(TICS_EARGS, md   != NULL);
+   tics_assert(TICS_EARGS, str  != NULL);
 
    if ((md_len = tics_hash_size(algo)) < 0)
       return(md_len);
@@ -179,9 +165,7 @@ tics_hash_reset(
          tics_hash_t *                 ctx,
          int                           algo )
 {
-   assert(ctx != NULL);
-   if (ctx == NULL)
-      return(TICS_EARGS);
+   tics_assert(TICS_EARGS, ctx != NULL);
 
    memset(ctx, 0, sizeof(tics_hash_t));
 
@@ -254,12 +238,8 @@ tics_hash_result(
          uint8_t *                     md,
          size_t                        md_len )
 {
-   assert(ctx != NULL);
-   assert(md  != NULL);
-   if (ctx == NULL)
-      return(TICS_EARGS);
-   if (md == NULL)
-      return(TICS_EARGS);
+   tics_assert(TICS_EARGS, ctx != NULL);
+   tics_assert(TICS_EARGS, md  != NULL);
    if (md_len < ctx->md_len)
       return(TICS_EMDBUFF);
    return(ctx->func_result(&ctx->hash, md));
@@ -274,12 +254,8 @@ tics_hash_result16(
 {
    int         rc;
    uint8_t     md[TICS_MD_SIZE];
-   assert(ctx != NULL);
-   assert(str != NULL);
-   if (ctx == NULL)
-      return(TICS_EARGS);
-   if (str == NULL)
-      return(TICS_EARGS);
+   tics_assert(TICS_EARGS, ctx != NULL);
+   tics_assert(TICS_EARGS, str != NULL);
    if ((rc = tics_hash_result(ctx, md, sizeof(md))) != TICS_SUCCESS)
       return(rc);
    return(tics_hash_md2base16((int)ctx->algo, md, str, strlen));
@@ -309,12 +285,8 @@ tics_hash_update(
          const void *                  data,
          size_t                        len )
 {
-   assert(ctx  != NULL);
-   assert(data != NULL);
-   if (ctx == NULL)
-      return(TICS_EARGS);
-   if (data == NULL)
-      return(TICS_EARGS);
+   tics_assert(TICS_EARGS, ctx  != NULL);
+   tics_assert(TICS_EARGS, data != NULL);
    if (!(len))
       return(TICS_SUCCESS);
    return(ctx->func_update(&ctx->hash, data, len));

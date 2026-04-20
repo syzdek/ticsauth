@@ -62,6 +62,8 @@
 //////////////
 // MARK: - Macros
 
+#define tics_assert(rc, cond) assert((cond)); if (!(cond)) return(rc)
+
 
 ///////////////////
 //               //

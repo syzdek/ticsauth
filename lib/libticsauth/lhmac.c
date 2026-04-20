@@ -67,10 +67,8 @@ tics_hmac(
 {
    tics_hmac_t       ctx;
 
-   assert( (((key)) && ((key_len))) || ((!(key)) && (!(key_len))) );
-   assert(md != NULL);
-   if (md == NULL)
-      return(NULL);
+   tics_assert(NULL, (((key)) && ((key_len))) || ((!(key)) && (!(key_len))) );
+   tics_assert(NULL, md != NULL);
 
    memset(&ctx, 0, sizeof(tics_hmac_t));
 
@@ -120,12 +118,8 @@ tics_hmac_init(
    int                  rc;
    tics_hmac_t *        ctx;
 
-   assert(ctxp != NULL);
-   assert( (((key)) && ((key_len))) || ((!(key)) && (!(key_len))) );
-   if (ctxp == NULL)
-      return(TICS_EARGS);
-   if ( (((key)) && (!(key_len))) || ((!(key)) && ((key_len))) )
-      return(TICS_EARGS);
+   tics_assert(TICS_EARGS, ctxp != NULL);
+   tics_assert(TICS_EARGS, (((key)) && ((key_len))) || ((!(key)) && (!(key_len))) );
 
    if ((ctx = malloc(sizeof(tics_hmac_t))) == NULL)
       return(TICS_ENOMEM);
@@ -156,9 +150,7 @@ tics_hmac_lock_key(
    int      rc;
    size_t   idx;
 
-   assert(ctx != NULL);
-   if (ctx == NULL)
-      return(TICS_EARGS);
+   tics_assert(TICS_EARGS, ctx != NULL);
 
    if ((ctx->flags & TICS_HMAC_KEY_LOCKED))
       return(TICS_SUCCESS);
@@ -210,9 +202,7 @@ tics_hmac_reset(
    int      rc;
    ssize_t  md_len;
 
-   assert(ctx != NULL);
-   if (ctx == NULL)
-      return(TICS_EARGS);
+   tics_assert(TICS_EARGS, ctx != NULL);
 
    if ((md_len = tics_hash_size(algo)) < 0)
       return((int)md_len);
@@ -237,9 +227,7 @@ tics_hmac_reset_message(
 {
    int rc;
 
-   assert(ctx != NULL);
-   if (ctx == NULL)
-      return(TICS_EARGS);
+   tics_assert(TICS_EARGS, ctx != NULL);
 
    if (!(ctx->flags & TICS_HMAC_KEY_LOCKED))
       return(TICS_SUCCESS);
@@ -268,12 +256,8 @@ tics_hmac_result(
    uint8_t              inner_md[TICS_MD_SIZE];
    tics_hash_t          hash;
 
-   assert(ctx != NULL);
-   assert(md  != NULL);
-   if (ctx == NULL)
-      return(TICS_EARGS);
-   if (md == NULL)
-      return(TICS_EARGS);
+   tics_assert(TICS_EARGS, ctx != NULL);
+   tics_assert(TICS_EARGS, md  != NULL);
 
    if ((ctx->flags & TICS_HMAC_ERROR))
       return(TICS_EUNKNOWN);
@@ -321,12 +305,8 @@ tics_hmac_result16(
 {
    int         rc;
    uint8_t     md[TICS_MD_SIZE];
-   assert(ctx != NULL);
-   assert(str != NULL);
-   if (ctx == NULL)
-      return(TICS_EARGS);
-   if (str == NULL)
-      return(TICS_EARGS);
+   tics_assert(TICS_EARGS, ctx != NULL);
+   tics_assert(TICS_EARGS, str != NULL);
    if ((rc = tics_hmac_result(ctx, md, sizeof(md))) != TICS_SUCCESS)
       return(rc);
    return(tics_hash_md2base16((int)ctx->algo, md, str, strlen));
@@ -341,10 +321,8 @@ tics_hmac_update(
 {
    int         rc;
 
-   assert(ctx  != NULL);
-   assert( ((!(data)) && (!(len))) || ((data)) );
-   if (ctx == NULL)
-      return(TICS_EARGS);
+   tics_assert(TICS_EARGS, ctx  != NULL);
+   tics_assert(TICS_EARGS, ((!(data)) && (!(len))) || ((data)) );
 
    if ((ctx->flags & TICS_HMAC_ERROR))
       return(TICS_EUNKNOWN);
@@ -373,12 +351,8 @@ tics_hmac_update_key(
 {
    int            rc;
 
-   assert(ctx != NULL);
-   assert(key != NULL);
-   if (ctx == NULL)
-      return(TICS_EARGS);
-   if (key == NULL)
-      return(TICS_EARGS);
+   tics_assert(TICS_EARGS, ctx != NULL);
+   tics_assert(TICS_EARGS, key != NULL);
 
    if ((ctx->flags & TICS_HMAC_KEY_LOCKED) != 0)
       return(TICS_EHMACKEY);
