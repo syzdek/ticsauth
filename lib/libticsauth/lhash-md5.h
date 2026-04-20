@@ -71,7 +71,8 @@ extern void *
 tics_md5(
          const void *                  data,
          size_t                        data_len,
-         uint8_t *                     md );
+         uint8_t *                     md,
+         size_t                        md_len );
 
 
 extern int

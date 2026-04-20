@@ -448,7 +448,7 @@ test_hash_str(
    if (!(rec->data_len))
       for(rec->data_len = 0; ((rec->data[rec->data_len])); rec->data_len++);
 
-   if ((tics_hash(algo, rec->data, rec->data_len, md)))
+   if ((tics_hash(algo, rec->data, rec->data_len, md, sizeof(md))))
    {  tics_hash_md2base16(algo, md, digest, sizeof(digest));
       if ((strcmp(rec->digest, digest)))
          err = TICS_EMDMATCH;

@@ -60,18 +60,20 @@ tics_hash(
          int                           algo,
          const void *                  data,
          size_t                        data_len,
-         uint8_t *                     md )
+         uint8_t *                     md,
+         size_t                        md_len )
 {
    tics_assert(NULL, data  != NULL);
    tics_assert(NULL, md    != NULL);
+   tics_assert(NULL, md_len > 0);
 
    switch (algo)
-   {  case TICS_HASH_MD5:     return(tics_md5(data, data_len, md));
-      case TICS_HASH_SHA1:    return(tics_sha1(data, data_len, md));
-      case TICS_HASH_SHA224:  return(tics_sha224(data, data_len, md));
-      case TICS_HASH_SHA256:  return(tics_sha256(data, data_len, md));
-      case TICS_HASH_SHA384:  return(tics_sha384(data, data_len, md));
-      case TICS_HASH_SHA512:  return(tics_sha512(data, data_len, md));
+   {  case TICS_HASH_MD5:     return(tics_md5(data, data_len, md, md_len));
+      case TICS_HASH_SHA1:    return(tics_sha1(data, data_len, md, md_len));
+      case TICS_HASH_SHA224:  return(tics_sha224(data, data_len, md, md_len));
+      case TICS_HASH_SHA256:  return(tics_sha256(data, data_len, md, md_len));
+      case TICS_HASH_SHA384:  return(tics_sha384(data, data_len, md, md_len));
+      case TICS_HASH_SHA512:  return(tics_sha512(data, data_len, md, md_len));
       default:                break;
    }
 

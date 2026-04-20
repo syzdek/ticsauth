@@ -136,7 +136,8 @@ tics_hash(
          int                           algo,
          const void *                  data,
          size_t                        data_len,
-         uint8_t *                     md );
+         uint8_t *                     md,
+         size_t                        md_len );
 
 
 _TICS_F int

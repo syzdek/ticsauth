@@ -280,12 +280,16 @@ void *
 tics_sha224(
          const void *                  data,
          size_t                        data_len,
-         uint8_t *                     md )
+         uint8_t *                     md,
+         size_t                        md_len )
 {
    tics_hash_sha224_t   ctx;
 
    assert(data       != NULL);
    assert(md         != NULL);
+
+   if (md_len < TICS_MD_SIZE_SHA224)
+      return(NULL);
 
    memset(&ctx, 0, sizeof(ctx));
    if ((tics_sha224_reset(&ctx)))
@@ -350,12 +354,16 @@ void *
 tics_sha256(
          const void *                  data,
          size_t                        data_len,
-         uint8_t *                     md )
+         uint8_t *                     md,
+         size_t                        md_len )
 {
    tics_hash_sha256_t   ctx;
 
    assert(data       != NULL);
    assert(md         != NULL);
+
+   if (md_len < TICS_MD_SIZE_SHA256)
+      return(NULL);
 
    memset(&ctx, 0, sizeof(ctx));
    if ((tics_sha256_reset(&ctx)))

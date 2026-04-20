@@ -169,12 +169,16 @@ void *
 tics_md5(
          const void *                  data,
          size_t                        data_len,
-         uint8_t *                     md )
+         uint8_t *                     md,
+         size_t                        md_len )
 {
    tics_hash_md5_t      ctx;
 
    assert(data != NULL);
    assert(md   != NULL);
+
+   if (md_len < TICS_MD_SIZE_MD5)
+      return(NULL);
 
    memset(&ctx, 0, sizeof(ctx));
 
