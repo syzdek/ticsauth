@@ -67,7 +67,8 @@ tics_hmac(
 {
    tics_hmac_t       ctx;
 
-   tics_assert(NULL, (((key)) && ((key_len))) || ((!(key)) && (!(key_len))) );
+   tics_assert(NULL, ((key))  || ((!(key))  && (!(key_len))) );
+   tics_assert(NULL, ((data)) || ((!(data)) && (!(data_len))) );
    tics_assert(NULL, md != NULL);
 
    memset(&ctx, 0, sizeof(tics_hmac_t));
@@ -75,13 +76,9 @@ tics_hmac(
    ctx.algo = algo;
 
    if (!(key))
-   {  key      = "";
-      key_len  = 0;
-   };
+      key      = "";
    if (!(data))
-   {  data     = "";
-      data_len = 0;
-   };
+      data     = "";
 
    if (tics_hmac_reset(&ctx, algo) != TICS_SUCCESS)
       return(NULL);
