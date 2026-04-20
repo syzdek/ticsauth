@@ -242,16 +242,31 @@ tics_hash_result_str(
          char *                        str,
          size_t                        str_len )
 {
-   int         rc;
-   ssize_t     res;
-   uint8_t     md[TICS_MD_SIZE];
+   int            rc;
+   size_t         str_pos;
+   size_t         md_pos;
+   uint8_t        md[TICS_MD_SIZE];
+   const char *   map;
+
    tics_assert(TICS_EARGS, ctx != NULL);
    tics_assert(TICS_EARGS, str != NULL);
+
+   if (str_len < ((ctx->md_len*2)+1))
+      return(TICS_EMDBUFF);
+
    if ((rc = tics_hash_result(ctx, md, sizeof(md))) != TICS_SUCCESS)
       return(rc);
-   res = tics_hash_md2str((int)ctx->algo, md, str, str_len);
+
+   map = "0123456789abcdef";
+   for(str_pos = 0, md_pos = 0; (md_pos < ctx->md_len); md_pos++)
+   {  str[str_pos++] = map[(md[md_pos] >> 4) & 0x0f];
+      str[str_pos++] = map[(md[md_pos] >> 0) & 0x0f];
+   };
+   str[str_pos] = '\0';
+
    memset(md, 0, sizeof(md));
-   return(res);
+
+   return((ssize_t)(ctx->md_len*2));
 }
 
 
