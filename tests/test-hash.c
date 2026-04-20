@@ -308,7 +308,7 @@ test_hash_ctx(
          err = rc;
 
    if (!(err))
-      tics_hash_md2base16(algo, md, digest, sizeof(digest));
+      tics_hash_md2str(algo, md, digest, sizeof(digest));
 
    if (!(err))
       if ((strcmp(rec->digest, digest)))
@@ -412,7 +412,7 @@ test_hash_seg(
             err = rc;
 
       if (!(err))
-         tics_hash_md2base16(algo, md, digest, sizeof(digest));
+         tics_hash_md2str(algo, md, digest, sizeof(digest));
 
       if (!(err))
          if ((strcmp(rec->digest, digest)))
@@ -449,7 +449,7 @@ test_hash_str(
       for(rec->data_len = 0; ((rec->data[rec->data_len])); rec->data_len++);
 
    if ((tics_hash(algo, rec->data, rec->data_len, md, sizeof(md))))
-   {  tics_hash_md2base16(algo, md, digest, sizeof(digest));
+   {  tics_hash_md2str(algo, md, digest, sizeof(digest));
       if ((strcmp(rec->digest, digest)))
          err = TICS_EMDMATCH;
    } else

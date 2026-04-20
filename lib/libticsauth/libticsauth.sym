@@ -4,7 +4,7 @@ tics_hash_algo
 tics_hash_ctx_size
 tics_hash_free
 tics_hash_init
-tics_hash_md2base16
+tics_hash_md2str
 tics_hash_reset
 tics_hash_result
 tics_hash_result_str

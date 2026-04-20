@@ -138,7 +138,7 @@ tics_hash_init(
 
 
 ssize_t
-tics_hash_md2base16(
+tics_hash_md2str(
          int                           algo,
          const uint8_t *               md,
          char *                        str,
@@ -267,7 +267,7 @@ tics_hash_result_str(
    tics_assert(TICS_EARGS, str != NULL);
    if ((rc = tics_hash_result(ctx, md, sizeof(md))) != TICS_SUCCESS)
       return(rc);
-   res = tics_hash_md2base16((int)ctx->algo, md, str, str_len);
+   res = tics_hash_md2str((int)ctx->algo, md, str, str_len);
    memset(md, 0, sizeof(md));
    return(res);
 }

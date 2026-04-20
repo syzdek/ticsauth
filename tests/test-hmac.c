@@ -316,7 +316,7 @@ test_hmac_ctx(
    tics_hmac_free(ctx);
 
    if (!(err))
-      tics_hash_md2base16(algo, md, digest, sizeof(digest));
+      tics_hash_md2str(algo, md, digest, sizeof(digest));
 
    if (!(err))
       if ((strcmp(rec->hmac, digest)))
@@ -447,7 +447,7 @@ test_hmac_seg(
                err = rc;
 
          if (!(err))
-            tics_hash_md2base16(algo, md, digest, sizeof(digest));
+            tics_hash_md2str(algo, md, digest, sizeof(digest));
 
          if (!(err))
             if ((strcmp(rec->hmac, digest)))
@@ -489,7 +489,7 @@ test_hmac_str(
       for(rec->data_len = 0; ((rec->data[rec->data_len])); rec->data_len++);
 
    if ((tics_hmac(algo, rec->key, rec->key_len, rec->data, rec->data_len, md, sizeof(md))))
-   {  tics_hash_md2base16(algo, md, digest, sizeof(digest));
+   {  tics_hash_md2str(algo, md, digest, sizeof(digest));
       if ((strcmp(rec->hmac, digest)))
          err = TICS_EMDMATCH;
    } else

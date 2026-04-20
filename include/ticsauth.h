@@ -162,7 +162,7 @@ tics_hash_init(
 
 
 _TICS_F ssize_t
-tics_hash_md2base16(
+tics_hash_md2str(
          int                           algo,
          const uint8_t *               md,
          char *                        str,

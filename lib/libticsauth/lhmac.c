@@ -309,7 +309,7 @@ tics_hmac_result16(
    tics_assert(TICS_EARGS, str != NULL);
    if ((rc = tics_hmac_result(ctx, md, sizeof(md))) != TICS_SUCCESS)
       return(rc);
-   return(tics_hash_md2base16((int)ctx->algo, md, str, strlen));
+   return(tics_hash_md2str((int)ctx->algo, md, str, strlen));
 }
 
 
