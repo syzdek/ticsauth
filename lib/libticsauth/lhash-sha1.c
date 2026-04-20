@@ -294,7 +294,7 @@ tics_sha1_update(
    if (ctx->error)
       return(ctx->error);
 
-   if (len > ((0xffffffffffffffffLLU - ctx->len) >> 8))
+   if (len > ((0xffffffffffffffffLLU - ctx->len) >> 3))
       return(ctx->error = TICS_EMSG2BIG);
 
    for(idx = 0; (idx < len); idx++)
