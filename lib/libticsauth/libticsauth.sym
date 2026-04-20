@@ -10,6 +10,8 @@ tics_hash_result
 tics_hash_result16
 tics_hash_size
 tics_hash_update
+tics_hash_verify
+tics_hash_verify_str
 tics_hmac
 tics_hmac_free
 tics_hmac_init

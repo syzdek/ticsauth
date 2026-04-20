@@ -201,6 +201,19 @@ tics_hash_update(
          size_t                        len );
 
 
+_TICS_F int
+tics_hash_verify(
+         tics_hash_t *                 ctx,
+         const uint8_t *               md,
+         size_t                        md_len );
+
+
+_TICS_F int
+tics_hash_verify_str(
+         tics_hash_t *                 ctx,
+         const char *                  md_str );
+
+
 //-----------------//
 // hmac prototypes //
 //-----------------//

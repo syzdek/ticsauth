@@ -304,4 +304,48 @@ tics_hash_update(
 }
 
 
+int
+tics_hash_verify(
+         tics_hash_t *                 ctx,
+         const uint8_t *               md,
+         size_t                        md_len )
+{
+   int            rc;
+   uint8_t        res[TICS_MD_SIZE];
+
+   tics_assert(TICS_EARGS, ctx != NULL);
+   tics_assert(TICS_EARGS, md  != NULL);
+
+   if (md_len != ctx->md_len)
+      return(TICS_EMDMATCH);
+
+   if ((rc = tics_hash_result(ctx, res, sizeof(res))) != TICS_SUCCESS)
+      return(rc);
+
+   if ((memcmp(md, res, ctx->md_len)))
+      return(TICS_EMDMATCH);
+
+   return(TICS_SUCCESS);
+}
+
+int
+tics_hash_verify_str(
+         tics_hash_t *                 ctx,
+         const char *                  md_str )
+{
+   ssize_t        rc;
+   char           res[(TICS_MD_SIZE*2)+1];
+
+   tics_assert(TICS_EARGS, ctx != NULL);
+   tics_assert(TICS_EARGS, md_str  != NULL);
+
+   if ((rc = tics_hash_result16(ctx, res, sizeof(res))) != TICS_SUCCESS)
+      return((int)rc);
+
+   if ((strcmp(md_str, res)))
+      return(TICS_EMDMATCH);
+
+   return(TICS_SUCCESS);
+}
+
 /* end of source */
