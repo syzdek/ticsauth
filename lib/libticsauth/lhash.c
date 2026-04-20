@@ -62,14 +62,12 @@ tics_hash(
          size_t                        data_len,
          uint8_t *                     md )
 {
-   static uint8_t    buff[TICS_MD_SIZE];
-
    assert(data       != NULL);
+   assert(md         != NULL);
    if (data == NULL)
       return(NULL);
-
    if (md == NULL)
-      md = buff;
+      return(NULL);
 
    switch (algo)
    {  case TICS_HASH_MD5:     return(tics_md5(data, data_len, md));
