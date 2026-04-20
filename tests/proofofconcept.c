@@ -208,7 +208,7 @@ proof_of_concept(
    tics_hash_init(&ctx, TICS_HASH_SHA1);
    tics_hash_update(ctx, i_key_pad, 64);
    tics_hash_update(ctx, data, data_len);
-   tics_hash_result(ctx, md);
+   tics_hash_result(ctx, md, sizeof(md));
 
    printf("inner md:    ");
    for(idx = 0; (idx < TICS_MD_SIZE_SHA1); idx++)
@@ -218,7 +218,7 @@ proof_of_concept(
    tics_hash_reset(ctx, TICS_HASH_SHA1);
    tics_hash_update(ctx, o_key_pad, 64);
    tics_hash_update(ctx, md, TICS_MD_SIZE_SHA1);
-   tics_hash_result(ctx, md);
+   tics_hash_result(ctx, md, sizeof(md));
 
    tics_hash_free(ctx);
 
@@ -229,7 +229,7 @@ proof_of_concept(
 
    printf("\n");
    printf("known:       effcdf6ae5eb2fa2d27416d5f184df9c259a7c79\n");
-   tics_hmac(TICS_HASH_SHA1, "Jefe", 4, "what do ya want for nothing?", 28, md);
+   tics_hmac(TICS_HASH_SHA1, "Jefe", 4, "what do ya want for nothing?", 28, md, sizeof(md));
    printf("md:          ");
    for(idx = 0; (idx < TICS_MD_SIZE_SHA1); idx++)
       printf("%02x", md[idx]);

@@ -253,7 +253,8 @@ tics_hash_reset(
 int
 tics_hash_result(
          tics_hash_t *                 ctx,
-         uint8_t *                     md )
+         uint8_t *                     md,
+         size_t                        md_len )
 {
    assert(ctx != NULL);
    assert(md  != NULL);
@@ -261,6 +262,8 @@ tics_hash_result(
       return(TICS_EARGS);
    if (md == NULL)
       return(TICS_EARGS);
+   if (md_len < ctx->md_len)
+      return(TICS_EMDBUFF);
    return(ctx->func_result(&ctx->hash, md));
 }
 
@@ -279,7 +282,7 @@ tics_hash_result16(
       return(TICS_EARGS);
    if (str == NULL)
       return(TICS_EARGS);
-   if ((rc = tics_hash_result(ctx, md)) != TICS_SUCCESS)
+   if ((rc = tics_hash_result(ctx, md, sizeof(md))) != TICS_SUCCESS)
       return(rc);
    return(tics_hash_md2base16((int)ctx->algo, md, str, strlen));
 }

@@ -310,7 +310,7 @@ test_hmac_ctx(
             err = rc;
 
    if (!(err))
-      if ((rc = tics_hmac_result(ctx, md)) != TICS_SUCCESS)
+      if ((rc = tics_hmac_result(ctx, md, sizeof(md))) != TICS_SUCCESS)
          err = rc;
 
    tics_hmac_free(ctx);
@@ -443,7 +443,7 @@ test_hmac_seg(
                err = rc;
 
          if (!(err))
-            if ((rc = tics_hmac_result(ctx, md)) != TICS_SUCCESS)
+            if ((rc = tics_hmac_result(ctx, md, sizeof(md))) != TICS_SUCCESS)
                err = rc;
 
          if (!(err))
@@ -488,7 +488,7 @@ test_hmac_str(
    if (!(rec->data_len))
       for(rec->data_len = 0; ((rec->data[rec->data_len])); rec->data_len++);
 
-   if ((tics_hmac(algo, rec->key, rec->key_len, rec->data, rec->data_len, md)))
+   if ((tics_hmac(algo, rec->key, rec->key_len, rec->data, rec->data_len, md, sizeof(md))))
    {  tics_hash_md2base16(algo, md, digest, sizeof(digest));
       if ((strcmp(rec->hmac, digest)))
          err = TICS_EMDMATCH;

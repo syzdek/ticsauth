@@ -82,7 +82,7 @@
 #define TICS_EALGO                  -6
 #define TICS_EMDMATCH               -7
 #define TICS_EHMACKEY               -8
-
+#define TICS_EMDBUFF                -9
 
 #define TICS_HASH_MD5               5
 #define TICS_HASH_SHA1              1
@@ -177,7 +177,8 @@ tics_hash_reset(
 _TICS_F int
 tics_hash_result(
          tics_hash_t *                 ctx,
-         uint8_t *                     md );
+         uint8_t *                     md,
+         size_t                        md_len );
 
 
 _TICS_F ssize_t
@@ -211,7 +212,8 @@ tics_hmac(
          size_t                        key_len,
          const void *                  data,
          size_t                        data_len,
-         uint8_t *                     md );
+         uint8_t *                     md,
+         size_t                        md_len );
 
 
 _TICS_F void
@@ -246,7 +248,8 @@ tics_hmac_reset_message(
 _TICS_F int
 tics_hmac_result(
          tics_hmac_t *                 ctx,
-         uint8_t *                     md );
+         uint8_t *                     md,
+         size_t                        md_len );
 
 
 _TICS_F ssize_t

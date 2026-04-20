@@ -304,7 +304,7 @@ test_hash_ctx(
             err = rc;
 
    if (!(err))
-      if ((rc = tics_hash_result(ctx, md)) != TICS_SUCCESS)
+      if ((rc = tics_hash_result(ctx, md, sizeof(md))) != TICS_SUCCESS)
          err = rc;
 
    if (!(err))
@@ -408,7 +408,7 @@ test_hash_seg(
             err = rc;
 
       if (!(err))
-         if ((rc = tics_hash_result(ctx, md)) != TICS_SUCCESS)
+         if ((rc = tics_hash_result(ctx, md, sizeof(md))) != TICS_SUCCESS)
             err = rc;
 
       if (!(err))

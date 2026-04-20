@@ -101,6 +101,7 @@ tics_strerror(
    {  case TICS_SUCCESS:   return("success");
       case TICS_EALGO:     return("unknown or unsupported algorithm");
       case TICS_EHMACKEY:  return("HMAC key is locked");
+      case TICS_EMDBUFF:   return("message digest exceeds size of buffer");
       case TICS_EMDMATCH:  return("message digest mismatch");
       case TICS_EMSG2BIG:  return("message exceeds size limits");
       case TICS_ENOMEM:    return("cannot allocate memory");

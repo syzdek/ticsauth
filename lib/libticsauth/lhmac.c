@@ -62,7 +62,8 @@ tics_hmac(
          size_t                        key_len,
          const void *                  data,
          size_t                        data_len,
-         uint8_t *                     md )
+         uint8_t *                     md,
+         size_t                        md_len )
 {
    static uint8_t    md_buff[TICS_MD_SIZE];
    tics_hmac_t       ctx;
@@ -90,7 +91,7 @@ tics_hmac(
       return(NULL);
    if (tics_hmac_update(&ctx, data, data_len) != TICS_SUCCESS)
       return(NULL);
-   if (tics_hmac_result(&ctx, md) != TICS_SUCCESS)
+   if (tics_hmac_result(&ctx, md, md_len) != TICS_SUCCESS)
       return(NULL);
 
    return(md);
@@ -167,7 +168,7 @@ tics_hmac_lock_key(
 
    // calculate key digest if key length exceeds message digest length
    if ((ctx->flags & TICS_HMAC_KEY_HASHED))
-   {  if ((rc = tics_hash_result(&ctx->hash, ctx->key)) != TICS_SUCCESS)
+   {  if ((rc = tics_hash_result(&ctx->hash, ctx->key, sizeof(ctx->key))) != TICS_SUCCESS)
       {  ctx->flags |= TICS_HMAC_KEYERR;
          return(rc);
       };
@@ -260,7 +261,8 @@ tics_hmac_reset_message(
 int
 tics_hmac_result(
          tics_hmac_t *                 ctx,
-         uint8_t *                     md )
+         uint8_t *                     md,
+         size_t                        md_len )
 {
    int                  rc;
    uint8_t              inner_md[TICS_MD_SIZE];
@@ -277,7 +279,7 @@ tics_hmac_result(
       return(TICS_EUNKNOWN);
 
    memcpy(&hash, &ctx->hash, sizeof(tics_hash_t));
-   if ((rc = tics_hash_result(&hash, inner_md)) != TICS_SUCCESS)
+   if ((rc = tics_hash_result(&hash, inner_md, sizeof(inner_md))) != TICS_SUCCESS)
    {  memset(inner_md, 0, sizeof(inner_md));
       memset(&hash, 0, sizeof(tics_hash_t));
       return(rc);
@@ -298,7 +300,7 @@ tics_hmac_result(
       memset(&hash, 0, sizeof(tics_hash_t));
       return(rc);
    };
-   if ((rc = tics_hash_result(&hash, md)) != TICS_SUCCESS)
+   if ((rc = tics_hash_result(&hash, md, md_len)) != TICS_SUCCESS)
    {  memset(inner_md, 0, sizeof(inner_md));
       memset(&hash, 0, sizeof(tics_hash_t));
       return(rc);
@@ -325,7 +327,7 @@ tics_hmac_result16(
       return(TICS_EARGS);
    if (str == NULL)
       return(TICS_EARGS);
-   if ((rc = tics_hmac_result(ctx, md)) != TICS_SUCCESS)
+   if ((rc = tics_hmac_result(ctx, md, sizeof(md))) != TICS_SUCCESS)
       return(rc);
    return(tics_hash_md2base16((int)ctx->algo, md, str, strlen));
 }
