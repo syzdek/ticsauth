@@ -287,6 +287,19 @@ tics_hmac_update_key(
          size_t                        len );
 
 
+_TICS_F int
+tics_hmac_verify(
+         tics_hmac_t *                 ctx,
+         const uint8_t *               md,
+         size_t                        md_len );
+
+
+_TICS_F int
+tics_hmac_verify_str(
+         tics_hmac_t *                 ctx,
+         const char *                  md_str );
+
+
 //-----------------//
 // misc prototypes //
 //-----------------//

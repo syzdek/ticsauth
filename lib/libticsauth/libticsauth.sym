@@ -22,4 +22,6 @@ tics_hmac_result
 tics_hmac_result_str
 tics_hmac_update
 tics_hmac_update_key
+tics_hash_verify
+tics_hash_verify_str
 tics_strerror
