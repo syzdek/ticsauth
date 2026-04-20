@@ -223,7 +223,8 @@ tics_shaxxx_result(
          size_t                        md_word_len )
 {
    uint64_t             pad_len;
-   uint64_t             l;
+   uint64_t             low;
+   uint64_t             high;
    uint64_t             idx;
    uint64_t             byte;
    uint64_t             word;
@@ -234,19 +235,28 @@ tics_shaxxx_result(
    assert(md  != NULL);
 
    // calculate padding
-   pad_len     = 128-((ctx->len + 8) % 128);
-   l           = ctx->len * 8;
+   pad_len     = 128-((ctx->len_low + 16) % 128);
+   low         = ctx->len_low  * 8;
+   high        = ctx->len_high * 8;
    padding[0]  = 0x80;
    for(idx = 1; (idx < pad_len); idx++)
       padding[idx] = 0;
-   padding[pad_len++] = (l >> 56) & 0xff;
-   padding[pad_len++] = (l >> 48) & 0xff;
-   padding[pad_len++] = (l >> 40) & 0xff;
-   padding[pad_len++] = (l >> 32) & 0xff;
-   padding[pad_len++] = (l >> 24) & 0xff;
-   padding[pad_len++] = (l >> 16) & 0xff;
-   padding[pad_len++] = (l >>  8) & 0xff;
-   padding[pad_len++] =  l        & 0xff;
+   padding[pad_len++] = (high >> 56) & 0xff;
+   padding[pad_len++] = (high >> 48) & 0xff;
+   padding[pad_len++] = (high >> 40) & 0xff;
+   padding[pad_len++] = (high >> 32) & 0xff;
+   padding[pad_len++] = (high >> 24) & 0xff;
+   padding[pad_len++] = (high >> 16) & 0xff;
+   padding[pad_len++] = (high >>  8) & 0xff;
+   padding[pad_len++] =  high        & 0xff;
+   padding[pad_len++] = (low  >> 56) & 0xff;
+   padding[pad_len++] = (low  >> 48) & 0xff;
+   padding[pad_len++] = (low  >> 40) & 0xff;
+   padding[pad_len++] = (low  >> 32) & 0xff;
+   padding[pad_len++] = (low  >> 24) & 0xff;
+   padding[pad_len++] = (low  >> 16) & 0xff;
+   padding[pad_len++] = (low  >>  8) & 0xff;
+   padding[pad_len++] =  low         & 0xff;
 
    memcpy(&res, ctx, sizeof(tics_hash_sha512_t));
    for(idx = 0; (idx < pad_len); idx++)
@@ -277,14 +287,23 @@ tics_shaxxx_update(
          size_t                        data_len )
 {
    size_t      idx;
+   uint64_t    high;
+   uint64_t    low;
 
    assert(ctx      != NULL);
    assert(data     != NULL);
 
    // add to length of message
-   if ((0x00ffffffffffffffLLU - ctx->len) < data_len)
+   low   = ((uint64_t)data_len) & 0x0fffffffffffffffLLU;
+   low  += ctx->len_low;
+   high  = ((uint64_t)data_len) >> 61;
+   high += low >> 61;
+   high += ctx->len_high;
+   low  &= 0x1fffffffffffffffLU;
+   if ((high+ctx->len_high) < ctx->len_high)
       return(TICS_EMSG2BIG);
-   ctx->len += data_len;
+   ctx->len_high = high;
+   ctx->len_low  = low & 0x1fffffffffffffffLU;
 
    // process message in 1024 bit chunks
    for(idx = 0; (idx < data_len); idx++)
