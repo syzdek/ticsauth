@@ -56,7 +56,7 @@ typedef struct _tics_hash_ctx_sha256   tics_hash_sha224_t;
 
 struct _tics_hash_ctx_sha256
 {  uint32_t                h[8];             // message digest
-   uint64_t                len;              // message length in bits
+   uint64_t                len;              // message length in bytes
    uint64_t                msg_block_idx;    // Index into message block array
    uint8_t                 msg_block[64];    // 512-bit message blocks
 };
