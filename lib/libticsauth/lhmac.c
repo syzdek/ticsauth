@@ -65,10 +65,12 @@ tics_hmac(
          uint8_t *                     md,
          size_t                        md_len )
 {
-   static uint8_t    md_buff[TICS_MD_SIZE];
    tics_hmac_t       ctx;
 
    assert( (((key)) && ((key_len))) || ((!(key)) && (!(key_len))) );
+   assert(md != NULL);
+   if (md == NULL)
+      return(NULL);
 
    memset(&ctx, 0, sizeof(tics_hmac_t));
 
@@ -82,8 +84,6 @@ tics_hmac(
    {  data     = "";
       data_len = 0;
    };
-   if (!(md))
-      md = md_buff;
 
    if (tics_hmac_reset(&ctx, algo) != TICS_SUCCESS)
       return(NULL);
