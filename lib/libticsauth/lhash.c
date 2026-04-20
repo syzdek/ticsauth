@@ -90,15 +90,6 @@ tics_hash_algo(
 }
 
 
-ssize_t
-tics_hash_ctx_size(
-         tics_hash_t *                 ctx )
-{
-   tics_assert(TICS_EARGS, ctx != NULL);
-   return(tics_hash_size((int)ctx->algo));
-}
-
-
 void
 tics_hash_free(
          tics_hash_t *                 ctx )

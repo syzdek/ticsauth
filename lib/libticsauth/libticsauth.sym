@@ -1,7 +1,6 @@
 tics_algo2str
 tics_hash
 tics_hash_algo
-tics_hash_ctx_size
 tics_hash_free
 tics_hash_init
 tics_hash_md2str

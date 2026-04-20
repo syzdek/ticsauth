@@ -145,11 +145,6 @@ tics_hash_algo(
          tics_hash_t *                 ctx );
 
 
-_TICS_F ssize_t
-tics_hash_ctx_size(
-         tics_hash_t *                 ctx );
-
-
 _TICS_F void
 tics_hash_free(
          tics_hash_t *                 ctx );
