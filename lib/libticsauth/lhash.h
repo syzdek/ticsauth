@@ -60,6 +60,7 @@ struct _tics_hash_ctx
    size_t                           md_len;
    size_t                           hmac_pad_len;
    size_t                           state_size;
+   void *(*func)(const void *, size_t, uint8_t *, size_t);
    int(*func_reset)(void *);
    int(*func_result)(void *, uint8_t *);
    int(*func_update)(void *, const void *, size_t);
