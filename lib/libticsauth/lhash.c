@@ -68,9 +68,11 @@ tics_hash(
 
    tics_assert(NULL, data  != NULL);
    tics_assert(NULL, md    != NULL);
-   tics_assert(NULL, md_len > 0);
 
    if ((tics_hash_reset(&ctx, algo)))
+      return(NULL);
+
+   if (md_len < ctx.md_len)
       return(NULL);
 
    res = ctx.func(data, data_len, md, md_len);
