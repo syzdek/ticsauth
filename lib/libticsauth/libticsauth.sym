@@ -7,7 +7,7 @@ tics_hash_init
 tics_hash_md2base16
 tics_hash_reset
 tics_hash_result
-tics_hash_result16
+tics_hash_result_str
 tics_hash_size
 tics_hash_update
 tics_hash_verify

@@ -255,7 +255,7 @@ tics_hash_result(
 
 
 ssize_t
-tics_hash_result16(
+tics_hash_result_str(
          tics_hash_t *                 ctx,
          char *                        str,
          size_t                        str_len )
@@ -339,7 +339,7 @@ tics_hash_verify_str(
    tics_assert(TICS_EARGS, ctx != NULL);
    tics_assert(TICS_EARGS, md_str  != NULL);
 
-   if ((rc = tics_hash_result16(ctx, res, sizeof(res))) != TICS_SUCCESS)
+   if ((rc = tics_hash_result_str(ctx, res, sizeof(res))) != TICS_SUCCESS)
       return((int)rc);
 
    if ((strcmp(md_str, res)))

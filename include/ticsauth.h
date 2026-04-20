@@ -183,7 +183,7 @@ tics_hash_result(
 
 
 _TICS_F ssize_t
-tics_hash_result16(
+tics_hash_result_str(
          tics_hash_t *                 ctx,
          char *                        str,
          size_t                        str_len );
