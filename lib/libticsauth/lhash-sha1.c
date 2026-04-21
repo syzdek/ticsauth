@@ -156,7 +156,7 @@ void
 tics_sha1_process_msg_block(
          tics_hash_sha1_t *            ctx )
 {
-   int            t;       // Loop counter
+   unsigned       t;       // Loop counter
    uint32_t       temp;    // temporary word value
    uint32_t       w[80];   // Word sequence
    uint32_t       a;       // word buffers
