@@ -276,6 +276,9 @@ tics_shaxxx_result(
       md[byte++] =  res.h[word]        & 0xff;
    };
 
+   memset(padding, 0, sizeof(padding));
+   memset(&res,    0, sizeof(tics_hash_sha512_t));
+
    return(TICS_SUCCESS);
 }
 
