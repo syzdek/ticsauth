@@ -66,8 +66,12 @@ tics_hash(
    void *         res;
    tics_hash_t    ctx;
 
-   tics_assert(NULL, data  != NULL);
+   tics_assert(NULL, ((data)) || ((!(data)) && (!(data_len))) );
    tics_assert(NULL, md    != NULL);
+
+   data = ((data))
+        ? data
+        : "";
 
    if ((tics_hash_reset(&ctx, algo)))
       return(NULL);
