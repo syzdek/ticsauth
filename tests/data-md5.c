@@ -52,7 +52,7 @@
 /////////////////
 #pragma mark - Variables
 
-test_data_t * data_md5 = (test_data_t [])
+test_digest_t * data_md5 = (test_digest_t [])
 {
    // Public Test Vectors
    {  .digest        = "d41d8cd98f00b204e9800998ecf8427e", // RFC 1321

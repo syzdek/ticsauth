@@ -52,7 +52,7 @@
 /////////////////
 #pragma mark - Variables
 
-test_data_t * data_sha224 = (test_data_t [])
+test_digest_t * data_sha224 = (test_digest_t [])
 {
    // Public Test Vectors
    {  .digest        = "23097d223405d8228642a477bda255b32aadbce4bda0b3f7e36c9da7", // RFC 3874: Test Vector #1

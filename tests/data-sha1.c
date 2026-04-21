@@ -52,7 +52,7 @@
 /////////////////
 #pragma mark - Variables
 
-test_data_t * data_sha1 = (test_data_t [])
+test_digest_t * data_sha1 = (test_digest_t [])
 {
    // Public Test Vectors
    {  .digest        = "4b3aed5f9fe40159b499536fb8a10cdf3bc62b4c", // Generated with OpenSSL

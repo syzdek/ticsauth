@@ -189,10 +189,10 @@
 /////////////////
 #pragma mark - Datatypes
 
-typedef struct _ticsauth_test_data     test_data_t;
+typedef struct _ticsauth_test_digest     test_digest_t;
 
 
-struct _ticsauth_test_data
+struct _ticsauth_test_digest
 {  const char *         digest;
    const char *         hmac;
    const uint8_t *      data;
@@ -214,14 +214,14 @@ struct _ticsauth_test_data
 extern int verbose;
 extern int quiet;
 
-extern test_data_t            test_digests[];
+extern test_digest_t          test_digests[];
 
-extern test_data_t *          data_md5;
-extern test_data_t *          data_sha1;
-extern test_data_t *          data_sha224;
-extern test_data_t *          data_sha256;
-extern test_data_t *          data_sha384;
-extern test_data_t *          data_sha512;
+extern test_digest_t *        data_md5;
+extern test_digest_t *        data_sha1;
+extern test_digest_t *        data_sha224;
+extern test_digest_t *        data_sha256;
+extern test_digest_t *        data_sha384;
+extern test_digest_t *        data_sha512;
 
 
 //////////////////

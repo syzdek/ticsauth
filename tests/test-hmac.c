@@ -82,7 +82,7 @@ static int
 test_hmac_ctx(
          int                           test_num,
          int                           algo,
-         test_data_t *                 rec );
+         test_digest_t *               rec );
 
 
 static void
@@ -90,7 +90,7 @@ test_hmac_result(
          const char *                  title,
          int                           test_num,
          int                           algo,
-         test_data_t *                 rec,
+         test_digest_t *               rec,
          const char *                  digest,
          int                           err );
 
@@ -99,14 +99,14 @@ static int
 test_hmac_seg(
          int                           test_num,
          int                           algo,
-         test_data_t *                 rec );
+         test_digest_t *               rec );
 
 
 static int
 test_hmac_str(
          int                           test_num,
          int                           algo,
-         test_data_t *                 rec );
+         test_digest_t *               rec );
 
 
 /////////////////
@@ -141,8 +141,8 @@ main(
    int               rc;
    int               algo;
    int               func;
-   test_data_t       rec;
-   test_data_t *     data;
+   test_digest_t     rec;
+   test_digest_t *   data;
 
    // getopt options
    static const char *  short_opt = "hqVv";
@@ -277,7 +277,7 @@ int
 test_hmac_ctx(
          int                           test_num,
          int                           algo,
-         test_data_t *                 rec )
+         test_digest_t *               rec )
 {
    int               rc;
    int               err;
@@ -333,7 +333,7 @@ test_hmac_result(
          const char *                  title,
          int                           test_num,
          int                           algo,
-         test_data_t *                 rec,
+         test_digest_t *               rec,
          const char *                  digest,
          int                           err )
 {
@@ -380,7 +380,7 @@ int
 test_hmac_seg(
          int                           test_num,
          int                           algo,
-         test_data_t *                 rec )
+         test_digest_t *               rec )
 {
    int               rc;
    int               err;
@@ -467,7 +467,7 @@ int
 test_hmac_str(
          int                           test_num,
          int                           algo,
-         test_data_t *                 rec )
+         test_digest_t *               rec )
 {
    int               err;
    uint8_t           md[TICS_MD_SIZE];

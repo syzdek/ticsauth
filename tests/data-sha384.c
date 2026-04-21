@@ -52,7 +52,7 @@
 /////////////////
 #pragma mark - Variables
 
-test_data_t * data_sha384 = (test_data_t [])
+test_digest_t * data_sha384 = (test_digest_t [])
 {
    // Public Test Vectors
    {  .digest        = "5e6ac3d2e0bd2b47e003f58162ae580b"
