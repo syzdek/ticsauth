@@ -83,6 +83,14 @@
 #define TICS_EMDMATCH               -7
 #define TICS_EHMACKEY               -8
 #define TICS_EMDBUFF                -9
+#define TICS_EENCODING              -10
+#define TICS_EBADDATA               -11
+#define TICS_EBUFFSIZE              -12
+
+#define TICS_ENCODE_BASE16          16
+#define TICS_ENCODE_BASE32          32
+#define TICS_ENCODE_BASE32HEX       50 // HEX(0x32) == DECIMAL(50)
+#define TICS_ENCODE_BASE64          64
 
 #define TICS_HASH_MD5               5
 #define TICS_HASH_SHA1              1
@@ -117,6 +125,7 @@
 
 typedef struct _tics_hash_ctx    tics_hash_t;
 typedef struct _tics_hmac_ctx    tics_hmac_t;
+typedef struct _tics_encode_ctx  tics_encode_t;
 
 
 //////////////////
@@ -125,6 +134,55 @@ typedef struct _tics_hmac_ctx    tics_hmac_t;
 //              //
 //////////////////
 // MARK: - Prototypes
+
+//---------------------//
+// encoding prototypes //
+//---------------------//
+#pragma mark encoding prototypes
+
+_TICS_F ssize_t
+tics_decode(
+         int                           encoding,
+         const char *                  src,
+         size_t                        src_len,
+         void *                        dst,
+         size_t                        dst_len );
+
+
+_TICS_F ssize_t
+tics_decoded_size(
+         int                           encoding,
+         size_t                        src_len );
+
+
+_TICS_F ssize_t
+tics_encode(
+         int                           encoding,
+         const void *                  src,
+         size_t                        src_len,
+         char *                        dst,
+         size_t                        dst_len );
+
+
+_TICS_F ssize_t
+tics_encoded_size(
+         int                           encoding,
+         size_t                        src_len );
+
+
+_TICS_F int
+tics_encoding_block_sizes(
+         int                           encoding,
+         size_t *                      enc_sizep,
+         size_t *                      dec_sizep );
+
+
+_TICS_F ssize_t
+tics_encoding_verify(
+         int                           encoding,
+         const void *                  src,
+         size_t                        n );
+
 
 //-----------------//
 // hash prototypes //

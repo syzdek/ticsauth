@@ -86,7 +86,19 @@ pkgdata_DATA				=
 sbin_SCRIPTS				=
 sbin_PROGRAMS				=
 mod_LTLIBRARIES				=
-EXTRA_PROGRAMS				= tests/hash-md5-ctx \
+EXTRA_PROGRAMS				= tests/basexx-base16-dec \
+					  tests/basexx-base16-enc \
+					  tests/basexx-base16-ver \
+					  tests/basexx-base32-dec \
+					  tests/basexx-base32-enc \
+					  tests/basexx-base32-ver \
+					  tests/basexx-base32hex-dec \
+					  tests/basexx-base32hex-enc \
+					  tests/basexx-base32hex-ver \
+					  tests/basexx-base64-dec \
+					  tests/basexx-base64-enc \
+					  tests/basexx-base64-ver \
+					  tests/hash-md5-ctx \
 					  tests/hash-md5-seg \
 					  tests/hash-md5-str \
 					  tests/hash-sha1-ctx \
@@ -129,7 +141,19 @@ EXTRA					=
 # lists
 AM_INSTALLCHECK_STD_OPTIONS_EXEMPT	=
 BUILT_SOURCES				=
-TESTS					= tests/hash-md5-ctx \
+TESTS					= tests/basexx-base16-dec \
+					  tests/basexx-base16-enc \
+					  tests/basexx-base16-ver \
+					  tests/basexx-base32-dec \
+					  tests/basexx-base32-enc \
+					  tests/basexx-base32-ver \
+					  tests/basexx-base32hex-dec \
+					  tests/basexx-base32hex-enc \
+					  tests/basexx-base32hex-ver \
+					  tests/basexx-base64-dec \
+					  tests/basexx-base64-enc \
+					  tests/basexx-base64-ver \
+					  tests/hash-md5-ctx \
 					  tests/hash-md5-seg \
 					  tests/hash-md5-str \
 					  tests/hash-sha1-ctx \
@@ -214,6 +238,7 @@ lib_libticsauth_la_LDFLAGS		= -rpath'$(libdir)' \
 lib_libticsauth_la_SOURCES		= include/ticsauth.h \
 					  include/ticsauth_noinst.h \
 					  lib/libticsauth/libticsauth.h \
+					  lib/libticsauth/lencoding.c \
 					  lib/libticsauth/lhash.c \
 					  lib/libticsauth/lhash.h \
 					  lib/libticsauth/lhash-md5.c \
@@ -227,6 +252,89 @@ lib_libticsauth_la_SOURCES		= include/ticsauth.h \
 					  lib/libticsauth/lhmac.c \
 					  lib/libticsauth/lhmac.h \
 					  lib/libticsauth/lmisc.c
+
+
+# macros for tests/basexx-base16-dec
+tests_basexx_base16_dec_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_basexx_base16_dec_LDADD		= $(lib_LTLIBRARIES)
+tests_basexx_base16_dec_CFLAGS		= $(AM_CFLAGS) -DTEST_BASE16_DEC=1
+tests_basexx_base16_dec_SOURCES		= tests/tests.h tests/test-basexx.c tests/data-base16.c
+
+
+# macros for tests/basexx-base16-enc
+tests_basexx_base16_enc_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_basexx_base16_enc_LDADD		= $(lib_LTLIBRARIES)
+tests_basexx_base16_enc_CFLAGS		= $(AM_CFLAGS) -DTEST_BASE16_ENC=1
+tests_basexx_base16_enc_SOURCES		= tests/tests.h tests/test-basexx.c tests/data-base16.c
+
+
+# macros for tests/basexx-base16-ver
+tests_basexx_base16_ver_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_basexx_base16_ver_LDADD		= $(lib_LTLIBRARIES)
+tests_basexx_base16_ver_CFLAGS		= $(AM_CFLAGS) -DTEST_BASE16_VER=1
+tests_basexx_base16_ver_SOURCES		= tests/tests.h tests/test-basexx.c tests/data-base16.c
+
+
+# macros for tests/basexx-base32-dec
+tests_basexx_base32_dec_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_basexx_base32_dec_LDADD		= $(lib_LTLIBRARIES)
+tests_basexx_base32_dec_CFLAGS		= $(AM_CFLAGS) -DTEST_BASE32_DEC=1
+tests_basexx_base32_dec_SOURCES		= tests/tests.h tests/test-basexx.c tests/data-base32.c
+
+
+# macros for tests/basexx-base32-enc
+tests_basexx_base32_enc_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_basexx_base32_enc_LDADD		= $(lib_LTLIBRARIES)
+tests_basexx_base32_enc_CFLAGS		= $(AM_CFLAGS) -DTEST_BASE32_ENC=1
+tests_basexx_base32_enc_SOURCES		= tests/tests.h tests/test-basexx.c tests/data-base32.c
+
+
+# macros for tests/basexx-base32-ver
+tests_basexx_base32_ver_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_basexx_base32_ver_LDADD		= $(lib_LTLIBRARIES)
+tests_basexx_base32_ver_CFLAGS		= $(AM_CFLAGS) -DTEST_BASE32_VER=1
+tests_basexx_base32_ver_SOURCES		= tests/tests.h tests/test-basexx.c tests/data-base32.c
+
+# macros for tests/basexx-base32hex-dec
+tests_basexx_base32hex_dec_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_basexx_base32hex_dec_LDADD	= $(lib_LTLIBRARIES)
+tests_basexx_base32hex_dec_CFLAGS	= $(AM_CFLAGS) -DTEST_BASE32HEX_DEC=1
+tests_basexx_base32hex_dec_SOURCES	= tests/tests.h tests/test-basexx.c tests/data-base32hex.c
+
+
+# macros for tests/basexx-base32hex-enc
+tests_basexx_base32hex_enc_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_basexx_base32hex_enc_LDADD	= $(lib_LTLIBRARIES)
+tests_basexx_base32hex_enc_CFLAGS	= $(AM_CFLAGS) -DTEST_BASE32HEX_ENC=1
+tests_basexx_base32hex_enc_SOURCES	= tests/tests.h tests/test-basexx.c tests/data-base32hex.c
+
+
+# macros for tests/basexx-base32hex-ver
+tests_basexx_base32hex_ver_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_basexx_base32hex_ver_LDADD	= $(lib_LTLIBRARIES)
+tests_basexx_base32hex_ver_CFLAGS	= $(AM_CFLAGS) -DTEST_BASE32HEX_VER=1
+tests_basexx_base32hex_ver_SOURCES	= tests/tests.h tests/test-basexx.c tests/data-base32hex.c
+
+
+# macros for tests/basexx-base64-dec
+tests_basexx_base64_dec_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_basexx_base64_dec_LDADD		= $(lib_LTLIBRARIES)
+tests_basexx_base64_dec_CFLAGS		= $(AM_CFLAGS) -DTEST_BASE64_DEC=1
+tests_basexx_base64_dec_SOURCES		= tests/tests.h tests/test-basexx.c tests/data-base64.c
+
+
+# macros for tests/basexx-base64-enc
+tests_basexx_base64_enc_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_basexx_base64_enc_LDADD		= $(lib_LTLIBRARIES)
+tests_basexx_base64_enc_CFLAGS		= $(AM_CFLAGS) -DTEST_BASE64_ENC=1
+tests_basexx_base64_enc_SOURCES		= tests/tests.h tests/test-basexx.c tests/data-base64.c
+
+
+# macros for tests/basexx-base64-ver
+tests_basexx_base64_ver_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_basexx_base64_ver_LDADD		= $(lib_LTLIBRARIES)
+tests_basexx_base64_ver_CFLAGS		= $(AM_CFLAGS) -DTEST_BASE64_VER=1
+tests_basexx_base64_ver_SOURCES		= tests/tests.h tests/test-basexx.c tests/data-base64.c
 
 
 # macros for tests/hash-md5-ctx

@@ -30,8 +30,8 @@
  *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  *  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-#define __LIB_LIBTICSAUTH_LMISC_C
-#include "libticsauth.h"
+#define __TESTS_DATA_BASE32HEX_C 1
+#include "tests.h"
 
 ///////////////
 //           //
@@ -40,78 +40,70 @@
 ///////////////
 // MARK: - Headers
 
-#include <string.h>
 #include <stdlib.h>
-#include <assert.h>
 
-
-//////////////
-//          //
-//  Macros  //
-//          //
-//////////////
-// MARK: - Macros
-
-
-///////////////////
-//               //
-//  Definitions  //
-//               //
-///////////////////
-// MARK: - Definitions
-
-
-//////////////////
-//              //
-//  Prototypes  //
-//              //
-//////////////////
-// MARK: - Prototypes
+#include <ticsauth.h>
 
 
 /////////////////
 //             //
-//  Functions  //
+//  Variables  //
 //             //
 /////////////////
-// MARK: - Functions
+#pragma mark - Variables
 
-const char *
-tics_algo2str(
-         int                           algo )
+test_encoding_t * data_base32hex = (test_encoding_t [])
 {
-   switch (algo)
-   {  case TICS_HASH_MD5:     return("MD5");
-      case TICS_HASH_SHA1:    return("SHA-1");
-      case TICS_HASH_SHA224:  return("SHA-224");
-      case TICS_HASH_SHA256:  return("SHA-256");
-      case TICS_HASH_SHA384:  return("SHA-384");
-      case TICS_HASH_SHA512:  return("SHA-512");
-      default:                break;
-   }
-   return("unknown");
-}
+   // Public Test Vectors
+   {   // RFC 4648
+      .decoded       = (const uint8_t *)"",
+      .encoded       = "",
+      .decode_len    = 0,
+      .encode_len    = 0,
+   },
+   {  // RFC 4648
+      .decoded       = (const uint8_t *)"f",
+      .encoded       = "CO======",
+      .decode_len    = 1,
+      .encode_len    = 8,
+   },
+   {  // RFC 4648
+      .decoded       = (const uint8_t *)"fo",
+      .encoded       = "CPNG====",
+      .decode_len    = 2,
+      .encode_len    = 8,
+   },
+   {  // RFC 4648
+      .decoded       = (const uint8_t *)"foo",
+      .encoded       = "CPNMU===",
+      .decode_len    = 3,
+      .encode_len    = 8,
+   },
+   {  // RFC 4648
+      .decoded       = (const uint8_t *)"foob",
+      .encoded       = "CPNMUOG=",
+      .decode_len    = 4,
+      .encode_len    = 8,
+   },
+   {  // RFC 4648
+      .decoded       = (const uint8_t *)"fooba",
+      .encoded       = "CPNMUOJ1",
+      .decode_len    = 5,
+      .encode_len    = 8,
+   },
+   {  // RFC 4648
+      .decoded       = (const uint8_t *)"foobar",
+      .encoded       = "CPNMUOJ1E8======",
+      .decode_len    = 6,
+      .encode_len    = 16,
+   },
 
-
-const char *
-tics_strerror(
-         int                           err )
-{
-   switch (err)
-   {  case TICS_SUCCESS:   return("success");
-      case TICS_EALGO:     return("unknown or unsupported algorithm");
-      case TICS_EBADDATA:  return("bad data");
-      case TICS_EBUFFSIZE: return("message length exceeds buffer size");
-      case TICS_EENCODING: return("unknown or unsupported encoding");
-      case TICS_EHMACKEY:  return("HMAC key is locked");
-      case TICS_EMDBUFF:   return("message digest exceeds size of buffer");
-      case TICS_EMDMATCH:  return("message digest mismatch");
-      case TICS_EMSG2BIG:  return("message exceeds size limits");
-      case TICS_ENOMEM:    return("cannot allocate memory");
-      default:             break;
+   {  .decoded       = NULL,
+      .encoded       = NULL,
+      .decode_len    = 0,
+      .encode_len    = 0,
    }
-   return("unknown error");
-}
+};
 
 
 /* end of source */

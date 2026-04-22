@@ -1,4 +1,10 @@
 tics_algo2str
+tics_decode
+tics_decoded_size
+tics_encode
+tics_encoded_size
+tics_encoding_block_sizes
+tics_encoding_verify
 tics_hash
 tics_hash_free
 tics_hash_init

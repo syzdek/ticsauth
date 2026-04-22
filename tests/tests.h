@@ -76,6 +76,79 @@
 #define TEST_FUNC_CTX    1
 #define TEST_FUNC_SEG    2
 #define TEST_FUNC_STR    3
+#define TEST_FUNC_ENC    4
+#define TEST_FUNC_DEC    5
+#define TEST_FUNC_VER    6
+
+
+//
+// hash: base16
+#if defined(TEST_BASE16_ENC)
+#  define PROGRAM_SUFFIX      "-base16-encode"
+#  define TEST_ENCODING       TICS_ENCODE_BASE16
+#  define TEST_FUNC           TEST_FUNC_ENC
+#elif defined(TEST_BASE16_DEC)
+#  define PROGRAM_SUFFIX      "-base16-decode"
+#  define TEST_ENCODING       TICS_ENCODE_BASE16
+#  define TEST_FUNC           TEST_FUNC_DEC
+#elif defined(TEST_BASE16_VER)
+#  define PROGRAM_SUFFIX      "-base16-verify"
+#  define TEST_ENCODING       TICS_ENCODE_BASE16
+#  define TEST_FUNC           TEST_FUNC_VER
+//
+// hash: base32
+#elif defined(TEST_BASE32_ENC)
+#  define PROGRAM_SUFFIX      "-base32-encode"
+#  define TEST_ENCODING       TICS_ENCODE_BASE32
+#  define TEST_FUNC           TEST_FUNC_ENC
+#elif defined(TEST_BASE32_DEC)
+#  define PROGRAM_SUFFIX      "-base32-decode"
+#  define TEST_ENCODING       TICS_ENCODE_BASE32
+#  define TEST_FUNC           TEST_FUNC_DEC
+#elif defined(TEST_BASE32_VER)
+#  define PROGRAM_SUFFIX      "-base32-verify"
+#  define TEST_ENCODING       TICS_ENCODE_BASE32
+#  define TEST_FUNC           TEST_FUNC_VER
+//
+// hash: base32hex
+#elif defined(TEST_BASE32HEX_ENC)
+#  define PROGRAM_SUFFIX      "-base32hex-encode"
+#  define TEST_ENCODING       TICS_ENCODE_BASE32HEX
+#  define TEST_FUNC           TEST_FUNC_ENC
+#elif defined(TEST_BASE32HEX_DEC)
+#  define PROGRAM_SUFFIX      "-base32hex-decode"
+#  define TEST_ENCODING       TICS_ENCODE_BASE32HEX
+#  define TEST_FUNC           TEST_FUNC_DEC
+#elif defined(TEST_BASE32HEX_VER)
+#  define PROGRAM_SUFFIX      "-base32hex-verify"
+#  define TEST_ENCODING       TICS_ENCODE_BASE32HEX
+#  define TEST_FUNC           TEST_FUNC_VER
+//
+// hash: base64
+#elif defined(TEST_BASE64_ENC)
+#  define PROGRAM_SUFFIX      "-base64-encode"
+#  define TEST_ENCODING       TICS_ENCODE_BASE64
+#  define TEST_FUNC           TEST_FUNC_ENC
+#elif defined(TEST_BASE64_DEC)
+#  define PROGRAM_SUFFIX      "-base64-decode"
+#  define TEST_ENCODING       TICS_ENCODE_BASE64
+#  define TEST_FUNC           TEST_FUNC_DEC
+#elif defined(TEST_BASE64_VER)
+#  define PROGRAM_SUFFIX      "-base64-verify"
+#  define TEST_ENCODING       TICS_ENCODE_BASE64
+#  define TEST_FUNC           TEST_FUNC_VER
+#endif
+
+
+#if (TEST_ENCODING == TICS_ENCODE_BASE16)
+#   define TEST_DATA  data_base16
+#elif (TEST_ENCODING == TICS_ENCODE_BASE32)
+#   define TEST_DATA  data_base32
+#elif (TEST_ENCODING == TICS_ENCODE_BASE32HEX)
+#   define TEST_DATA  data_base32hex
+#elif (TEST_ENCODING == TICS_ENCODE_BASE64)
+#   define TEST_DATA  data_base64
+#endif
 
 
 //
@@ -189,7 +262,19 @@
 /////////////////
 #pragma mark - Datatypes
 
+typedef struct _ticsauth_test_encoding   test_encoding_t;
 typedef struct _ticsauth_test_digest     test_digest_t;
+
+
+struct _ticsauth_test_encoding
+{  const uint8_t *      decoded;
+   const char *         encoded;
+   const void *         result;
+   size_t               decode_len;
+   size_t               encode_len;
+   size_t               result_len;
+   size_t               result_ascii;
+};
 
 
 struct _ticsauth_test_digest
@@ -214,7 +299,10 @@ struct _ticsauth_test_digest
 extern int verbose;
 extern int quiet;
 
-extern test_digest_t          test_digests[];
+extern test_encoding_t *      data_base16;
+extern test_encoding_t *      data_base32;
+extern test_encoding_t *      data_base32hex;
+extern test_encoding_t *      data_base64;
 
 extern test_digest_t *        data_md5;
 extern test_digest_t *        data_sha1;

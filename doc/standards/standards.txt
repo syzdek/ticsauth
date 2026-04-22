@@ -10,6 +10,8 @@ RFC 2202 - Test Cases for HMAC-MD5 and HMAC-SHA-1
 RFC 3174 - US Secure Hash Algorithm 1 (SHA1)
            [updated by: RFC 4634, RFC 6234]
 
+RFC 3548 - The Base16, Base32, and Base64 Data Encodings
+
 RFC 3874 - A 224-bit One-way Hash Function: SHA-224
 
 RFC 4226 - HOTP: An HMAC-Based One-Time Password Algorithm
@@ -19,6 +21,8 @@ RFC 4231 - Identifiers and Test Vectors for HMAC-SHA-224, HMAC-SHA-256,
 
 RFC 4634 - US Secure Hash Algorithms (SHA and HMAC-SHA)
            [obsoleted by: RFC 6234]
+
+RFC 4648 - The Base16, Base32, and Base64 Data Encodings
 
 RFC 6151 - Updated Security Considerations for the MD5 Message-Digest and the
            HMAC-MD5 Algorithms
