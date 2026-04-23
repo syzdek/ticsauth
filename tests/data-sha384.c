@@ -207,6 +207,23 @@ test_digest_t * data_sha384 = (test_digest_t [])
       .key_len       = 131,
       .repeat        = 1,
    },
+   {  .digest     = "5441235cc0235341ed806a64fb354742"
+                    "b5e5c02a3c5cb71b5f63fb793458d8fd"
+                    "ae599c8cd8884943c04f11b31b89f023", // https://di-mgt.com.au/sha_testvectors.html
+      .hmac       = "9fe266470f11673d7ab7a3bae52bd43f"
+                    "8f44e08ba1882071cc7b042eb2873e5e"
+                    "dd5e0beac61929f9bacb1422a4120ca6", // generated with OpenSSL
+      .data       = (const uint8_t *)
+                    "abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghijklmnh"
+                    "ijklmno",
+      .key        = (const uint8_t *)
+                    "abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghijklmnh"
+                    "ijklmno",
+      .data_len   = 64,
+      .key_len    = 64,
+      .repeat     = 16777216,
+      .skip_seg   = 1,
+   },
 
 
    // TICS Authenticator tests
