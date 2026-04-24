@@ -359,6 +359,11 @@ tics_algo2str(
 
 
 _TICS_F const char *
+tics_encoding2str(
+         int                           encoding );
+
+
+_TICS_F const char *
 tics_strerror(
          int                           err );
 

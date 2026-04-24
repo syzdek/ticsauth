@@ -5,6 +5,7 @@ tics_encode
 tics_encoded_size
 tics_encoding_block_sizes
 tics_encoding_verify
+tics_encoding2str
 tics_hash
 tics_hash_free
 tics_hash_init

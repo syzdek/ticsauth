@@ -94,6 +94,21 @@ tics_algo2str(
 
 
 const char *
+tics_encoding2str(
+         int                           encoding )
+{
+   switch (encoding)
+   {  case TICS_ENCODE_BASE16:      return("base16");
+      case TICS_ENCODE_BASE32:      return("base32");
+      case TICS_ENCODE_BASE32HEX:   return("base32hex");
+      case TICS_ENCODE_BASE64:      return("base64");
+      default:                      break;
+   }
+   return(NULL);
+}
+
+
+const char *
 tics_strerror(
          int                           err )
 {
