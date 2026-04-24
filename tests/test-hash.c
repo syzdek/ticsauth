@@ -437,6 +437,7 @@ test_hash_str(
 
    assert(rec != NULL);
 
+   memset(digest, 0, sizeof(digest));
    err = 0;
 
    if (rec->repeat != 1)
