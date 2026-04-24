@@ -294,12 +294,47 @@ test_contexts(
    if ((rc = tics_hmac_init(&ctx, -1, TEST_KEY, TEST_KEY_LEN)) != TICS_SUCCESS)
 #elif defined(XFAIL_HMAC_INIT3)
    if ((rc = tics_hmac_init(&ctx, TEST_HASH, NULL, TEST_KEY_LEN)) != TICS_SUCCESS)
+#elif defined(XFAIL_HMAC_INIT4)
+   if ((rc = tics_hmac_init(&ctx, TEST_HASH, TEST_KEY, 0)) != TICS_SUCCESS)
 #else
    if ((rc = tics_hmac_init(&ctx, TEST_HASH, TEST_KEY, TEST_KEY_LEN)) != TICS_SUCCESS)
 #endif
    {  fprintf(stderr, "%s: tics_hash_init(): %s\n", PROGRAM_NAME, tics_strerror(rc));
       return(1);
    };
+
+#if defined(XFAIL_HMAC_LOCK_KEY1)
+   if ((rc = tics_hmac_lock_key(NULL)) != TICS_SUCCESS)
+   {  fprintf(stderr, "%s: tics_hmac_lock_key(): %s\n", PROGRAM_NAME, tics_strerror(rc));
+      return(1);
+   };
+#endif
+
+#if defined(XFAIL_HMAC_UPDATE_KEY1)
+   if ((rc = tics_hmac_update_key(NULL, TEST_KEY, TEST_KEY_LEN)) != TICS_SUCCESS)
+   {  fprintf(stderr, "%s: tics_hmac_update_key(): %s\n", PROGRAM_NAME, tics_strerror(rc));
+      return(1);
+   };
+#elif defined(XFAIL_HMAC_UPDATE_KEY2)
+   if ((rc = tics_hmac_update_key(ctx, NULL, TEST_KEY_LEN)) != TICS_SUCCESS)
+   {  fprintf(stderr, "%s: tics_hmac_update_key(): %s\n", PROGRAM_NAME, tics_strerror(rc));
+      return(1);
+   };
+#elif defined(XFAIL_HMAC_UPDATE_KEY3)
+   if ((rc = tics_hmac_update_key(ctx, TEST_KEY, 0)) != TICS_SUCCESS)
+   {  fprintf(stderr, "%s: tics_hmac_update_key(): %s\n", PROGRAM_NAME, tics_strerror(rc));
+      return(1);
+   };
+#elif defined(XFAIL_HMAC_UPDATE_KEY4)
+   if ((rc = tics_hmac_lock_key(ctx)) != TICS_SUCCESS)
+   {  fprintf(stderr, "%s: tics_hmac_lock_key(): %s\n", PROGRAM_NAME, tics_strerror(rc));
+      return(1);
+   };
+   if ((rc = tics_hmac_update_key(ctx, TEST_KEY, TEST_KEY_LEN)) != TICS_SUCCESS)
+   {  fprintf(stderr, "%s: tics_hmac_update_key(): %s\n", PROGRAM_NAME, tics_strerror(rc));
+      return(1);
+   };
+#endif
 
    for(count = 0; (count < 10); count++)
    {  if ((verbose))
@@ -317,6 +352,13 @@ test_contexts(
          tics_hmac_free(ctx);
          return(1);
       };
+
+#if defined(XFAIL_HMAC_UPDATE_KEY5)
+   if ((rc = tics_hmac_update_key(ctx, TEST_KEY, TEST_KEY_LEN)) != TICS_SUCCESS)
+   {  fprintf(stderr, "%s: tics_hmac_update_key(): %s\n", PROGRAM_NAME, tics_strerror(rc));
+      return(1);
+   };
+#endif
 
       switch(count+1)
       {  case  1:

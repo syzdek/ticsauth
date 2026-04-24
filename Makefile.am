@@ -182,9 +182,16 @@ XFAIL_TESTS				= tests/xhash-algo \
 					  tests/xhmac-init1 \
 					  tests/xhmac-init2 \
 					  tests/xhmac-init3 \
+					  tests/xhmac-init4 \
+					  tests/xhmac-lock-key1 \
 					  tests/xhmac-update1 \
 					  tests/xhmac-update2 \
-					  tests/xhmac-update3
+					  tests/xhmac-update3 \
+					  tests/xhmac-update-key1 \
+					  tests/xhmac-update-key2 \
+					  tests/xhmac-update-key3 \
+					  tests/xhmac-update-key4 \
+					  tests/xhmac-update-key5
 EXTRA_MANS				=
 EXTRA_DIST				= AUTHORS.md \
 					  ChangeLog.md \
@@ -863,6 +870,20 @@ tests_xhmac_init3_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HMAC_INIT3=1
 tests_xhmac_init3_SOURCES		= tests/xtest-hmac.c
 
 
+# macros for tests/xhmac-init4
+tests_xhmac_init4_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhmac_init4_LDADD			= $(lib_LTLIBRARIES)
+tests_xhmac_init4_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HMAC_INIT4=1
+tests_xhmac_init4_SOURCES		= tests/xtest-hmac.c
+
+
+# macros for tests/xhmac-lock-key1
+tests_xhmac_lock_key1_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhmac_lock_key1_LDADD		= $(lib_LTLIBRARIES)
+tests_xhmac_lock_key1_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HMAC_LOCK_KEY1=1
+tests_xhmac_lock_key1_SOURCES		= tests/xtest-hmac.c
+
+
 # macros for tests/xhmac-update1
 tests_xhmac_update1_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 tests_xhmac_update1_LDADD		= $(lib_LTLIBRARIES)
@@ -882,6 +903,41 @@ tests_xhmac_update3_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 tests_xhmac_update3_LDADD		= $(lib_LTLIBRARIES)
 tests_xhmac_update3_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HMAC_UPDATE3=1
 tests_xhmac_update3_SOURCES		= tests/xtest-hmac.c
+
+
+# macros for tests/xhmac-update-key1
+tests_xhmac_update_key1_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhmac_update_key1_LDADD		= $(lib_LTLIBRARIES)
+tests_xhmac_update_key1_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HMAC_UPDATE_KEY1=1
+tests_xhmac_update_key1_SOURCES		= tests/xtest-hmac.c
+
+
+# macros for tests/xhmac-update-key2
+tests_xhmac_update_key2_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhmac_update_key2_LDADD		= $(lib_LTLIBRARIES)
+tests_xhmac_update_key2_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HMAC_UPDATE_KEY2=1
+tests_xhmac_update_key2_SOURCES		= tests/xtest-hmac.c
+
+
+# macros for tests/xhmac-update-key3
+tests_xhmac_update_key3_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhmac_update_key3_LDADD		= $(lib_LTLIBRARIES)
+tests_xhmac_update_key3_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HMAC_UPDATE_KEY3=1
+tests_xhmac_update_key3_SOURCES		= tests/xtest-hmac.c
+
+
+# macros for tests/xhmac-update-key4
+tests_xhmac_update_key4_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhmac_update_key4_LDADD		= $(lib_LTLIBRARIES)
+tests_xhmac_update_key4_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HMAC_UPDATE_KEY4=1
+tests_xhmac_update_key4_SOURCES		= tests/xtest-hmac.c
+
+
+# macros for tests/xhmac-update-key5
+tests_xhmac_update_key5_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhmac_update_key5_LDADD		= $(lib_LTLIBRARIES)
+tests_xhmac_update_key5_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HMAC_UPDATE_KEY5=1
+tests_xhmac_update_key5_SOURCES		= tests/xtest-hmac.c
 
 
 # Makefile includes
