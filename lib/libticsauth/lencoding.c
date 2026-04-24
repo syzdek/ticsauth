@@ -453,10 +453,10 @@ tics_encoding_block_sizes(
    if ((rc = tics_encoding(encoding, &bxx)) != TICS_SUCCESS)
       return(rc);
 
-      if ((enc_sizep))
-         *enc_sizep = bxx.block_enc;
-      if ((dec_sizep))
-         *dec_sizep = bxx.block_dec;
+   if ((enc_sizep))
+      *enc_sizep = bxx.block_enc;
+   if ((dec_sizep))
+      *dec_sizep = bxx.block_dec;
 
    return(TICS_SUCCESS);
 }
