@@ -184,6 +184,9 @@ XFAIL_TESTS				= tests/xhash-algo \
 					  tests/xhmac-init3 \
 					  tests/xhmac-init4 \
 					  tests/xhmac-lock-key1 \
+					  tests/xhmac-result1 \
+					  tests/xhmac-result2 \
+					  tests/xhmac-result3 \
 					  tests/xhmac-update1 \
 					  tests/xhmac-update2 \
 					  tests/xhmac-update3 \
@@ -882,6 +885,27 @@ tests_xhmac_lock_key1_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 tests_xhmac_lock_key1_LDADD		= $(lib_LTLIBRARIES)
 tests_xhmac_lock_key1_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HMAC_LOCK_KEY1=1
 tests_xhmac_lock_key1_SOURCES		= tests/xtest-hmac.c
+
+
+# macros for tests/xhmac-result1
+tests_xhmac_result1_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhmac_result1_LDADD		= $(lib_LTLIBRARIES)
+tests_xhmac_result1_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HMAC_RESULT1=1
+tests_xhmac_result1_SOURCES		= tests/xtest-hmac.c
+
+
+# macros for tests/xhmac-result2
+tests_xhmac_result2_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhmac_result2_LDADD		= $(lib_LTLIBRARIES)
+tests_xhmac_result2_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HMAC_RESULT2=1
+tests_xhmac_result2_SOURCES		= tests/xtest-hmac.c
+
+
+# macros for tests/xhmac-result3
+tests_xhmac_result3_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhmac_result3_LDADD		= $(lib_LTLIBRARIES)
+tests_xhmac_result3_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HMAC_RESULT3=1
+tests_xhmac_result3_SOURCES		= tests/xtest-hmac.c
 
 
 # macros for tests/xhmac-update1
