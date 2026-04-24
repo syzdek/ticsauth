@@ -3,23 +3,31 @@ TICS Authenticator
 Copyright (C) 2026 David M. Syzdek <david@syzdek.net>.  
 All rights reserved.  
 
-#### Library
+Library
+-------
 
 
-#### CLI
+CLI Utility
+-----------
 
 
-#### iPhoneOS
+iPhoneOS App
+------------
 
 
-#### Android
+Android App
+-----------
 
 
-### MacOS Desktop
+MacOS Desktop App
+-----------------
 
 
-### Linux Desktop
+Linux Desktop App
+-----------------
 
 
-### Windows Desktop
+Windows Desktop App
+-------------------
+
 
