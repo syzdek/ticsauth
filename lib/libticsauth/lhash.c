@@ -343,10 +343,12 @@ tics_hash_verify_str(
    tics_assert(TICS_EARGS, ctx != NULL);
    tics_assert(TICS_EARGS, md_str  != NULL);
 
-   if ((rc = tics_hash_result_str(ctx, res, sizeof(res))) != TICS_SUCCESS)
+   if ((rc = tics_hash_result_str(ctx, res, sizeof(res))) < TICS_SUCCESS)
       return((int)rc);
 
-   if ((strcmp(md_str, res)))
+   if ((strncmp(md_str, res, (ctx->md_len*2))))
+      return(TICS_EMDMATCH);
+   if (md_str[ctx->md_len*2] != '\0')
       return(TICS_EMDMATCH);
 
    return(TICS_SUCCESS);
