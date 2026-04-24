@@ -161,7 +161,10 @@ XFAIL_TESTS				= tests/xhash-algo \
 					  tests/xhash-update1 \
 					  tests/xhash-update2 \
 					  tests/xhash-update3 \
-					  tests/xhash-update4
+					  tests/xhash-update4 \
+					  tests/xhash-verify1 \
+					  tests/xhash-verify2 \
+					  tests/xhash-verify3
 EXTRA_MANS				=
 EXTRA_DIST				= AUTHORS.md \
 					  ChangeLog.md \
@@ -698,6 +701,27 @@ tests_xhash_update4_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 tests_xhash_update4_LDADD		= $(lib_LTLIBRARIES)
 tests_xhash_update4_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HASH_UPDATE4=1
 tests_xhash_update4_SOURCES		= tests/xtest-hash.c
+
+
+# macros for tests/xhash-verify1
+tests_xhash_verify1_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhash_verify1_LDADD		= $(lib_LTLIBRARIES)
+tests_xhash_verify1_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HASH_VERIFY1=1
+tests_xhash_verify1_SOURCES		= tests/xtest-hash.c
+
+
+# macros for tests/xhash-verify2
+tests_xhash_verify2_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhash_verify2_LDADD		= $(lib_LTLIBRARIES)
+tests_xhash_verify2_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HASH_VERIFY2=1
+tests_xhash_verify2_SOURCES		= tests/xtest-hash.c
+
+
+# macros for tests/xhash-verify3
+tests_xhash_verify3_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhash_verify3_LDADD		= $(lib_LTLIBRARIES)
+tests_xhash_verify3_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HASH_VERIFY3=1
+tests_xhash_verify3_SOURCES		= tests/xtest-hash.c
 
 
 # Makefile includes

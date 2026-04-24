@@ -398,7 +398,15 @@ test_contexts(
       };
 
       // use function to test binary result
+#if defined(XFAIL_HASH_VERIFY1)
+      if ((rc = tics_hash_verify(NULL, expected, TEST_MD_LEN)) != TICS_SUCCESS)
+#elif defined(XFAIL_HASH_VERIFY2)
+      if ((rc = tics_hash_verify(ctx, NULL, TEST_MD_LEN)) != TICS_SUCCESS)
+#elif defined(XFAIL_HASH_VERIFY3)
+      if ((rc = tics_hash_verify(ctx, expected, TEST_MD_LEN-1)) != TICS_SUCCESS)
+#else
       if ((rc = tics_hash_verify(ctx, expected, TEST_MD_LEN)) != TICS_SUCCESS)
+#endif
       {  fprintf(stderr, "%s: round %i: tics_hash_verify(): %s\n", PROGRAM_NAME, count, tics_strerror(rc));
          tics_hash_free(ctx);
          return(1);
