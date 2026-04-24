@@ -329,7 +329,15 @@ test_contexts(
 
          // manually test binary result
          memset(md,  pad_vals[pass], sizeof(md));
+#ifdef XFAIL_MD_RESULT1
+         if ((rc = tics_hash_result(ctx, md, TEST_MD_LEN-1)) != TICS_SUCCESS)
+#elif defined(XFAIL_MD_RESULT2)
+         if ((rc = tics_hash_result(ctx, NULL, TEST_MD_LEN)) != TICS_SUCCESS)
+#elif defined(XFAIL_MD_RESULT3)
+         if ((rc = tics_hash_result(NULL, md, TEST_MD_LEN)) != TICS_SUCCESS)
+#else
          if ((rc = tics_hash_result(ctx, md, TEST_MD_LEN)) != TICS_SUCCESS)
+#endif
          {  fprintf(stderr, "%s: round %i: padding 0x%02x: tics_hash_result(): %s\n", PROGRAM_NAME, count, pad_vals[pass], tics_strerror(rc));
             tics_hash_free(ctx);
             return(1);
