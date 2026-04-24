@@ -178,7 +178,10 @@ XFAIL_TESTS				= tests/xhash-algo \
 					  tests/xhash-verify-str1 \
 					  tests/xhash-verify-str2 \
 					  tests/xhash-verify-str3 \
-					  tests/xhmac-algo
+					  tests/xhmac-algo \
+					  tests/xhmac-init1 \
+					  tests/xhmac-init2 \
+					  tests/xhmac-init3
 EXTRA_MANS				=
 EXTRA_DIST				= AUTHORS.md \
 					  ChangeLog.md \
@@ -834,6 +837,27 @@ tests_xhmac_algo_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
 tests_xhmac_algo_LDADD			= $(lib_LTLIBRARIES)
 tests_xhmac_algo_CFLAGS			= $(AM_CFLAGS) -DXTEST_ALGORITHM=1
 tests_xhmac_algo_SOURCES		= tests/xtest-hmac.c
+
+
+# macros for tests/xhmac-init1
+tests_xhmac_init1_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhmac_init1_LDADD			= $(lib_LTLIBRARIES)
+tests_xhmac_init1_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HMAC_INIT1=1
+tests_xhmac_init1_SOURCES		= tests/xtest-hmac.c
+
+
+# macros for tests/xhmac-init2
+tests_xhmac_init2_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhmac_init2_LDADD			= $(lib_LTLIBRARIES)
+tests_xhmac_init2_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HMAC_INIT2=1
+tests_xhmac_init2_SOURCES		= tests/xtest-hmac.c
+
+
+# macros for tests/xhmac-init3
+tests_xhmac_init3_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhmac_init3_LDADD			= $(lib_LTLIBRARIES)
+tests_xhmac_init3_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HMAC_INIT3=1
+tests_xhmac_init3_SOURCES		= tests/xtest-hmac.c
 
 
 # Makefile includes
