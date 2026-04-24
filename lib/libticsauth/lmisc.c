@@ -100,6 +100,7 @@ tics_strerror(
    switch (err)
    {  case TICS_SUCCESS:   return("success");
       case TICS_EALGO:     return("unknown or unsupported algorithm");
+      case TICS_EARGS:     return("invalid arguments");
       case TICS_EBADDATA:  return("bad data");
       case TICS_EBUFFSIZE: return("message length exceeds buffer size");
       case TICS_EENCODING: return("unknown or unsupported encoding");
