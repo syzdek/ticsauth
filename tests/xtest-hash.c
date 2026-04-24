@@ -456,7 +456,17 @@ test_convenience(
       if (verbose > 1)
          printf("   testing results with 0x%02x pad ...\n", pad_vals[pass]);
 
+#if defined(XFAIL_HASH_HASH1)
+      if ((ptr = tics_hash(-1, TEST_DATA, TEST_DATA_LEN, md, TEST_MD_LEN)) == NULL)
+#elif defined(XFAIL_HASH_HASH2)
+      if ((ptr = tics_hash(TEST_HASH, NULL, TEST_DATA_LEN, md, TEST_MD_LEN)) == NULL)
+#elif defined(XFAIL_HASH_HASH3)
+      if ((ptr = tics_hash(TEST_HASH, TEST_DATA, TEST_DATA_LEN, NULL, TEST_MD_LEN)) == NULL)
+#elif defined(XFAIL_HASH_HASH4)
+      if ((ptr = tics_hash(TEST_HASH, TEST_DATA, TEST_DATA_LEN, md, (TEST_MD_LEN-1))) == NULL)
+#else
       if ((ptr = tics_hash(TEST_HASH, TEST_DATA, TEST_DATA_LEN, md, TEST_MD_LEN)) == NULL)
+#endif
       {  fprintf(stderr, "%s: tics_hash(): unknown error\n", PROGRAM_NAME);
          return(1);
       };

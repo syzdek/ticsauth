@@ -150,6 +150,10 @@ TESTS					= tests/basexx-base16-dec \
 					  tests/proofofconcept \
 					  $(XFAIL_TESTS)
 XFAIL_TESTS				= tests/xhash-algo \
+					  tests/xhash-hash1 \
+					  tests/xhash-hash2 \
+					  tests/xhash-hash3 \
+					  tests/xhash-hash4 \
 					  tests/xhash-init1 \
 					  tests/xhash-init2 \
 					  tests/xhash-result1 \
@@ -620,6 +624,34 @@ tests_xhash_algo_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
 tests_xhash_algo_LDADD			= $(lib_LTLIBRARIES)
 tests_xhash_algo_CFLAGS			= $(AM_CFLAGS) -DXTEST_ALGORITHM=1
 tests_xhash_algo_SOURCES		= tests/xtest-hash.c
+
+
+# macros for tests/xhash-hash1
+tests_xhash_hash1_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhash_hash1_LDADD			= $(lib_LTLIBRARIES)
+tests_xhash_hash1_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HASH_HASH1=1
+tests_xhash_hash1_SOURCES		= tests/xtest-hash.c
+
+
+# macros for tests/xhash-hash2
+tests_xhash_hash2_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhash_hash2_LDADD			= $(lib_LTLIBRARIES)
+tests_xhash_hash2_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HASH_HASH2=1
+tests_xhash_hash2_SOURCES		= tests/xtest-hash.c
+
+
+# macros for tests/xhash-hash3
+tests_xhash_hash3_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhash_hash3_LDADD			= $(lib_LTLIBRARIES)
+tests_xhash_hash3_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HASH_HASH3=1
+tests_xhash_hash3_SOURCES		= tests/xtest-hash.c
+
+
+# macros for tests/xhash-hash4
+tests_xhash_hash4_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhash_hash4_LDADD			= $(lib_LTLIBRARIES)
+tests_xhash_hash4_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HASH_HASH4=1
+tests_xhash_hash4_SOURCES		= tests/xtest-hash.c
 
 
 # macros for tests/xhash-init1
