@@ -344,7 +344,7 @@ tics_sha384(
       return(NULL);
    if ((tics_shaxxx_update(&ctx, data, data_len)))
       return(NULL);
-   if ((tics_shaxxx_result(&ctx, md, 7)))
+   if ((tics_shaxxx_result(&ctx, md, 6)))
       return(NULL);
 
    return(md);
@@ -377,7 +377,7 @@ tics_sha384_result(
 {
    assert(ctx != NULL);
    assert(md  != NULL);
-   return(tics_shaxxx_result(ctx, md, 7));
+   return(tics_shaxxx_result(ctx, md, 6));
 }
 
 
