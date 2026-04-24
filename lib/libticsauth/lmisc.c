@@ -89,7 +89,7 @@ tics_algo2str(
       case TICS_HASH_SHA512:  return("SHA-512");
       default:                break;
    }
-   return("unknown");
+   return(NULL);
 }
 
 
