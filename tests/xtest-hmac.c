@@ -486,7 +486,19 @@ test_convenience(
       if (verbose > 1)
          printf("   testing results with 0x%02x pad ...\n", pad_vals[pass]);
 
+#if defined(XFAIL_HMAC_HMAC1)
+      if ((ptr = tics_hmac(-1, TEST_KEY, TEST_KEY_LEN, TEST_DATA, TEST_DATA_LEN, md, TEST_MD_LEN)) == NULL)
+#elif defined(XFAIL_HMAC_HMAC2)
+      if ((ptr = tics_hmac(TEST_HASH, NULL, TEST_KEY_LEN, TEST_DATA, TEST_DATA_LEN, md, TEST_MD_LEN)) == NULL)
+#elif defined(XFAIL_HMAC_HMAC3)
+      if ((ptr = tics_hmac(TEST_HASH, TEST_KEY, 0, TEST_DATA, TEST_DATA_LEN, md, TEST_MD_LEN)) == NULL)
+#elif defined(XFAIL_HMAC_HMAC4)
+      if ((ptr = tics_hmac(TEST_HASH, TEST_KEY, TEST_KEY_LEN, NULL, TEST_DATA_LEN, md, TEST_MD_LEN)) == NULL)
+#elif defined(XFAIL_HMAC_HMAC5)
+      if ((ptr = tics_hmac(TEST_HASH, TEST_KEY, TEST_KEY_LEN, TEST_DATA, 0, md, TEST_MD_LEN)) == NULL)
+#else
       if ((ptr = tics_hmac(TEST_HASH, TEST_KEY, TEST_KEY_LEN, TEST_DATA, TEST_DATA_LEN, md, TEST_MD_LEN)) == NULL)
+#endif
       {  fprintf(stderr, "%s: tics_hash(): unknown error\n", PROGRAM_NAME);
          return(1);
       };
