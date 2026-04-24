@@ -157,12 +157,12 @@ main(
          char *                        argv[] );
 
 
-static inline int
+static int
 test_contexts(
          const char *                  algo_str );
 
 
-static inline int
+static int
 test_convenience(
          const char *                  algo_str );
 
