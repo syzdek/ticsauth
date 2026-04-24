@@ -368,6 +368,7 @@ tics_hmac_update_key(
 
    tics_assert(TICS_EARGS, ctx != NULL);
    tics_assert(TICS_EARGS, key != NULL);
+   tics_assert(TICS_EARGS, len != 0);
 
    if ((ctx->flags & TICS_HMAC_KEY_LOCKED) != 0)
       return(TICS_EHMACKEY);
