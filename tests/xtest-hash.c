@@ -372,7 +372,15 @@ test_contexts(
 
          // manually test string result
          memset(md_str, pad_vals[pass], sizeof(md_str));
+#if defined(XFAIL_HASH_RESULT_STR1)
+         if ((rc = (int)tics_hash_result_str(NULL, md_str, ((TEST_MD_LEN*2)+1))) < TICS_SUCCESS)
+#elif defined(XFAIL_HASH_RESULT_STR2)
+         if ((rc = (int)tics_hash_result_str(ctx, NULL, ((TEST_MD_LEN*2)+1))) < TICS_SUCCESS)
+#elif defined(XFAIL_HASH_RESULT_STR3)
+         if ((rc = (int)tics_hash_result_str(ctx, md_str, ((TEST_MD_LEN*2)))) < TICS_SUCCESS)
+#else
          if ((rc = (int)tics_hash_result_str(ctx, md_str, ((TEST_MD_LEN*2)+1))) < TICS_SUCCESS)
+#endif
          {  fprintf(stderr, "%s: round %i: padding 0x%02x: tics_hash_result_str(): %s\n", PROGRAM_NAME, count, pad_vals[pass], tics_strerror(rc));
             tics_hash_free(ctx);
             return(1);
