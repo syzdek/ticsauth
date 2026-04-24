@@ -135,6 +135,7 @@ EXTRA_PROGRAMS				= tests/basexx-base16-dec \
 					  tests/hmac-sha512-seg \
 					  tests/hmac-sha512-str \
 					  tests/proofofconcept \
+					  tests/xhash-generic-algo \
 					  tests/xhash-md5 \
 					  tests/xhash-sha1 \
 					  tests/xhash-sha224 \
@@ -196,13 +197,14 @@ TESTS					= tests/basexx-base16-dec \
 					  tests/hmac-sha512-seg \
 					  tests/hmac-sha512-str \
 					  tests/proofofconcept \
+					  tests/xhash-generic-algo \
 					  tests/xhash-md5 \
 					  tests/xhash-sha1 \
 					  tests/xhash-sha224 \
 					  tests/xhash-sha256 \
 					  tests/xhash-sha384 \
 					  tests/xhash-sha512
-XFAIL_TESTS				=
+XFAIL_TESTS				= tests/xhash-generic-algo
 EXTRA_MANS				=
 EXTRA_DIST				= AUTHORS.md \
 					  ChangeLog.md \
@@ -606,6 +608,13 @@ tests_proofofconcept_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 tests_proofofconcept_LDADD		= $(lib_LTLIBRARIES)
 tests_proofofconcept_SOURCES		= tests/tests.h \
 					  tests/proofofconcept.c
+
+
+# macros for tests/xhash-generic-algo
+tests_xhash_generic_algo_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhash_generic_algo_LDADD		= $(lib_LTLIBRARIES)
+tests_xhash_generic_algo_CFLAGS		= $(AM_CFLAGS) -DTEST_HASH=TICS_HASH_SHA1 -DXTEST_ALGORITHM=1
+tests_xhash_generic_algo_SOURCES	= tests/xtest-hash.c
 
 
 # macros for tests/xhash-md5

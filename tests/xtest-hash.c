@@ -244,7 +244,11 @@ main(
       };
    };
 
+#ifdef XTEST_ALGORITHM
+   if ((algo_str = tics_algo2str(-1)) == NULL)
+#else
    if ((algo_str = tics_algo2str(TEST_HASH)) == NULL)
+#endif
    {  fprintf(stderr, "%s: tics_algo2str(): unknown algorithm\n", PROGRAM_NAME);
       return(1);
    };
