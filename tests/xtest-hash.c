@@ -300,7 +300,17 @@ test_contexts(
    for(count = 0; (count < 10); count++)
    {  if ((verbose))
          printf("   starting round %i\n", count);
+#if defined(XFAIL_HASH_UPDATE1)
+      if ((rc = tics_hash_update(NULL, TEST_DATA, TEST_DATA_LEN)) != TICS_SUCCESS)
+#elif defined(XFAIL_HASH_UPDATE2)
+      if ((rc = tics_hash_update(ctx, NULL, TEST_DATA_LEN)) != TICS_SUCCESS)
+#elif defined(XFAIL_HASH_UPDATE3)
+      if ((rc = tics_hash_update(ctx, TEST_DATA, TEST_DATA_LEN-1)) != TICS_SUCCESS)
+#elif defined(XFAIL_HASH_UPDATE4)
+      if ((rc = tics_hash_update(ctx, TEST_DATA, 0)) != TICS_SUCCESS)
+#else
       if ((rc = tics_hash_update(ctx, TEST_DATA, TEST_DATA_LEN)) != TICS_SUCCESS)
+#endif
       {  fprintf(stderr, "%s: tics_hash_update(): %s\n", PROGRAM_NAME, tics_strerror(rc));
          tics_hash_free(ctx);
          return(1);
