@@ -187,6 +187,9 @@ XFAIL_TESTS				= tests/xhash-algo \
 					  tests/xhmac-result1 \
 					  tests/xhmac-result2 \
 					  tests/xhmac-result3 \
+					  tests/xhmac-result-str1 \
+					  tests/xhmac-result-str2 \
+					  tests/xhmac-result-str3 \
 					  tests/xhmac-update1 \
 					  tests/xhmac-update2 \
 					  tests/xhmac-update3 \
@@ -906,6 +909,27 @@ tests_xhmac_result3_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 tests_xhmac_result3_LDADD		= $(lib_LTLIBRARIES)
 tests_xhmac_result3_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HMAC_RESULT3=1
 tests_xhmac_result3_SOURCES		= tests/xtest-hmac.c
+
+
+# macros for tests/xhmac-result-str1
+tests_xhmac_result_str1_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhmac_result_str1_LDADD		= $(lib_LTLIBRARIES)
+tests_xhmac_result_str1_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HMAC_RESULT_STR1=1
+tests_xhmac_result_str1_SOURCES		= tests/xtest-hmac.c
+
+
+# macros for tests/xhmac-result-str2
+tests_xhmac_result_str2_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhmac_result_str2_LDADD		= $(lib_LTLIBRARIES)
+tests_xhmac_result_str2_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HMAC_RESULT_STR2=1
+tests_xhmac_result_str2_SOURCES		= tests/xtest-hmac.c
+
+
+# macros for tests/xhmac-result-str3
+tests_xhmac_result_str3_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhmac_result_str3_LDADD		= $(lib_LTLIBRARIES)
+tests_xhmac_result_str3_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HMAC_RESULT_STR3=1
+tests_xhmac_result_str3_SOURCES		= tests/xtest-hmac.c
 
 
 # macros for tests/xhmac-update1
