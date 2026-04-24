@@ -79,21 +79,21 @@ main(
          char *                        argv[] );
 
 
-static inline int
+static int
 test_encodings_decode(
          int                           test_num,
          int                           encoding,
          test_encoding_t *             rec );
 
 
-static inline int
+static int
 test_encodings_encode(
          int                           test_num,
          int                           encoding,
          test_encoding_t *             rec );
 
 
-static inline void
+static void
 test_encodings_result(
          const char *                  title,
          int                           test_num,
@@ -102,14 +102,14 @@ test_encodings_result(
          test_encoding_t *             rec );
 
 
-static inline void
+static void
 test_encodings_result_print(
          const char *                  field,
          const void *                  data,
          size_t                        data_len );
 
 
-static inline int
+static int
 test_encodings_verify(
          int                           test_num,
          int                           encoding,
