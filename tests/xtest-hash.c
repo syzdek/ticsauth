@@ -175,6 +175,13 @@ test_convenience(
 int verbose    = 0;
 int quiet      = 0;
 
+const uint8_t *      test_result       = TEST_RESULT;
+const uint8_t *      test_result5      = TEST_RESULT5;
+const uint8_t *      test_result10     = TEST_RESULT10;
+const char *         test_result_str   = TEST_RESULT_STR;
+const char *         test_result_str5  = TEST_RESULT_STR5;
+const char *         test_result_str10 = TEST_RESULT_STR10;
+
 
 /////////////////
 //             //
@@ -318,18 +325,18 @@ test_contexts(
 
       switch(count+1)
       {  case  1:
-            expected       = TEST_RESULT;
-            expected_str   = TEST_RESULT_STR;
+            expected       = test_result;
+            expected_str   = test_result_str;
             break;
 
          case  5:
-            expected       = TEST_RESULT5;
-            expected_str   = TEST_RESULT_STR5;
+            expected       = test_result5;
+            expected_str   = test_result_str5;
             break;
 
          case 10:
-            expected       = TEST_RESULT10;
-            expected_str   = TEST_RESULT_STR10;
+            expected       = test_result10;
+            expected_str   = test_result_str10;
             break;
 
          default:
