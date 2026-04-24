@@ -148,7 +148,7 @@ TESTS					= tests/basexx-base16-dec \
 					  tests/hmac-sha512-seg \
 					  tests/hmac-sha512-str \
 					  tests/proofofconcept \
-					  tests/xhash-generic-algo
+					  $(XFAIL_TESTS)
 XFAIL_TESTS				= tests/xhash-generic-algo
 EXTRA_MANS				=
 EXTRA_DIST				= AUTHORS.md \
