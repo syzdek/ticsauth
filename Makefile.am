@@ -150,6 +150,8 @@ TESTS					= tests/basexx-base16-dec \
 					  tests/proofofconcept \
 					  $(XFAIL_TESTS)
 XFAIL_TESTS				= tests/xhash-algo \
+					  tests/xhash-init1 \
+					  tests/xhash-init2 \
 					  tests/xhash-result1 \
 					  tests/xhash-result2 \
 					  tests/xhash-result3
@@ -605,6 +607,20 @@ tests_xhash_algo_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
 tests_xhash_algo_LDADD			= $(lib_LTLIBRARIES)
 tests_xhash_algo_CFLAGS			= $(AM_CFLAGS) -DXTEST_ALGORITHM=1
 tests_xhash_algo_SOURCES		= tests/xtest-hash.c
+
+
+# macros for tests/xhash-init1
+tests_xhash_init1_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhash_init1_LDADD			= $(lib_LTLIBRARIES)
+tests_xhash_init1_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HASH_INIT1=1
+tests_xhash_init1_SOURCES		= tests/xtest-hash.c
+
+
+# macros for tests/xhash-init2
+tests_xhash_init2_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhash_init2_LDADD			= $(lib_LTLIBRARIES)
+tests_xhash_init2_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HASH_INIT1=2
+tests_xhash_init2_SOURCES		= tests/xtest-hash.c
 
 
 # macros for tests/xhash-result1

@@ -281,11 +281,18 @@ test_contexts(
    pad_vals = (const uint8_t []){ 0x55, 0xaa, 0x00 };
 
    memset(pad,   0, sizeof(pad));
+   ctx      = NULL;
 
    if (!(quiet))
       printf("testing %s context functions ...\n", algo_str);
 
+#if defined(XFAIL_HASH_INIT1)
+   if ((rc = tics_hash_init(NULL, TEST_HASH)) != TICS_SUCCESS)
+#elif defined(XFAIL_HASH_INIT2)
+   if ((rc = tics_hash_init(&ctx, -1)) != TICS_SUCCESS)
+#else
    if ((rc = tics_hash_init(&ctx, TEST_HASH)) != TICS_SUCCESS)
+#endif
    {  fprintf(stderr, "%s: tics_hash_init(): %s\n", PROGRAM_NAME, tics_strerror(rc));
       return(1);
    };
