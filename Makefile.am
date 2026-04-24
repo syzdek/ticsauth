@@ -129,21 +129,27 @@ TESTS					= tests/basexx-base16-dec \
 					  tests/hash-sha512-ctx \
 					  tests/hash-sha512-seg \
 					  tests/hash-sha512-str \
+					  tests/hmac-md5 \
 					  tests/hmac-md5-ctx \
 					  tests/hmac-md5-seg \
 					  tests/hmac-md5-str \
+					  tests/hmac-sha1 \
 					  tests/hmac-sha1-ctx \
 					  tests/hmac-sha1-seg \
 					  tests/hmac-sha1-str \
+					  tests/hmac-sha224 \
 					  tests/hmac-sha224-ctx \
 					  tests/hmac-sha224-seg \
 					  tests/hmac-sha224-str \
+					  tests/hmac-sha256 \
 					  tests/hmac-sha256-ctx \
 					  tests/hmac-sha256-seg \
 					  tests/hmac-sha256-str \
+					  tests/hmac-sha384 \
 					  tests/hmac-sha384-ctx \
 					  tests/hmac-sha384-seg \
 					  tests/hmac-sha384-str \
+					  tests/hmac-sha512 \
 					  tests/hmac-sha512-ctx \
 					  tests/hmac-sha512-seg \
 					  tests/hmac-sha512-str \
@@ -171,7 +177,8 @@ XFAIL_TESTS				= tests/xhash-algo \
 					  tests/xhash-verify3 \
 					  tests/xhash-verify-str1 \
 					  tests/xhash-verify-str2 \
-					  tests/xhash-verify-str3
+					  tests/xhash-verify-str3 \
+					  tests/xhmac-algo
 EXTRA_MANS				=
 EXTRA_DIST				= AUTHORS.md \
 					  ChangeLog.md \
@@ -451,6 +458,13 @@ tests_hash_sha512_str_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA512_STR=1
 tests_hash_sha512_str_SOURCES		= tests/tests.h tests/test-hash.c tests/data-sha512.c
 
 
+# macros for tests/hmac-md5
+tests_hmac_md5_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
+tests_hmac_md5_LDADD			= $(lib_LTLIBRARIES)
+tests_hmac_md5_CFLAGS			= $(AM_CFLAGS) -DTEST_HASH=TICS_HASH_MD5
+tests_hmac_md5_SOURCES			= tests/xtest-hmac.c
+
+
 # macros for tests/hmac-md5-ctx
 tests_hmac_md5_ctx_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
 tests_hmac_md5_ctx_LDADD		= $(lib_LTLIBRARIES)
@@ -470,6 +484,13 @@ tests_hmac_md5_str_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
 tests_hmac_md5_str_LDADD		= $(lib_LTLIBRARIES)
 tests_hmac_md5_str_CFLAGS		= $(AM_CFLAGS) -DTEST_MD5_STR=1
 tests_hmac_md5_str_SOURCES		= tests/tests.h tests/test-hmac.c tests/data-md5.c
+
+
+# macros for tests/hmac-sha1
+tests_hmac_sha1_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
+tests_hmac_sha1_LDADD			= $(lib_LTLIBRARIES)
+tests_hmac_sha1_CFLAGS			= $(AM_CFLAGS) -DTEST_HASH=TICS_HASH_SHA1
+tests_hmac_sha1_SOURCES			= tests/xtest-hmac.c
 
 
 # macros for tests/hash-sha1
@@ -500,6 +521,13 @@ tests_hmac_sha1_str_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA1_STR=1
 tests_hmac_sha1_str_SOURCES		= tests/tests.h tests/test-hmac.c tests/data-sha1.c
 
 
+# macros for tests/hmac-sha224
+tests_hmac_sha224_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
+tests_hmac_sha224_LDADD			= $(lib_LTLIBRARIES)
+tests_hmac_sha224_CFLAGS		= $(AM_CFLAGS) -DTEST_HASH=TICS_HASH_SHA224
+tests_hmac_sha224_SOURCES		= tests/xtest-hmac.c
+
+
 # macros for tests/hash-sha224
 tests_hash_sha224_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
 tests_hash_sha224_LDADD			= $(lib_LTLIBRARIES)
@@ -526,6 +554,13 @@ tests_hmac_sha224_str_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 tests_hmac_sha224_str_LDADD		= $(lib_LTLIBRARIES)
 tests_hmac_sha224_str_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA224_STR=1
 tests_hmac_sha224_str_SOURCES		= tests/tests.h tests/test-hmac.c tests/data-sha224.c
+
+
+# macros for tests/hmac-sha256
+tests_hmac_sha256_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
+tests_hmac_sha256_LDADD			= $(lib_LTLIBRARIES)
+tests_hmac_sha256_CFLAGS		= $(AM_CFLAGS) -DTEST_HASH=TICS_HASH_SHA256
+tests_hmac_sha256_SOURCES		= tests/xtest-hmac.c
 
 
 # macros for tests/hash-sha256
@@ -556,6 +591,13 @@ tests_hmac_sha256_str_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA256_STR=1
 tests_hmac_sha256_str_SOURCES		= tests/tests.h tests/test-hmac.c tests/data-sha256.c
 
 
+# macros for tests/hmac-sha384
+tests_hmac_sha384_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
+tests_hmac_sha384_LDADD			= $(lib_LTLIBRARIES)
+tests_hmac_sha384_CFLAGS		= $(AM_CFLAGS) -DTEST_HASH=TICS_HASH_SHA384
+tests_hmac_sha384_SOURCES		= tests/xtest-hmac.c
+
+
 # macros for tests/hash-sha384
 tests_hash_sha384_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
 tests_hash_sha384_LDADD			= $(lib_LTLIBRARIES)
@@ -582,6 +624,13 @@ tests_hmac_sha384_str_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 tests_hmac_sha384_str_LDADD		= $(lib_LTLIBRARIES)
 tests_hmac_sha384_str_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA384_STR=1
 tests_hmac_sha384_str_SOURCES		= tests/tests.h tests/test-hmac.c tests/data-sha384.c
+
+
+# macros for tests/hmac-sha512
+tests_hmac_sha512_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
+tests_hmac_sha512_LDADD			= $(lib_LTLIBRARIES)
+tests_hmac_sha512_CFLAGS		= $(AM_CFLAGS) -DTEST_HASH=TICS_HASH_SHA512
+tests_hmac_sha512_SOURCES		= tests/xtest-hmac.c
 
 
 # macros for tests/hash-sha512
@@ -778,6 +827,13 @@ tests_xhash_verify_str3_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 tests_xhash_verify_str3_LDADD		= $(lib_LTLIBRARIES)
 tests_xhash_verify_str3_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HASH_VERIFY_STR3=1
 tests_xhash_verify_str3_SOURCES		= tests/xtest-hash.c
+
+
+# macros for tests/xhmac-algo
+tests_xhmac_algo_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhmac_algo_LDADD			= $(lib_LTLIBRARIES)
+tests_xhmac_algo_CFLAGS			= $(AM_CFLAGS) -DXTEST_ALGORITHM=1
+tests_xhmac_algo_SOURCES		= tests/xtest-hmac.c
 
 
 # Makefile includes
