@@ -164,7 +164,10 @@ XFAIL_TESTS				= tests/xhash-algo \
 					  tests/xhash-update4 \
 					  tests/xhash-verify1 \
 					  tests/xhash-verify2 \
-					  tests/xhash-verify3
+					  tests/xhash-verify3 \
+					  tests/xhash-verify-str1 \
+					  tests/xhash-verify-str2 \
+					  tests/xhash-verify-str3
 EXTRA_MANS				=
 EXTRA_DIST				= AUTHORS.md \
 					  ChangeLog.md \
@@ -722,6 +725,27 @@ tests_xhash_verify3_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 tests_xhash_verify3_LDADD		= $(lib_LTLIBRARIES)
 tests_xhash_verify3_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HASH_VERIFY3=1
 tests_xhash_verify3_SOURCES		= tests/xtest-hash.c
+
+
+# macros for tests/xhash-verify-str1
+tests_xhash_verify_str1_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhash_verify_str1_LDADD		= $(lib_LTLIBRARIES)
+tests_xhash_verify_str1_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HASH_VERIFY_STR1=1
+tests_xhash_verify_str1_SOURCES		= tests/xtest-hash.c
+
+
+# macros for tests/xhash-verify-str2
+tests_xhash_verify_str2_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhash_verify_str2_LDADD		= $(lib_LTLIBRARIES)
+tests_xhash_verify_str2_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HASH_VERIFY_STR2=1
+tests_xhash_verify_str2_SOURCES		= tests/xtest-hash.c
+
+
+# macros for tests/xhash-verify3
+tests_xhash_verify_str3_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhash_verify_str3_LDADD		= $(lib_LTLIBRARIES)
+tests_xhash_verify_str3_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HASH_VERIFY_STR3=1
+tests_xhash_verify_str3_SOURCES		= tests/xtest-hash.c
 
 
 # Makefile includes

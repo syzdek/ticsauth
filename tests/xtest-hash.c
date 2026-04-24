@@ -413,7 +413,15 @@ test_contexts(
       };
 
       // use function to test string result
+#if defined(XFAIL_HASH_VERIFY_STR1)
+      if ((rc = tics_hash_verify_str(NULL, expected_str)) != TICS_SUCCESS)
+#elif defined(XFAIL_HASH_VERIFY_STR2)
+      if ((rc = tics_hash_verify_str(ctx, NULL)) != TICS_SUCCESS)
+#elif defined(XFAIL_HASH_VERIFY_STR3)
+      if ((rc = tics_hash_verify_str(ctx, "00000")) != TICS_SUCCESS)
+#else
       if ((rc = tics_hash_verify_str(ctx, expected_str)) != TICS_SUCCESS)
+#endif
       {  fprintf(stderr, "%s: round %i: tics_hash_verify_str(): %s\n", PROGRAM_NAME, count, tics_strerror(rc));
          tics_hash_free(ctx);
          return(1);
