@@ -86,62 +86,7 @@ pkgdata_DATA				=
 sbin_SCRIPTS				=
 sbin_PROGRAMS				=
 mod_LTLIBRARIES				=
-EXTRA_PROGRAMS				= tests/basexx-base16-dec \
-					  tests/basexx-base16-enc \
-					  tests/basexx-base16-ver \
-					  tests/basexx-base32-dec \
-					  tests/basexx-base32-enc \
-					  tests/basexx-base32-ver \
-					  tests/basexx-base32hex-dec \
-					  tests/basexx-base32hex-enc \
-					  tests/basexx-base32hex-ver \
-					  tests/basexx-base64-dec \
-					  tests/basexx-base64-enc \
-					  tests/basexx-base64-ver \
-					  tests/hash-md5-ctx \
-					  tests/hash-md5-seg \
-					  tests/hash-md5-str \
-					  tests/hash-sha1-ctx \
-					  tests/hash-sha1-seg \
-					  tests/hash-sha1-str \
-					  tests/hash-sha224-ctx \
-					  tests/hash-sha224-seg \
-					  tests/hash-sha224-str \
-					  tests/hash-sha256-ctx \
-					  tests/hash-sha256-seg \
-					  tests/hash-sha256-str \
-					  tests/hash-sha384-ctx \
-					  tests/hash-sha384-seg \
-					  tests/hash-sha384-str \
-					  tests/hash-sha512-ctx \
-					  tests/hash-sha512-seg \
-					  tests/hash-sha512-str \
-					  tests/hmac-md5-ctx \
-					  tests/hmac-md5-seg \
-					  tests/hmac-md5-str \
-					  tests/hmac-sha1-ctx \
-					  tests/hmac-sha1-seg \
-					  tests/hmac-sha1-str \
-					  tests/hmac-sha224-ctx \
-					  tests/hmac-sha224-seg \
-					  tests/hmac-sha224-str \
-					  tests/hmac-sha256-ctx \
-					  tests/hmac-sha256-seg \
-					  tests/hmac-sha256-str \
-					  tests/hmac-sha384-ctx \
-					  tests/hmac-sha384-seg \
-					  tests/hmac-sha384-str \
-					  tests/hmac-sha512-ctx \
-					  tests/hmac-sha512-seg \
-					  tests/hmac-sha512-str \
-					  tests/proofofconcept \
-					  tests/xhash-generic-algo \
-					  tests/xhash-md5 \
-					  tests/xhash-sha1 \
-					  tests/xhash-sha224 \
-					  tests/xhash-sha256 \
-					  tests/xhash-sha384 \
-					  tests/xhash-sha512
+EXTRA_PROGRAMS				= $(TESTS)
 EXTRA					=
 
 
