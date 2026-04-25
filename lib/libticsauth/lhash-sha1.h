@@ -69,14 +69,6 @@ struct _tics_hash_ctx_sha1
 //////////////////
 // MARK: - Prototypes
 
-extern void *
-tics_sha1(
-         const void *                  data,
-         size_t                        data_len,
-         uint8_t *                     md,
-         size_t                        md_len );
-
-
 extern int
 tics_sha1_reset(
          tics_hash_sha1_t *            ctx );

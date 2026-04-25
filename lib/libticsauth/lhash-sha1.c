@@ -90,36 +90,6 @@ tics_sha1_process_msg_block(
 /////////////////
 // MARK: - Functions
 
-void *
-tics_sha1(
-         const void *                  data,
-         size_t                        data_len,
-         uint8_t *                     md,
-         size_t                        md_len )
-{
-   tics_hash_sha1_t  ctx;
-
-   assert(data       != NULL);
-   assert(md         != NULL);
-
-   if (md_len < TICS_MD_SIZE_SHA1)
-      return(NULL);
-
-   memset(&ctx, 0, sizeof(ctx));
-
-   if ((tics_sha1_reset(&ctx)))
-      return(NULL);
-
-   if ((tics_sha1_update(&ctx, data, data_len)))
-      return(NULL);
-
-   if ((tics_sha1_result(&ctx, md)))
-      return(NULL);
-
-   return(md);
-}
-
-
 void
 tics_sha1_pad_msg(
          tics_hash_sha1_t *            ctx )
