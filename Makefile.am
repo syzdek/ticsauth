@@ -160,6 +160,7 @@ TESTS					= tests/basexx-base16 \
 					  tests/proofofconcept \
 					  $(XFAIL_TESTS)
 XFAIL_TESTS				= tests/xbasexx-encoding \
+					  tests/xbasexx-encoded-size \
 					  tests/xhash-algo \
 					  tests/xhash-hash1 \
 					  tests/xhash-hash2 \
@@ -731,6 +732,13 @@ tests_xbasexx_encoding_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 tests_xbasexx_encoding_LDADD		= $(lib_LTLIBRARIES)
 tests_xbasexx_encoding_CFLAGS		= $(AM_CFLAGS) -DXTEST_ENCODING=1
 tests_xbasexx_encoding_SOURCES		= tests/xtest-basexx.c
+
+
+# macros for tests/xbasexx-encoded-size
+tests_xbasexx_encoded_size_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xbasexx_encoded_size_LDADD	= $(lib_LTLIBRARIES)
+tests_xbasexx_encoded_size_CFLAGS	= $(AM_CFLAGS) -DXFAIL_ENCODED_SIZE=1
+tests_xbasexx_encoded_size_SOURCES	= tests/xtest-basexx.c
 
 
 # macros for tests/xhash-algo
