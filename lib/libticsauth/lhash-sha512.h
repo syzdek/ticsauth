@@ -75,14 +75,6 @@ struct _tics_hash_ctx_sha512
 //--------------------//
 #pragma mark SHA-384 prototypes
 
-extern void *
-tics_sha384(
-         const void *                  data,
-         size_t                        data_len,
-         uint8_t *                     md,
-         size_t                        md_len );
-
-
 extern int
 tics_sha384_reset(
          tics_hash_sha384_t *          ctx );
