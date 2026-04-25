@@ -262,8 +262,7 @@ main(
    };
 
    if (!(quiet))
-   {  tests -= skipped;
-      printf("results:\n");
+   {  printf("results:\n");
       printf("    digests skipped:  %3i\n", skipped);
       printf("    digests passed:   %3i\n", (tests - errors - skipped));
       printf("    digests failed:   %3i\n", errors);
