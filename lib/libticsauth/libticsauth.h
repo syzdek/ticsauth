@@ -62,7 +62,11 @@
 //////////////
 // MARK: - Macros
 
-#define tics_assert(rc, cond) assert((cond)); if (!(cond)) return(rc)
+#ifdef USE_DEBUG
+#   define tics_assert(rc, cond) assert((cond)); if (!(cond)) return(rc)
+#else
+#   define tics_assert(rc, cond) if (!(cond)) return(rc)
+#endif
 
 
 ///////////////////
