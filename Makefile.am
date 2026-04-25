@@ -86,7 +86,7 @@ pkgdata_DATA				=
 sbin_SCRIPTS				=
 sbin_PROGRAMS				=
 mod_LTLIBRARIES				=
-EXTRA_PROGRAMS				= $(TESTS)
+EXTRA_PROGRAMS				= $(TESTS) $(ADDITIONAL_XFAIL_TESTS)
 EXTRA					=
 
 
@@ -159,7 +159,8 @@ TESTS					= tests/basexx-base16 \
 					  tests/hmac-sha512-str \
 					  tests/proofofconcept \
 					  $(XFAIL_TESTS)
-XFAIL_TESTS				= tests/xbasexx-encoding \
+XFAIL_TESTS				=
+ADDITIONAL_XFAIL_TESTS			= tests/xbasexx-encoding \
 					  tests/xbasexx-encoded-size \
 					  tests/xbasexx-encode1 \
 					  tests/xbasexx-encode2 \
@@ -260,6 +261,10 @@ DISTCHECK_CONFIGURE_FLAGS		= --enable-strictwarnings \
 
 
 # conditional build
+if ENABLE_ADDITIONAL_TESTS
+   TESTS				+= $(ADDITIONAL_XFAIL_TESTS)
+   XFAIL_TESTS				+= $(ADDITIONAL_XFAIL_TESTS)
+endif
 
 
 # macros for lib/libticsauth.la

@@ -32,5 +32,51 @@
 #
 
 
+# AC_TICSAUTH_EXAMPLES()
+# ______________________________________________________________________________
+AC_DEFUN([AC_TICSAUTH_EXAMPLES],[dnl
+
+   enableval=""
+   AC_ARG_ENABLE(
+      examples,
+      [AS_HELP_STRING([--enable-examples], [build example programs])],
+      [ EEXAMPLES=$enableval ],
+      [ EEXAMPLES=$enableval ]
+   )
+
+   if test "x${EEXAMPLES}" == "xyes";then
+      ENABLE_EXAMPLES=build
+   else
+      ENABLE_EXAMPLES=skip
+   fi
+
+   AM_CONDITIONAL([ENABLE_EXAMPLES],  [test "$ENABLE_EXAMPLES"  = "build"])
+   AM_CONDITIONAL([DISABLE_EXAMPLES], [test "$ENABLE_EXAMPLES" != "build"])
+])dnl
+
+
+# AC_TICSAUTH_EXTRA_TESTS()
+# ______________________________________________________________________________
+AC_DEFUN([AC_TICSAUTH_EXTRA_TESTS],[dnl
+
+   enableval=""
+   AC_ARG_ENABLE(
+      extra-tests,
+      [AS_HELP_STRING([--enable-extra-tests], [build extra checks programs])],
+      [ EEXTRA_TESTS=$enableval ],
+      [ EEXTRA_TESTS=$enableval ]
+   )
+
+   if test "x${EEXTRA_TESTS}" == "xyes";then
+      ENABLE_ADDITIONAL_TESTS=build
+   else
+      ENABLE_ADDITIONAL_TESTS=skip
+   fi
+
+   AM_CONDITIONAL([ENABLE_ADDITIONAL_TESTS],  [test "$ENABLE_ADDITIONAL_TESTS"  = "build"])
+   AM_CONDITIONAL([DISABLE_ADDITIONAL_TESTS], [test "$ENABLE_ADDITIONAL_TESTS" != "build"])
+])dnl
+
+
 # end of m4 file
 
