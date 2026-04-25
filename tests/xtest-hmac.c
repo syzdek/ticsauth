@@ -448,7 +448,6 @@ test_contexts(
          };
       };
 
-/*
       // use function to test binary result
       if ((rc = tics_hmac_verify(ctx, expected, TEST_MD_LEN)) != TICS_SUCCESS)
       {  fprintf(stderr, "%s: round %i: tics_hash_verify(): %s\n", PROGRAM_NAME, count, tics_strerror(rc));
@@ -462,7 +461,6 @@ test_contexts(
          tics_hmac_free(ctx);
          return(1);
       };
-*/
    };
 
    tics_hmac_free(ctx);
