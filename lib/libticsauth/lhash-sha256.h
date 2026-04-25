@@ -97,14 +97,6 @@ tics_sha224_update(
 //--------------------//
 #pragma mark SHA-256 prototypes
 
-extern void *
-tics_sha256(
-         const void *                  data,
-         size_t                        data_len,
-         uint8_t *                     md,
-         size_t                        md_len );
-
-
 extern int
 tics_sha256_reset(
          tics_hash_sha256_t *          ctx );
