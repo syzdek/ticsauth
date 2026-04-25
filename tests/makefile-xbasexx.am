@@ -1,0 +1,146 @@
+#
+#   TICS Authenticator
+#   Copyright (C) 2026 David M. Syzdek <david@syzdek.net>.
+#   All rights reserved.
+#
+#   Redistribution and use in source and binary forms, with or without
+#   modification, are permitted provided that the following conditions are
+#   met:
+#
+#      * Redistributions of source code must retain the above copyright
+#        notice, this list of conditions and the following disclaimer.
+#      * Redistributions in binary form must reproduce the above copyright
+#        notice, this list of conditions and the following disclaimer in the
+#        documentation and/or other materials provided with the distribution.
+#      * Neither the name of David M. Syzdek nor the
+#        names of its contributors may be used to endorse or promote products
+#        derived from this software without specific prior written permission.
+#
+#   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+#   IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+#   THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+#   PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL DAVID M SYZDEK BE LIABLE FOR
+#   ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+#   DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#   SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+#   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+#   LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+#   OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+#   SUCH DAMAGE.
+#
+
+# lists
+XBASEXX_TESTS_LIST			= tests/xbasexx-encoding \
+					  tests/xbasexx-encoded-size \
+					  tests/xbasexx-encode1 \
+					  tests/xbasexx-encode2 \
+					  tests/xbasexx-encode3 \
+					  tests/xbasexx-decoded-size \
+					  tests/xbasexx-decode1 \
+					  tests/xbasexx-decode2 \
+					  tests/xbasexx-decode3 \
+					  tests/xbasexx-decode4 \
+					  tests/xbasexx-verify1 \
+					  tests/xbasexx-verify2 \
+					  tests/xbasexx-verify3
+EXTRA_PROGRAMS				+= $(XBASEXX_TESTS_LIST)
+
+# conditional build
+if ENABLE_ADDITIONAL_TESTS
+   TESTS				+= $(XBASEXX_TESTS_LIST)
+   XFAIL_TESTS				+= $(XBASEXX_TESTS_LIST)
+endif
+
+
+# macros for tests/xbasexx-encoding
+tests_xbasexx_encoding_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xbasexx_encoding_LDADD		= $(lib_LTLIBRARIES)
+tests_xbasexx_encoding_CFLAGS		= $(AM_CFLAGS) -DXTEST_ENCODING=1
+tests_xbasexx_encoding_SOURCES		= tests/xtest-basexx.c
+
+
+# macros for tests/xbasexx-encoded-size
+tests_xbasexx_encoded_size_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xbasexx_encoded_size_LDADD	= $(lib_LTLIBRARIES)
+tests_xbasexx_encoded_size_CFLAGS	= $(AM_CFLAGS) -DXFAIL_ENCODED_SIZE=1
+tests_xbasexx_encoded_size_SOURCES	= tests/xtest-basexx.c
+
+
+# macros for tests/xbasexx-encode1
+tests_xbasexx_encode1_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xbasexx_encode1_LDADD		= $(lib_LTLIBRARIES)
+tests_xbasexx_encode1_CFLAGS		= $(AM_CFLAGS) -DXFAIL_ENCODE1=1
+tests_xbasexx_encode1_SOURCES		= tests/xtest-basexx.c
+
+
+# macros for tests/xbasexx-encode2
+tests_xbasexx_encode2_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xbasexx_encode2_LDADD		= $(lib_LTLIBRARIES)
+tests_xbasexx_encode2_CFLAGS		= $(AM_CFLAGS) -DXFAIL_ENCODE2=1
+tests_xbasexx_encode2_SOURCES		= tests/xtest-basexx.c
+
+
+# macros for tests/xbasexx-encode3
+tests_xbasexx_encode3_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xbasexx_encode3_LDADD		= $(lib_LTLIBRARIES)
+tests_xbasexx_encode3_CFLAGS		= $(AM_CFLAGS) -DXFAIL_ENCODE3=1
+tests_xbasexx_encode3_SOURCES		= tests/xtest-basexx.c
+
+
+# macros for tests/xbasexx-decode1
+tests_xbasexx_decode1_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xbasexx_decode1_LDADD		= $(lib_LTLIBRARIES)
+tests_xbasexx_decode1_CFLAGS		= $(AM_CFLAGS) -DXFAIL_DECODE1=1
+tests_xbasexx_decode1_SOURCES		= tests/xtest-basexx.c
+
+
+# macros for tests/xbasexx-decode2
+tests_xbasexx_decode2_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xbasexx_decode2_LDADD		= $(lib_LTLIBRARIES)
+tests_xbasexx_decode2_CFLAGS		= $(AM_CFLAGS) -DXFAIL_DECODE2=1
+tests_xbasexx_decode2_SOURCES		= tests/xtest-basexx.c
+
+
+# macros for tests/xbasexx-decode3
+tests_xbasexx_decode3_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xbasexx_decode3_LDADD		= $(lib_LTLIBRARIES)
+tests_xbasexx_decode3_CFLAGS		= $(AM_CFLAGS) -DXFAIL_DECODE3=1
+tests_xbasexx_decode3_SOURCES		= tests/xtest-basexx.c
+
+
+# macros for tests/xbasexx-decode4
+tests_xbasexx_decode4_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xbasexx_decode4_LDADD		= $(lib_LTLIBRARIES)
+tests_xbasexx_decode4_CFLAGS		= $(AM_CFLAGS) -DXFAIL_DECODE4=1
+tests_xbasexx_decode4_SOURCES		= tests/xtest-basexx.c
+
+
+# macros for tests/xbasexx-decoded-size
+tests_xbasexx_decoded_size_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xbasexx_decoded_size_LDADD	= $(lib_LTLIBRARIES)
+tests_xbasexx_decoded_size_CFLAGS	= $(AM_CFLAGS) -DXFAIL_DECODED_SIZE=1
+tests_xbasexx_decoded_size_SOURCES	= tests/xtest-basexx.c
+
+
+# macros for tests/xbasexx-verify1
+tests_xbasexx_verify1_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xbasexx_verify1_LDADD		= $(lib_LTLIBRARIES)
+tests_xbasexx_verify1_CFLAGS		= $(AM_CFLAGS) -DXFAIL_ENCODING_VERIFY1=1
+tests_xbasexx_verify1_SOURCES		= tests/xtest-basexx.c
+
+
+# macros for tests/xbasexx-verify2
+tests_xbasexx_verify2_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xbasexx_verify2_LDADD		= $(lib_LTLIBRARIES)
+tests_xbasexx_verify2_CFLAGS		= $(AM_CFLAGS) -DXFAIL_ENCODING_VERIFY2=1
+tests_xbasexx_verify2_SOURCES		= tests/xtest-basexx.c
+
+
+# macros for tests/xbasexx-verify3
+tests_xbasexx_verify3_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xbasexx_verify3_LDADD		= $(lib_LTLIBRARIES)
+tests_xbasexx_verify3_CFLAGS		= $(AM_CFLAGS) -DXFAIL_ENCODING_VERIFY3=1
+tests_xbasexx_verify3_SOURCES		= tests/xtest-basexx.c
+
+
+# end of automake file

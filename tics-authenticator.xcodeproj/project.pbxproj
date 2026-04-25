@@ -309,6 +309,12 @@
 		A0C4657C2F9B50E3007EBFEC /* xtest-hmac.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "xtest-hmac.c"; sourceTree = "<group>"; };
 		A0C465822F9C18DB007EBFEC /* xtest-basexx */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "xtest-basexx"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0C4658C2F9C1901007EBFEC /* xtest-basexx.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "xtest-basexx.c"; sourceTree = "<group>"; };
+		A0C4658E2F9D65A5007EBFEC /* makefile-basexx.am */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; path = "makefile-basexx.am"; sourceTree = "<group>"; };
+		A0C4658F2F9D65A5007EBFEC /* makefile-hash.am */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; path = "makefile-hash.am"; sourceTree = "<group>"; };
+		A0C465902F9D65A5007EBFEC /* makefile-hmac.am */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; path = "makefile-hmac.am"; sourceTree = "<group>"; };
+		A0C465912F9D65A5007EBFEC /* makefile-xbasexx.am */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; path = "makefile-xbasexx.am"; sourceTree = "<group>"; };
+		A0C465922F9D65A5007EBFEC /* makefile-xhash.am */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; path = "makefile-xhash.am"; sourceTree = "<group>"; };
+		A0C465932F9D65A5007EBFEC /* makefile-xhmac.am */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; path = "makefile-xhmac.am"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -478,6 +484,12 @@
 		A06E08992F8BD65400F342A5 /* tests */ = {
 			isa = PBXGroup;
 			children = (
+				A0C4658E2F9D65A5007EBFEC /* makefile-basexx.am */,
+				A0C4658F2F9D65A5007EBFEC /* makefile-hash.am */,
+				A0C465902F9D65A5007EBFEC /* makefile-hmac.am */,
+				A0C465912F9D65A5007EBFEC /* makefile-xbasexx.am */,
+				A0C465922F9D65A5007EBFEC /* makefile-xhash.am */,
+				A0C465932F9D65A5007EBFEC /* makefile-xhmac.am */,
 				A06E09C42F91FCE000F342A5 /* README.md */,
 				A06E08BD2F8BD8CA00F342A5 /* tests.h */,
 				A06E09E72F97768400F342A5 /* data-base16.c */,

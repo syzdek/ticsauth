@@ -1,0 +1,194 @@
+#
+#   TICS Authenticator
+#   Copyright (C) 2026 David M. Syzdek <david@syzdek.net>.
+#   All rights reserved.
+#
+#   Redistribution and use in source and binary forms, with or without
+#   modification, are permitted provided that the following conditions are
+#   met:
+#
+#      * Redistributions of source code must retain the above copyright
+#        notice, this list of conditions and the following disclaimer.
+#      * Redistributions in binary form must reproduce the above copyright
+#        notice, this list of conditions and the following disclaimer in the
+#        documentation and/or other materials provided with the distribution.
+#      * Neither the name of David M. Syzdek nor the
+#        names of its contributors may be used to endorse or promote products
+#        derived from this software without specific prior written permission.
+#
+#   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+#   IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+#   THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+#   PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL DAVID M SYZDEK BE LIABLE FOR
+#   ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+#   DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#   SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+#   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+#   LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+#   OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+#   SUCH DAMAGE.
+#
+
+# lists
+HASH_TESTS_LIST				= tests/hash-md5 \
+					  tests/hash-md5-ctx \
+					  tests/hash-md5-seg \
+					  tests/hash-md5-str \
+					  tests/hash-sha1 \
+					  tests/hash-sha1-ctx \
+					  tests/hash-sha1-seg \
+					  tests/hash-sha1-str \
+					  tests/hash-sha224 \
+					  tests/hash-sha224-ctx \
+					  tests/hash-sha224-seg \
+					  tests/hash-sha224-str \
+					  tests/hash-sha256 \
+					  tests/hash-sha256-ctx \
+					  tests/hash-sha256-seg \
+					  tests/hash-sha256-str \
+					  tests/hash-sha384 \
+					  tests/hash-sha384-ctx \
+					  tests/hash-sha384-seg \
+					  tests/hash-sha384-str \
+					  tests/hash-sha512 \
+					  tests/hash-sha512-ctx \
+					  tests/hash-sha512-seg \
+					  tests/hash-sha512-str
+EXTRA_PROGRAMS				+= $(HASH_TESTS_LIST)
+TESTS					+= $(HASH_TESTS_LIST)
+
+
+# macros for tests/hash-md5
+tests_hash_md5_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
+tests_hash_md5_LDADD			= $(lib_LTLIBRARIES)
+tests_hash_md5_CFLAGS			= $(AM_CFLAGS) -DTEST_HASH=TICS_HASH_MD5
+tests_hash_md5_SOURCES			= tests/xtest-hash.c
+
+
+# macros for tests/hash-md5-ctx
+tests_hash_md5_ctx_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
+tests_hash_md5_ctx_LDADD		= $(lib_LTLIBRARIES)
+tests_hash_md5_ctx_CFLAGS		= $(AM_CFLAGS) -DTEST_MD5_CTX=1
+tests_hash_md5_ctx_SOURCES		= tests/tests.h tests/test-hash.c tests/data-md5.c
+
+
+# macros for tests/hash-md5-seg
+tests_hash_md5_seg_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
+tests_hash_md5_seg_LDADD		= $(lib_LTLIBRARIES)
+tests_hash_md5_seg_CFLAGS		= $(AM_CFLAGS) -DTEST_MD5_SEG=1
+tests_hash_md5_seg_SOURCES		= tests/tests.h tests/test-hash.c tests/data-md5.c
+
+
+# macros for tests/hash-md5-str
+tests_hash_md5_str_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
+tests_hash_md5_str_LDADD		= $(lib_LTLIBRARIES)
+tests_hash_md5_str_CFLAGS		= $(AM_CFLAGS) -DTEST_MD5_STR=1
+tests_hash_md5_str_SOURCES		= tests/tests.h tests/test-hash.c tests/data-md5.c
+
+
+# macros for tests/hash-sha1-ctx
+tests_hash_sha1_ctx_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_hash_sha1_ctx_LDADD		= $(lib_LTLIBRARIES)
+tests_hash_sha1_ctx_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA1_CTX=1
+tests_hash_sha1_ctx_SOURCES		= tests/tests.h tests/test-hash.c tests/data-sha1.c
+
+
+# macros for tests/hash-sha1-seg
+tests_hash_sha1_seg_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_hash_sha1_seg_LDADD		= $(lib_LTLIBRARIES)
+tests_hash_sha1_seg_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA1_SEG=1
+tests_hash_sha1_seg_SOURCES		= tests/tests.h tests/test-hash.c tests/data-sha1.c
+
+
+# macros for tests/hash-sha1-str
+tests_hash_sha1_str_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_hash_sha1_str_LDADD		= $(lib_LTLIBRARIES)
+tests_hash_sha1_str_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA1_STR=1
+tests_hash_sha1_str_SOURCES		= tests/tests.h tests/test-hash.c tests/data-sha1.c
+
+
+# macros for tests/hash-sha224-ctx
+tests_hash_sha224_ctx_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_hash_sha224_ctx_LDADD		= $(lib_LTLIBRARIES)
+tests_hash_sha224_ctx_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA224_CTX=1
+tests_hash_sha224_ctx_SOURCES		= tests/tests.h tests/test-hash.c tests/data-sha224.c
+
+
+# macros for tests/hash-sha224-seg
+tests_hash_sha224_seg_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_hash_sha224_seg_LDADD		= $(lib_LTLIBRARIES)
+tests_hash_sha224_seg_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA224_SEG=1
+tests_hash_sha224_seg_SOURCES		= tests/tests.h tests/test-hash.c tests/data-sha224.c
+
+
+# macros for tests/hash-sha224-str
+tests_hash_sha224_str_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_hash_sha224_str_LDADD		= $(lib_LTLIBRARIES)
+tests_hash_sha224_str_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA224_STR=1
+tests_hash_sha224_str_SOURCES		= tests/tests.h tests/test-hash.c tests/data-sha224.c
+
+
+# macros for tests/hash-sha256-ctx
+tests_hash_sha256_ctx_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_hash_sha256_ctx_LDADD		= $(lib_LTLIBRARIES)
+tests_hash_sha256_ctx_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA256_CTX=1
+tests_hash_sha256_ctx_SOURCES		= tests/tests.h tests/test-hash.c tests/data-sha256.c
+
+
+# macros for tests/hash-sha256-seg
+tests_hash_sha256_seg_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_hash_sha256_seg_LDADD		= $(lib_LTLIBRARIES)
+tests_hash_sha256_seg_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA256_SEG=1
+tests_hash_sha256_seg_SOURCES		= tests/tests.h tests/test-hash.c tests/data-sha256.c
+
+
+# macros for tests/hash-sha256-str
+tests_hash_sha256_str_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_hash_sha256_str_LDADD		= $(lib_LTLIBRARIES)
+tests_hash_sha256_str_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA256_STR=1
+tests_hash_sha256_str_SOURCES		= tests/tests.h tests/test-hash.c tests/data-sha256.c
+
+
+# macros for tests/hash-sha384-ctx
+tests_hash_sha384_ctx_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_hash_sha384_ctx_LDADD		= $(lib_LTLIBRARIES)
+tests_hash_sha384_ctx_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA384_CTX=1
+tests_hash_sha384_ctx_SOURCES		= tests/tests.h tests/test-hash.c tests/data-sha384.c
+
+
+# macros for tests/hash-sha384-seg
+tests_hash_sha384_seg_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_hash_sha384_seg_LDADD		= $(lib_LTLIBRARIES)
+tests_hash_sha384_seg_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA384_SEG=1
+tests_hash_sha384_seg_SOURCES		= tests/tests.h tests/test-hash.c tests/data-sha384.c
+
+
+# macros for tests/hash-sha384-str
+tests_hash_sha384_str_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_hash_sha384_str_LDADD		= $(lib_LTLIBRARIES)
+tests_hash_sha384_str_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA384_STR=1
+tests_hash_sha384_str_SOURCES		= tests/tests.h tests/test-hash.c tests/data-sha384.c
+
+
+# macros for tests/hash-sha512-ctx
+tests_hash_sha512_ctx_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_hash_sha512_ctx_LDADD		= $(lib_LTLIBRARIES)
+tests_hash_sha512_ctx_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA512_CTX=1
+tests_hash_sha512_ctx_SOURCES		= tests/tests.h tests/test-hash.c tests/data-sha512.c
+
+
+# macros for tests/hash-sha512-seg
+tests_hash_sha512_seg_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_hash_sha512_seg_LDADD		= $(lib_LTLIBRARIES)
+tests_hash_sha512_seg_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA512_SEG=1
+tests_hash_sha512_seg_SOURCES		= tests/tests.h tests/test-hash.c tests/data-sha512.c
+
+
+# macros for tests/hash-sha512-str
+tests_hash_sha512_str_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_hash_sha512_str_LDADD		= $(lib_LTLIBRARIES)
+tests_hash_sha512_str_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA512_STR=1
+tests_hash_sha512_str_SOURCES		= tests/tests.h tests/test-hash.c tests/data-sha512.c
+
+
+# end of automake file
