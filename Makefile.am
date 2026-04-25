@@ -93,15 +93,19 @@ EXTRA					=
 # lists
 AM_INSTALLCHECK_STD_OPTIONS_EXEMPT	=
 BUILT_SOURCES				=
-TESTS					= tests/basexx-base16-dec \
+TESTS					= tests/basexx-base16 \
+					  tests/basexx-base16-dec \
 					  tests/basexx-base16-enc \
 					  tests/basexx-base16-ver \
+					  tests/basexx-base32 \
 					  tests/basexx-base32-dec \
 					  tests/basexx-base32-enc \
 					  tests/basexx-base32-ver \
+					  tests/basexx-base32hex \
 					  tests/basexx-base32hex-dec \
 					  tests/basexx-base32hex-enc \
 					  tests/basexx-base32hex-ver \
+					  tests/basexx-base64 \
 					  tests/basexx-base64-dec \
 					  tests/basexx-base64-enc \
 					  tests/basexx-base64-ver \
@@ -155,7 +159,8 @@ TESTS					= tests/basexx-base16-dec \
 					  tests/hmac-sha512-str \
 					  tests/proofofconcept \
 					  $(XFAIL_TESTS)
-XFAIL_TESTS				= tests/xhash-algo \
+XFAIL_TESTS				= tests/xbasexx-encoding \
+					  tests/xhash-algo \
 					  tests/xhash-hash1 \
 					  tests/xhash-hash2 \
 					  tests/xhash-hash3 \
@@ -266,6 +271,13 @@ lib_libticsauth_la_SOURCES		= include/ticsauth.h \
 					  lib/libticsauth/lmisc.c
 
 
+# macros for tests/basexx-base16
+tests_basexx_base16_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_basexx_base16_LDADD		= $(lib_LTLIBRARIES)
+tests_basexx_base16_CFLAGS		= $(AM_CFLAGS) -DTEST_ENCODE=TICS_ENCODE_BASE16
+tests_basexx_base16_SOURCES		= tests/xtest-basexx.c
+
+
 # macros for tests/basexx-base16-dec
 tests_basexx_base16_dec_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 tests_basexx_base16_dec_LDADD		= $(lib_LTLIBRARIES)
@@ -285,6 +297,13 @@ tests_basexx_base16_ver_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 tests_basexx_base16_ver_LDADD		= $(lib_LTLIBRARIES)
 tests_basexx_base16_ver_CFLAGS		= $(AM_CFLAGS) -DTEST_BASE16_VER=1
 tests_basexx_base16_ver_SOURCES		= tests/tests.h tests/test-basexx.c tests/data-base16.c
+
+
+# macros for tests/basexx-base32
+tests_basexx_base32_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_basexx_base32_LDADD		= $(lib_LTLIBRARIES)
+tests_basexx_base32_CFLAGS		= $(AM_CFLAGS) -DTEST_ENCODE=TICS_ENCODE_BASE32
+tests_basexx_base32_SOURCES		= tests/xtest-basexx.c
 
 
 # macros for tests/basexx-base32-dec
@@ -307,6 +326,14 @@ tests_basexx_base32_ver_LDADD		= $(lib_LTLIBRARIES)
 tests_basexx_base32_ver_CFLAGS		= $(AM_CFLAGS) -DTEST_BASE32_VER=1
 tests_basexx_base32_ver_SOURCES		= tests/tests.h tests/test-basexx.c tests/data-base32.c
 
+
+# macros for tests/basexx-base32hex
+tests_basexx_base32hex_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_basexx_base32hex_LDADD		= $(lib_LTLIBRARIES)
+tests_basexx_base32hex_CFLAGS		= $(AM_CFLAGS) -DTEST_ENCODE=TICS_ENCODE_BASE32HEX
+tests_basexx_base32hex_SOURCES		= tests/xtest-basexx.c
+
+
 # macros for tests/basexx-base32hex-dec
 tests_basexx_base32hex_dec_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 tests_basexx_base32hex_dec_LDADD	= $(lib_LTLIBRARIES)
@@ -326,6 +353,13 @@ tests_basexx_base32hex_ver_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 tests_basexx_base32hex_ver_LDADD	= $(lib_LTLIBRARIES)
 tests_basexx_base32hex_ver_CFLAGS	= $(AM_CFLAGS) -DTEST_BASE32HEX_VER=1
 tests_basexx_base32hex_ver_SOURCES	= tests/tests.h tests/test-basexx.c tests/data-base32hex.c
+
+
+# macros for tests/basexx-base64
+tests_basexx_base64_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_basexx_base64_LDADD		= $(lib_LTLIBRARIES)
+tests_basexx_base64_CFLAGS		= $(AM_CFLAGS) -DTEST_ENCODE=TICS_ENCODE_BASE64
+tests_basexx_base64_SOURCES		= tests/xtest-basexx.c
 
 
 # macros for tests/basexx-base64-dec
@@ -690,6 +724,13 @@ tests_proofofconcept_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 tests_proofofconcept_LDADD		= $(lib_LTLIBRARIES)
 tests_proofofconcept_SOURCES		= tests/tests.h \
 					  tests/proofofconcept.c
+
+
+# macros for tests/xbasexx-encoding
+tests_xbasexx_encoding_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xbasexx_encoding_LDADD		= $(lib_LTLIBRARIES)
+tests_xbasexx_encoding_CFLAGS		= $(AM_CFLAGS) -DXTEST_ENCODING=1
+tests_xbasexx_encoding_SOURCES		= tests/xtest-basexx.c
 
 
 # macros for tests/xhash-algo
