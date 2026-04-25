@@ -98,14 +98,6 @@ tics_sha384_update(
 //--------------------//
 #pragma mark SHA-512 prototypes
 
-extern void *
-tics_sha512(
-         const void *                  data,
-         size_t                        data_len,
-         uint8_t *                     md,
-         size_t                        md_len );
-
-
 extern int
 tics_sha512_reset(
          tics_hash_sha512_t *          ctx );

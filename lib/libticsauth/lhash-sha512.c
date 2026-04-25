@@ -371,33 +371,6 @@ tics_sha384_update(
 //-------------------//
 #pragma mark SHA-512 functions
 
-void *
-tics_sha512(
-         const void *                  data,
-         size_t                        data_len,
-         uint8_t *                     md,
-         size_t                        md_len )
-{
-   tics_hash_sha512_t   ctx;
-
-   assert(data       != NULL);
-   assert(md         != NULL);
-
-   if (md_len < TICS_MD_SIZE_SHA512)
-      return(NULL);
-
-   memset(&ctx, 0, sizeof(ctx));
-   if ((tics_sha512_reset(&ctx)))
-      return(NULL);
-   if ((tics_sha512_update(&ctx, data, data_len)))
-      return(NULL);
-   if ((tics_sha512_result(&ctx, md)))
-      return(NULL);
-
-   return(md);
-}
-
-
 int
 tics_sha512_reset(
          tics_hash_sha512_t *          ctx )
