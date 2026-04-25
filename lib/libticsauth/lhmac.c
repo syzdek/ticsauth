@@ -444,7 +444,7 @@ tics_hmac_verify_str(
    tics_assert(TICS_EARGS, ctx != NULL);
    tics_assert(TICS_EARGS, md_str  != NULL);
 
-   if ((rc = tics_hmac_result_str(ctx, res, sizeof(res))) != TICS_SUCCESS)
+   if ((rc = tics_hmac_result_str(ctx, res, sizeof(res))) < TICS_SUCCESS)
       return((int)rc);
 
    if ((strcmp(md_str, res)))
