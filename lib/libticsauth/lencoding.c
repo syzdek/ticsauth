@@ -312,8 +312,6 @@ tics_decode(
    if ((rc = bxx.func_verify(bxx.map_vals, (const uint8_t *)src, src_len)) < TICS_SUCCESS)
       return(rc);
 
-   ((uint8_t *)dst)[len] = '\0';
-
    return(bxx.func_dec(bxx.map_vals, (const uint8_t *)src, src_len, dst));
 }
 
