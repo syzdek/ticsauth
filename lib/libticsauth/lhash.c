@@ -55,7 +55,7 @@
 /////////////////
 // MARK: - Functions
 
-void *
+int
 tics_hash(
          int                           algo,
          const void *                  data,
@@ -63,27 +63,31 @@ tics_hash(
          uint8_t *                     md,
          size_t                        md_len )
 {
-   void *         res;
+   int            rc;
    tics_hash_t    ctx;
 
-   tics_assert(NULL, ((data)) || ((!(data)) && (!(data_len))) );
-   tics_assert(NULL, md    != NULL);
+   tics_assert(TICS_EARGS, ((data)) || ((!(data)) && (!(data_len))) );
+   tics_assert(TICS_EARGS, md    != NULL);
 
    data = ((data))
         ? data
         : "";
 
-   if ((tics_hash_reset(&ctx, algo)))
-      return(NULL);
+   if ((rc = tics_hash_reset(&ctx, algo)) != TICS_SUCCESS)
+      return(rc);
 
    if (md_len < ctx.md_len)
-      return(NULL);
+      return(TICS_EMDBUFF);
 
-   res = ctx.func(data, data_len, md, md_len);
+   if ((rc = ctx.func_update(&ctx.hash, data, data_len)) != TICS_SUCCESS)
+      return(rc);
+
+   if ((rc = ctx.func_result(&ctx.hash, md)) != TICS_SUCCESS)
+      return(rc);
 
    memset(&ctx, 0, sizeof(tics_hash_t));
 
-   return(res);
+   return(TICS_SUCCESS);
 }
 
 

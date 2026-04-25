@@ -445,8 +445,8 @@ int
 test_convenience(
          const char *                  algo_str )
 {
+   int               rc;
    int               pass;
-   const char *      ptr;
    uint8_t           md[TEST_MD_LEN*4];
    uint8_t           pad[TEST_MD_LEN*4];
    const uint8_t *   pad_vals;
@@ -464,17 +464,17 @@ test_convenience(
          printf("   testing results with 0x%02x pad ...\n", pad_vals[pass]);
 
 #if defined(XFAIL_HASH_HASH1)
-      if ((ptr = tics_hash(-1, TEST_DATA, TEST_DATA_LEN, md, TEST_MD_LEN)) == NULL)
+      if ((rc = tics_hash(-1, TEST_DATA, TEST_DATA_LEN, md, TEST_MD_LEN)) != TICS_SUCCESS)
 #elif defined(XFAIL_HASH_HASH2)
-      if ((ptr = tics_hash(TEST_HASH, NULL, TEST_DATA_LEN, md, TEST_MD_LEN)) == NULL)
+      if ((rc = tics_hash(TEST_HASH, NULL, TEST_DATA_LEN, md, TEST_MD_LEN)) != TICS_SUCCESS)
 #elif defined(XFAIL_HASH_HASH3)
-      if ((ptr = tics_hash(TEST_HASH, TEST_DATA, TEST_DATA_LEN, NULL, TEST_MD_LEN)) == NULL)
+      if ((rc = tics_hash(TEST_HASH, TEST_DATA, TEST_DATA_LEN, NULL, TEST_MD_LEN)) != TICS_SUCCESS)
 #elif defined(XFAIL_HASH_HASH4)
-      if ((ptr = tics_hash(TEST_HASH, TEST_DATA, TEST_DATA_LEN, md, (TEST_MD_LEN-1))) == NULL)
+      if ((rc = tics_hash(TEST_HASH, TEST_DATA, TEST_DATA_LEN, md, (TEST_MD_LEN-1))) != TICS_SUCCESS)
 #else
-      if ((ptr = tics_hash(TEST_HASH, TEST_DATA, TEST_DATA_LEN, md, TEST_MD_LEN)) == NULL)
+      if ((rc = tics_hash(TEST_HASH, TEST_DATA, TEST_DATA_LEN, md, TEST_MD_LEN)) != TICS_SUCCESS)
 #endif
-      {  fprintf(stderr, "%s: tics_hash(): unknown error\n", PROGRAM_NAME);
+      {  fprintf(stderr, "%s: tics_hash(): %s\n", PROGRAM_NAME, tics_strerror(rc));
          return(1);
       };
       if ((memcmp(md, TEST_RESULT, TEST_MD_LEN)))

@@ -448,12 +448,10 @@ test_hash_str(
    if (!(rec->data_len))
       for(rec->data_len = 0; ((rec->data[rec->data_len])); rec->data_len++);
 
-   if ((tics_hash(algo, rec->data, rec->data_len, md, sizeof(md))))
+   if ((err = tics_hash(algo, rec->data, rec->data_len, md, sizeof(md))) == TICS_SUCCESS)
    {  tics_hash_md2str(algo, md, digest, sizeof(digest));
       if ((strcmp(rec->digest, digest)))
          err = TICS_EMDMATCH;
-   } else
-   {  err = TICS_EUNKNOWN;
    };
 
    test_hmac_result("string", test_num, algo, rec, digest, err);

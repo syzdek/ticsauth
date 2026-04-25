@@ -189,7 +189,7 @@ tics_encoding_verify(
 //-----------------//
 #pragma mark hash prototypes
 
-_TICS_F void *
+_TICS_F int
 tics_hash(
          int                           algo,
          const void *                  data,
