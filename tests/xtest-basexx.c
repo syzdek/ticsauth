@@ -444,7 +444,17 @@ test_convenience(
          if (verbose > 2)
             printf("         testing results with 0x%02x pad ...\n", pad[0]);
 
+#if defined(XFAIL_DECODE1)
+         if ((rc = tics_decode(-1, rec->encoded, rec->encoded_len, (char *)buff, sizeof(buff))) < TICS_SUCCESS)
+#elif defined(XFAIL_DECODE2)
+         if ((rc = tics_decode(TEST_ENCODE, NULL, rec->encoded_len, (char *)buff, sizeof(buff))) < TICS_SUCCESS)
+#elif defined(XFAIL_DECODE3)
+         if ((rc = tics_decode(TEST_ENCODE, rec->encoded, rec->encoded_len, NULL, sizeof(buff))) < TICS_SUCCESS)
+#elif defined(XFAIL_DECODE4)
+         if ((rc = tics_decode(TEST_ENCODE, rec->encoded, rec->encoded_len, (char *)buff, (rec->decoded_len-1))) < TICS_SUCCESS)
+#else
          if ((rc = tics_decode(TEST_ENCODE, rec->encoded, rec->encoded_len, (char *)buff, sizeof(buff))) < TICS_SUCCESS)
+#endif
          {  fprintf(stderr, "%s: pass %i: tics_decode(): %s\n", PROGRAM_NAME, count, tics_strerror((int)rc));
             return(1);
          };

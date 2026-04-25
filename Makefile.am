@@ -165,6 +165,10 @@ XFAIL_TESTS				= tests/xbasexx-encoding \
 					  tests/xbasexx-encode2 \
 					  tests/xbasexx-encode3 \
 					  tests/xbasexx-decoded-size \
+					  tests/xbasexx-decode1 \
+					  tests/xbasexx-decode2 \
+					  tests/xbasexx-decode3 \
+					  tests/xbasexx-decode4 \
 					  tests/xbasexx-verify1 \
 					  tests/xbasexx-verify2 \
 					  tests/xbasexx-verify3 \
@@ -767,6 +771,34 @@ tests_xbasexx_encode3_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 tests_xbasexx_encode3_LDADD		= $(lib_LTLIBRARIES)
 tests_xbasexx_encode3_CFLAGS		= $(AM_CFLAGS) -DXFAIL_ENCODE3=1
 tests_xbasexx_encode3_SOURCES		= tests/xtest-basexx.c
+
+
+# macros for tests/xbasexx-decode1
+tests_xbasexx_decode1_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xbasexx_decode1_LDADD		= $(lib_LTLIBRARIES)
+tests_xbasexx_decode1_CFLAGS		= $(AM_CFLAGS) -DXFAIL_DECODE1=1
+tests_xbasexx_decode1_SOURCES		= tests/xtest-basexx.c
+
+
+# macros for tests/xbasexx-decode2
+tests_xbasexx_decode2_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xbasexx_decode2_LDADD		= $(lib_LTLIBRARIES)
+tests_xbasexx_decode2_CFLAGS		= $(AM_CFLAGS) -DXFAIL_DECODE2=1
+tests_xbasexx_decode2_SOURCES		= tests/xtest-basexx.c
+
+
+# macros for tests/xbasexx-decode3
+tests_xbasexx_decode3_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xbasexx_decode3_LDADD		= $(lib_LTLIBRARIES)
+tests_xbasexx_decode3_CFLAGS		= $(AM_CFLAGS) -DXFAIL_DECODE3=1
+tests_xbasexx_decode3_SOURCES		= tests/xtest-basexx.c
+
+
+# macros for tests/xbasexx-decode4
+tests_xbasexx_decode4_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xbasexx_decode4_LDADD		= $(lib_LTLIBRARIES)
+tests_xbasexx_decode4_CFLAGS		= $(AM_CFLAGS) -DXFAIL_DECODE4=1
+tests_xbasexx_decode4_SOURCES		= tests/xtest-basexx.c
 
 
 # macros for tests/xbasexx-decoded-size
