@@ -67,14 +67,6 @@ struct _tics_hash_ctx_md5
 //////////////////
 // MARK: - Prototypes
 
-extern void *
-tics_md5(
-         const void *                  data,
-         size_t                        data_len,
-         uint8_t *                     md,
-         size_t                        md_len );
-
-
 extern int
 tics_md5_reset(
          tics_hash_md5_t *             ctx );
