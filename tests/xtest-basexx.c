@@ -91,6 +91,12 @@
 #endif
 
 
+#define TEST_BAD_ENCODING  "aaa:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" \
+                           "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" \
+                           "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" \
+                           "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+
+
 /////////////////
 //             //
 //  Datatypes  //
@@ -410,7 +416,15 @@ test_convenience(
          return(1);
       };
 
+#if defined(XFAIL_ENCODING_VERIFY1)
+      if ((rc = tics_encoding_verify(-1, rec->encoded, rec->encoded_len)) < TICS_SUCCESS)
+#elif defined(XFAIL_ENCODING_VERIFY2)
+      if ((rc = tics_encoding_verify(TEST_ENCODE, NULL, rec->encoded_len)) < TICS_SUCCESS)
+#elif defined(XFAIL_ENCODING_VERIFY3)
+      if ((rc = tics_encoding_verify(TEST_ENCODE, TEST_BAD_ENCODING, rec->encoded_len)) < TICS_SUCCESS)
+#else
       if ((rc = tics_encoding_verify(TEST_ENCODE, rec->encoded, rec->encoded_len)) < TICS_SUCCESS)
+#endif
       {  fprintf(stderr, "%s: pass %i: tics_encoding_verify(): %s\n", PROGRAM_NAME, count, tics_strerror((int)rc));
          return(1);
       };

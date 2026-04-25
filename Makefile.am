@@ -165,6 +165,9 @@ XFAIL_TESTS				= tests/xbasexx-encoding \
 					  tests/xbasexx-encode2 \
 					  tests/xbasexx-encode3 \
 					  tests/xbasexx-decoded-size \
+					  tests/xbasexx-verify1 \
+					  tests/xbasexx-verify2 \
+					  tests/xbasexx-verify3 \
 					  tests/xhash-algo \
 					  tests/xhash-hash1 \
 					  tests/xhash-hash2 \
@@ -771,6 +774,27 @@ tests_xbasexx_decoded_size_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 tests_xbasexx_decoded_size_LDADD	= $(lib_LTLIBRARIES)
 tests_xbasexx_decoded_size_CFLAGS	= $(AM_CFLAGS) -DXFAIL_DECODED_SIZE=1
 tests_xbasexx_decoded_size_SOURCES	= tests/xtest-basexx.c
+
+
+# macros for tests/xbasexx-verify1
+tests_xbasexx_verify1_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xbasexx_verify1_LDADD		= $(lib_LTLIBRARIES)
+tests_xbasexx_verify1_CFLAGS		= $(AM_CFLAGS) -DXFAIL_ENCODING_VERIFY1=1
+tests_xbasexx_verify1_SOURCES		= tests/xtest-basexx.c
+
+
+# macros for tests/xbasexx-verify2
+tests_xbasexx_verify2_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xbasexx_verify2_LDADD		= $(lib_LTLIBRARIES)
+tests_xbasexx_verify2_CFLAGS		= $(AM_CFLAGS) -DXFAIL_ENCODING_VERIFY2=1
+tests_xbasexx_verify2_SOURCES		= tests/xtest-basexx.c
+
+
+# macros for tests/xbasexx-verify3
+tests_xbasexx_verify3_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xbasexx_verify3_LDADD		= $(lib_LTLIBRARIES)
+tests_xbasexx_verify3_CFLAGS		= $(AM_CFLAGS) -DXFAIL_ENCODING_VERIFY3=1
+tests_xbasexx_verify3_SOURCES		= tests/xtest-basexx.c
 
 
 # macros for tests/xhash-algo
