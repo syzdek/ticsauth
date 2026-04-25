@@ -74,14 +74,6 @@ struct _tics_hash_ctx_sha256
 //--------------------//
 #pragma mark SHA-224 prototypes
 
-extern void *
-tics_sha224(
-         const void *                  data,
-         size_t                        data_len,
-         uint8_t *                     md,
-         size_t                        md_len );
-
-
 extern int
 tics_sha224_reset(
          tics_hash_sha224_t *          ctx );

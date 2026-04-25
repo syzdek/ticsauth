@@ -279,33 +279,6 @@ tics_shaxxx_update(
 //-------------------//
 #pragma mark SHA-224 functions
 
-void *
-tics_sha224(
-         const void *                  data,
-         size_t                        data_len,
-         uint8_t *                     md,
-         size_t                        md_len )
-{
-   tics_hash_sha224_t   ctx;
-
-   assert(data       != NULL);
-   assert(md         != NULL);
-
-   if (md_len < TICS_MD_SIZE_SHA224)
-      return(NULL);
-
-   memset(&ctx, 0, sizeof(ctx));
-   if ((tics_sha224_reset(&ctx)))
-      return(NULL);
-   if ((tics_shaxxx_update(&ctx, data, data_len)))
-      return(NULL);
-   if ((tics_shaxxx_result(&ctx, md, 7)))
-      return(NULL);
-
-   return(md);
-}
-
-
 int
 tics_sha224_reset(
          tics_hash_sha224_t *          ctx )
