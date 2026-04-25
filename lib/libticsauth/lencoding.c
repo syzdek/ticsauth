@@ -469,6 +469,7 @@ tics_encoding_verify(
    int               rc;
    tics_basexx_t     bxx;
 
+   tics_assert(TICS_EARGS, src != NULL);
 
    if ((rc = tics_encoding(encoding, &bxx)) != TICS_SUCCESS)
       return(rc);
