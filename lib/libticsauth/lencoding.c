@@ -795,31 +795,35 @@ tics_base64_decode(
 
    len = 0;
    for(pos = 0; (pos < src_len); pos++)
-   {  // MSB is Most Significant Bits  (0x80 == 10000000 ~= MSB)
-      // MB is middle bits             (0x7E == 01111110 ~= MB)
-      // LSB is Least Significant Bits (0x01 == 00000001 ~= LSB)
+   {  //             Base64 Characters src[pos]           Binary bytes dst[len]
+      // Step 1: src(XXXXXX 000000 000000 000000) -> dst(XXXXXX00 00000000 00000000)
+      // Step 2: src(000000 XX0000 000000 000000) -> dst(000000XX 00000000 00000000)
+      // Step 3: src(000000 00XXXX 000000 000000) -> dst(00000000 XXXX0000 00000000)
+      // Step 4: src(000000 000000 XXXX00 000000) -> dst(00000000 0000XXXX 00000000)
+      // Step 5: src(000000 000000 0000XX 000000) -> dst(00000000 00000000 XX000000)
+      // Step 6: src(000000 000000 000000 XXXXXX) -> dst(00000000 00000000 00XXXXXX)
       switch(pos & 0x03)
-      {  case 0: // byte 0
-            dst[len++]  = (map[src[pos]] & 0x3f) << 2;  // 6 MSB
+      {  case 0:
+            dst[len]    = (map[src[pos]] & 0x3f) << 2;  // Step 1
             break;
 
-         case 1: // byte 1
-            dst[len-1] |= (map[src[pos]] & 0x30) >> 4; // 2 LSB
-            dst[len++]  = (map[src[pos]] & 0x0f) << 4; // 4 MSB
+         case 1:
+            dst[len++] |= (map[src[pos]] & 0x30) >> 4; // Step 2
             break;
 
-         case 2: // byte 2
+         case 2:
             if (src[pos] == '=')
-               return((ssize_t)len-1);
-            dst[len-1] |= (map[src[pos]] & 0x3c) >> 2; // 4 MSB
-            dst[len++]  = (map[src[pos]] & 0x03) << 6; // 2 LSB
+               return((ssize_t)len);
+            dst[len]    = (map[src[pos-1]] & 0x0f) << 4; // Step 3
+            dst[len++] |= (map[src[pos]]   & 0x3c) >> 2; // Step 4
             break;
 
-         case 3: // byte 3
+         case 3:
          default:
             if (src[pos] == '=')
-               return((ssize_t)len-1);
-            dst[len-1] |= (map[src[pos]] & 0x3f);    // 1 MSB
+               return((ssize_t)len);
+            dst[len]    = (map[src[pos-1]] & 0x03) << 6; // Step 5
+            dst[len++] |= (map[src[pos]]   & 0x3f);      // Step 6
             break;
       };
    };
