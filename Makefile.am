@@ -161,6 +161,9 @@ TESTS					= tests/basexx-base16 \
 					  $(XFAIL_TESTS)
 XFAIL_TESTS				= tests/xbasexx-encoding \
 					  tests/xbasexx-encoded-size \
+					  tests/xbasexx-encode1 \
+					  tests/xbasexx-encode2 \
+					  tests/xbasexx-encode3 \
 					  tests/xhash-algo \
 					  tests/xhash-hash1 \
 					  tests/xhash-hash2 \
@@ -739,6 +742,27 @@ tests_xbasexx_encoded_size_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 tests_xbasexx_encoded_size_LDADD	= $(lib_LTLIBRARIES)
 tests_xbasexx_encoded_size_CFLAGS	= $(AM_CFLAGS) -DXFAIL_ENCODED_SIZE=1
 tests_xbasexx_encoded_size_SOURCES	= tests/xtest-basexx.c
+
+
+# macros for tests/xbasexx-encode1
+tests_xbasexx_encode1_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xbasexx_encode1_LDADD		= $(lib_LTLIBRARIES)
+tests_xbasexx_encode1_CFLAGS		= $(AM_CFLAGS) -DXFAIL_ENCODE1=1
+tests_xbasexx_encode1_SOURCES		= tests/xtest-basexx.c
+
+
+# macros for tests/xbasexx-encode2
+tests_xbasexx_encode2_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xbasexx_encode2_LDADD		= $(lib_LTLIBRARIES)
+tests_xbasexx_encode2_CFLAGS		= $(AM_CFLAGS) -DXFAIL_ENCODE2=1
+tests_xbasexx_encode2_SOURCES		= tests/xtest-basexx.c
+
+
+# macros for tests/xbasexx-encode3
+tests_xbasexx_encode3_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xbasexx_encode3_LDADD		= $(lib_LTLIBRARIES)
+tests_xbasexx_encode3_CFLAGS		= $(AM_CFLAGS) -DXFAIL_ENCODE3=1
+tests_xbasexx_encode3_SOURCES		= tests/xtest-basexx.c
 
 
 # macros for tests/xhash-algo

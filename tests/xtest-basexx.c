@@ -355,7 +355,15 @@ test_convenience(
          if (verbose > 2)
             printf("         testing results with 0x%02x pad ...\n", pad[0]);
 
+#if defined(XFAIL_ENCODE1)
+         if ((rc = tics_encode(TEST_ENCODE, NULL, rec->decoded_len, (char *)buff, sizeof(buff))) < TICS_SUCCESS)
+#elif defined(XFAIL_ENCODE2)
+         if ((rc = tics_encode(TEST_ENCODE, rec->decoded, rec->decoded_len, NULL, sizeof(buff))) < TICS_SUCCESS)
+#elif defined(XFAIL_ENCODE3)
+         if ((rc = tics_encode(TEST_ENCODE, rec->decoded, rec->decoded_len, (char *)buff, (rec->encoded_len-1))) < TICS_SUCCESS)
+#else
          if ((rc = tics_encode(TEST_ENCODE, rec->decoded, rec->decoded_len, (char *)buff, sizeof(buff))) < TICS_SUCCESS)
+#endif
          {  fprintf(stderr, "%s: pass %i: tics_encode(): %s\n", PROGRAM_NAME, count, tics_strerror((int)rc));
             return(1);
          };
