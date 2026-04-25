@@ -397,7 +397,11 @@ test_convenience(
          printf("      Test Data (encoded): \"%s\"\n", rec->encoded);
       };
 
+#if defined(XFAIL_DECODED_SIZE)
+      if ((rc = tics_decoded_size(-1, rec->encoded_len)) < TICS_SUCCESS)
+#else
       if ((rc = tics_decoded_size(TEST_ENCODE, rec->encoded_len)) < TICS_SUCCESS)
+#endif
       {  fprintf(stderr, "%s: pass %i: tics_decoded_size(): %s\n", PROGRAM_NAME, count, tics_strerror((int)rc));
          return(1);
       };
