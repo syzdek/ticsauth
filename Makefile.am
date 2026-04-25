@@ -109,6 +109,7 @@ TESTS					= tests/basexx-base16 \
 					  tests/basexx-base64-dec \
 					  tests/basexx-base64-enc \
 					  tests/basexx-base64-ver \
+					  \
 					  tests/hash-md5 \
 					  tests/hash-md5-ctx \
 					  tests/hash-md5-seg \
@@ -133,6 +134,7 @@ TESTS					= tests/basexx-base16 \
 					  tests/hash-sha512-ctx \
 					  tests/hash-sha512-seg \
 					  tests/hash-sha512-str \
+					  \
 					  tests/hmac-md5 \
 					  tests/hmac-md5-ctx \
 					  tests/hmac-md5-seg \
@@ -173,6 +175,7 @@ ADDITIONAL_XFAIL_TESTS			= tests/xbasexx-encoding \
 					  tests/xbasexx-verify1 \
 					  tests/xbasexx-verify2 \
 					  tests/xbasexx-verify3 \
+					  \
 					  tests/xhash-algo \
 					  tests/xhash-hash1 \
 					  tests/xhash-hash2 \
@@ -196,6 +199,7 @@ ADDITIONAL_XFAIL_TESTS			= tests/xbasexx-encoding \
 					  tests/xhash-verify-str1 \
 					  tests/xhash-verify-str2 \
 					  tests/xhash-verify-str3 \
+					  \
 					  tests/xhmac-algo \
 					  tests/xhmac-hmac1 \
 					  tests/xhmac-hmac2 \
@@ -292,6 +296,10 @@ lib_libticsauth_la_SOURCES		= include/ticsauth.h \
 					  lib/libticsauth/lhmac.h \
 					  lib/libticsauth/lmisc.c
 
+
+#
+# encoding tests
+#
 
 # macros for tests/basexx-base16
 tests_basexx_base16_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
@@ -404,6 +412,10 @@ tests_basexx_base64_ver_LDADD		= $(lib_LTLIBRARIES)
 tests_basexx_base64_ver_CFLAGS		= $(AM_CFLAGS) -DTEST_BASE64_VER=1
 tests_basexx_base64_ver_SOURCES		= tests/tests.h tests/test-basexx.c tests/data-base64.c
 
+
+#
+# hash tests
+#
 
 # macros for tests/hash-md5
 tests_hash_md5_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
@@ -537,6 +549,10 @@ tests_hash_sha512_str_LDADD		= $(lib_LTLIBRARIES)
 tests_hash_sha512_str_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA512_STR=1
 tests_hash_sha512_str_SOURCES		= tests/tests.h tests/test-hash.c tests/data-sha512.c
 
+
+#
+# HMAC tests
+#
 
 # macros for tests/hmac-md5
 tests_hmac_md5_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
@@ -741,12 +757,20 @@ tests_hmac_sha512_str_CFLAGS		= $(AM_CFLAGS) -DTEST_SHA512_STR=1
 tests_hmac_sha512_str_SOURCES		= tests/tests.h tests/test-hmac.c tests/data-sha512.c
 
 
+#
+# misc tests
+#
+
 # macros for tests/proofofconcept
 tests_proofofconcept_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 tests_proofofconcept_LDADD		= $(lib_LTLIBRARIES)
 tests_proofofconcept_SOURCES		= tests/tests.h \
 					  tests/proofofconcept.c
 
+
+#
+# encoding tests (xfail)
+#
 
 # macros for tests/xbasexx-encoding
 tests_xbasexx_encoding_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
@@ -838,6 +862,10 @@ tests_xbasexx_verify3_LDADD		= $(lib_LTLIBRARIES)
 tests_xbasexx_verify3_CFLAGS		= $(AM_CFLAGS) -DXFAIL_ENCODING_VERIFY3=1
 tests_xbasexx_verify3_SOURCES		= tests/xtest-basexx.c
 
+
+#
+# hash tests (xfail)
+#
 
 # macros for tests/xhash-algo
 tests_xhash_algo_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
@@ -999,6 +1027,10 @@ tests_xhash_verify_str3_LDADD		= $(lib_LTLIBRARIES)
 tests_xhash_verify_str3_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HASH_VERIFY_STR3=1
 tests_xhash_verify_str3_SOURCES		= tests/xtest-hash.c
 
+
+#
+# HMAC tests (xfail)
+#
 
 # macros for tests/xhmac-algo
 tests_xhmac_algo_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
