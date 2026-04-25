@@ -219,7 +219,12 @@ XFAIL_TESTS				= tests/xbasexx-encoding \
 					  tests/xhmac-update-key2 \
 					  tests/xhmac-update-key3 \
 					  tests/xhmac-update-key4 \
-					  tests/xhmac-update-key5
+					  tests/xhmac-update-key5 \
+					  tests/xhmac-verify1 \
+					  tests/xhmac-verify2 \
+					  tests/xhmac-verify3 \
+					  tests/xhmac-verify-str1 \
+					  tests/xhmac-verify-str2
 EXTRA_MANS				=
 EXTRA_DIST				= AUTHORS.md \
 					  ChangeLog.md \
@@ -1163,6 +1168,41 @@ tests_xhmac_update_key5_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 tests_xhmac_update_key5_LDADD		= $(lib_LTLIBRARIES)
 tests_xhmac_update_key5_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HMAC_UPDATE_KEY5=1
 tests_xhmac_update_key5_SOURCES		= tests/xtest-hmac.c
+
+
+# macros for tests/xhmac-verify1
+tests_xhmac_verify1_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhmac_verify1_LDADD		= $(lib_LTLIBRARIES)
+tests_xhmac_verify1_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HMAC_VERIFY1=1
+tests_xhmac_verify1_SOURCES		= tests/xtest-hmac.c
+
+
+# macros for tests/xhmac-verify2
+tests_xhmac_verify2_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhmac_verify2_LDADD		= $(lib_LTLIBRARIES)
+tests_xhmac_verify2_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HMAC_VERIFY2=1
+tests_xhmac_verify2_SOURCES		= tests/xtest-hmac.c
+
+
+# macros for tests/xhmac-verify3
+tests_xhmac_verify3_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhmac_verify3_LDADD		= $(lib_LTLIBRARIES)
+tests_xhmac_verify3_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HMAC_VERIFY3=1
+tests_xhmac_verify3_SOURCES		= tests/xtest-hmac.c
+
+
+# macros for tests/xhmac-verify_str1
+tests_xhmac_verify_str1_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhmac_verify_str1_LDADD		= $(lib_LTLIBRARIES)
+tests_xhmac_verify_str1_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HMAC_VERIFY_STR1=1
+tests_xhmac_verify_str1_SOURCES		= tests/xtest-hmac.c
+
+
+# macros for tests/xhmac-verify_str2
+tests_xhmac_verify_str2_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_xhmac_verify_str2_LDADD		= $(lib_LTLIBRARIES)
+tests_xhmac_verify_str2_CFLAGS		= $(AM_CFLAGS) -DXFAIL_HMAC_VERIFY_STR2=1
+tests_xhmac_verify_str2_SOURCES		= tests/xtest-hmac.c
 
 
 # Makefile includes
