@@ -168,7 +168,6 @@ tics_hash_reset(
          ctx->md_len          = TICS_MD_SIZE_MD5;
          ctx->hmac_pad_len    = TICS_HMAC_PAD_LEN_MD5;
          ctx->state_size      = sizeof(tics_hash_md5_t);
-         ctx->func            = (void*(*)(const void*,size_t,uint8_t*,size_t))&tics_md5;
          ctx->func_reset      = (int(*)(void *))&tics_md5_reset;
          ctx->func_result     = (int(*)(void *, uint8_t *))&tics_md5_result;
          ctx->func_update     = (int(*)(void *, const void *, size_t))&tics_md5_update;
@@ -178,7 +177,6 @@ tics_hash_reset(
          ctx->md_len          = TICS_MD_SIZE_SHA1;
          ctx->hmac_pad_len    = TICS_HMAC_PAD_LEN_SHA1;
          ctx->state_size      = sizeof(tics_hash_sha1_t);
-         ctx->func            = (void*(*)(const void*,size_t,uint8_t*,size_t))&tics_sha1;
          ctx->func_reset      = (int(*)(void *))&tics_sha1_reset;
          ctx->func_result     = (int(*)(void *, uint8_t *))&tics_sha1_result;
          ctx->func_update     = (int(*)(void *, const void *, size_t))&tics_sha1_update;
@@ -188,7 +186,6 @@ tics_hash_reset(
          ctx->md_len          = TICS_MD_SIZE_SHA224;
          ctx->hmac_pad_len    = TICS_HMAC_PAD_LEN_SHA224;
          ctx->state_size      = sizeof(tics_hash_sha224_t);
-         ctx->func            = (void*(*)(const void*,size_t,uint8_t*,size_t))&tics_sha224;
          ctx->func_reset      = (int(*)(void *))&tics_sha224_reset;
          ctx->func_result     = (int(*)(void *, uint8_t *))&tics_sha224_result;
          ctx->func_update     = (int(*)(void *, const void *, size_t))&tics_sha224_update;
@@ -198,7 +195,6 @@ tics_hash_reset(
          ctx->md_len          = TICS_MD_SIZE_SHA256;
          ctx->hmac_pad_len    = TICS_HMAC_PAD_LEN_SHA256;
          ctx->state_size      = sizeof(tics_hash_sha256_t);
-         ctx->func            = (void*(*)(const void*,size_t,uint8_t*,size_t))&tics_sha256;
          ctx->func_reset      = (int(*)(void *))&tics_sha256_reset;
          ctx->func_result     = (int(*)(void *, uint8_t *))&tics_sha256_result;
          ctx->func_update     = (int(*)(void *, const void *, size_t))&tics_sha256_update;
@@ -208,7 +204,6 @@ tics_hash_reset(
          ctx->md_len          = TICS_MD_SIZE_SHA384;
          ctx->hmac_pad_len    = TICS_HMAC_PAD_LEN_SHA384;
          ctx->state_size      = sizeof(tics_hash_sha384_t);
-         ctx->func            = (void*(*)(const void*,size_t,uint8_t*,size_t))&tics_sha384;
          ctx->func_reset      = (int(*)(void *))&tics_sha384_reset;
          ctx->func_result     = (int(*)(void *, uint8_t *))&tics_sha384_result;
          ctx->func_update     = (int(*)(void *, const void *, size_t))&tics_sha384_update;
@@ -218,7 +213,6 @@ tics_hash_reset(
          ctx->md_len          = TICS_MD_SIZE_SHA512;
          ctx->hmac_pad_len    = TICS_HMAC_PAD_LEN_SHA512;
          ctx->state_size      = sizeof(tics_hash_sha512_t);
-         ctx->func            = (void*(*)(const void*,size_t,uint8_t*,size_t))&tics_sha512;
          ctx->func_reset      = (int(*)(void *))&tics_sha512_reset;
          ctx->func_result     = (int(*)(void *, uint8_t *))&tics_sha512_result;
          ctx->func_update     = (int(*)(void *, const void *, size_t))&tics_sha512_update;
