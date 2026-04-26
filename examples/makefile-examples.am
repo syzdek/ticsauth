@@ -30,7 +30,8 @@
 #
 
 # lists
-EXAMPLES_LIST				= examples/hash-string
+EXAMPLES_LIST				= examples/hash-string \
+					  examples/hmac-string
 EXTRA_PROGRAMS				+= $(EXAMPLES_LIST)
 
 # conditional build
@@ -38,7 +39,8 @@ if ENABLE_EXAMPLES
    noinst_PROGRAMS			+= $(EXAMPLES_LIST)
 endif
 if ENABLE_EXTRA_DOCS
-   examples_DATA			+= examples/hash-string.c
+   examples_DATA			+= examples/hash-string.c \
+					   examples/hmac-string.c
 endif
 
 
@@ -46,6 +48,12 @@ endif
 examples_hash_string_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 examples_hash_string_LDADD		= $(lib_LTLIBRARIES)
 examples_hash_string_SOURCES		= examples/hash-string.c
+
+
+# macros for examples/hmac-string
+examples_hmac_string_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+examples_hmac_string_LDADD		= $(lib_LTLIBRARIES)
+examples_hmac_string_SOURCES		= examples/hmac-string.c
 
 
 # end of automake file

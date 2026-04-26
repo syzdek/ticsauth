@@ -13,6 +13,7 @@
 			buildPhases = (
 			);
 			dependencies = (
+				A0C465EF2F9DDB07007EBFEC /* PBXTargetDependency */,
 				A0C465DB2F9DD772007EBFEC /* PBXTargetDependency */,
 				A0C4656A2F9AA0AF007EBFEC /* PBXTargetDependency */,
 				A01CDE0E2F97817600789ADE /* PBXTargetDependency */,
@@ -77,6 +78,8 @@
 		A0C4658B2F9C18E9007EBFEC /* libticsauth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A00540B32F8766F80092E27B /* libticsauth.a */; };
 		A0C4658D2F9C1901007EBFEC /* xtest-basexx.c in Sources */ = {isa = PBXBuildFile; fileRef = A0C4658C2F9C1901007EBFEC /* xtest-basexx.c */; };
 		A0C465DE2F9DD784007EBFEC /* libticsauth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A00540B32F8766F80092E27B /* libticsauth.a */; };
+		A0C465ED2F9DDAFD007EBFEC /* libticsauth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A00540B32F8766F80092E27B /* libticsauth.a */; };
+		A0C465F02F9DDB0F007EBFEC /* hmac-string.c in Sources */ = {isa = PBXBuildFile; fileRef = A0C465DF2F9DDAE4007EBFEC /* hmac-string.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,6 +188,20 @@
 			remoteGlobalIDString = A00540B22F8766F80092E27B;
 			remoteInfo = ticsauth;
 		};
+		A0C465EB2F9DDAF9007EBFEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A00BA1142F87664D00F126F5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A00540B22F8766F80092E27B;
+			remoteInfo = ticsauth;
+		};
+		A0C465EE2F9DDB07007EBFEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A00BA1142F87664D00F126F5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A0C465E32F9DDAF2007EBFEC;
+			remoteInfo = "example-hmac-string";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -252,6 +269,15 @@
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 		A0C465D12F9DD765007EBFEC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		A0C465E22F9DDAF2007EBFEC /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -343,6 +369,8 @@
 		A0C465C12F9D8F7C007EBFEC /* hash-string.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "hash-string.c"; sourceTree = "<group>"; };
 		A0C465C32F9D8FB3007EBFEC /* makefile-examples.am */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; path = "makefile-examples.am"; sourceTree = "<group>"; };
 		A0C465D32F9DD765007EBFEC /* example-hash-string */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "example-hash-string"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0C465DF2F9DDAE4007EBFEC /* hmac-string.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "hmac-string.c"; sourceTree = "<group>"; };
+		A0C465E42F9DDAF2007EBFEC /* example-hmac-string */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "example-hmac-string"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -417,6 +445,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A0C465E12F9DDAF2007EBFEC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0C465ED2F9DDAFD007EBFEC /* libticsauth.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -472,6 +508,7 @@
 				A0C465722F9B50AF007EBFEC /* xtest-hmac */,
 				A0C465822F9C18DB007EBFEC /* xtest-basexx */,
 				A0C465D32F9DD765007EBFEC /* example-hash-string */,
+				A0C465E42F9DDAF2007EBFEC /* example-hmac-string */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -590,6 +627,7 @@
 			children = (
 				A0C465C32F9D8FB3007EBFEC /* makefile-examples.am */,
 				A0C465C12F9D8F7C007EBFEC /* hash-string.c */,
+				A0C465DF2F9DDAE4007EBFEC /* hmac-string.c */,
 			);
 			path = examples;
 			sourceTree = "<group>";
@@ -795,6 +833,26 @@
 			productReference = A0C465D32F9DD765007EBFEC /* example-hash-string */;
 			productType = "com.apple.product-type.tool";
 		};
+		A0C465E32F9DDAF2007EBFEC /* example-hmac-string */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A0C465E82F9DDAF2007EBFEC /* Build configuration list for PBXNativeTarget "example-hmac-string" */;
+			buildPhases = (
+				A0C465E02F9DDAF2007EBFEC /* Sources */,
+				A0C465E12F9DDAF2007EBFEC /* Frameworks */,
+				A0C465E22F9DDAF2007EBFEC /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A0C465EC2F9DDAF9007EBFEC /* PBXTargetDependency */,
+			);
+			name = "example-hmac-string";
+			packageProductDependencies = (
+			);
+			productName = "example-hmac-string";
+			productReference = A0C465E42F9DDAF2007EBFEC /* example-hmac-string */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -834,6 +892,9 @@
 					A0C465D22F9DD765007EBFEC = {
 						CreatedOnToolsVersion = 26.3;
 					};
+					A0C465E32F9DDAF2007EBFEC = {
+						CreatedOnToolsVersion = 26.3;
+					};
 				};
 			};
 			buildConfigurationList = A00BA1172F87664D00F126F5 /* Build configuration list for PBXProject "tics-authenticator" */;
@@ -860,6 +921,7 @@
 				A0C465712F9B50AF007EBFEC /* xtest-hmac */,
 				A0C465812F9C18DB007EBFEC /* xtest-basexx */,
 				A0C465D22F9DD765007EBFEC /* example-hash-string */,
+				A0C465E32F9DDAF2007EBFEC /* example-hmac-string */,
 			);
 		};
 /* End PBXProject section */
@@ -959,6 +1021,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A0C465E02F9DDAF2007EBFEC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0C465F02F9DDB0F007EBFEC /* hmac-string.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1036,6 +1106,16 @@
 			isa = PBXTargetDependency;
 			target = A00540B22F8766F80092E27B /* ticsauth */;
 			targetProxy = A0C465DC2F9DD77D007EBFEC /* PBXContainerItemProxy */;
+		};
+		A0C465EC2F9DDAF9007EBFEC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A00540B22F8766F80092E27B /* ticsauth */;
+			targetProxy = A0C465EB2F9DDAF9007EBFEC /* PBXContainerItemProxy */;
+		};
+		A0C465EF2F9DDB07007EBFEC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A0C465E32F9DDAF2007EBFEC /* example-hmac-string */;
+			targetProxy = A0C465EE2F9DDB07007EBFEC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2162,6 +2242,125 @@
 			};
 			name = Release;
 		};
+		A0C465E92F9DDAF2007EBFEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		A0C465EA2F9DDAF2007EBFEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2260,6 +2459,15 @@
 			buildConfigurations = (
 				A0C465D82F9DD766007EBFEC /* Debug */,
 				A0C465D92F9DD766007EBFEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A0C465E82F9DDAF2007EBFEC /* Build configuration list for PBXNativeTarget "example-hmac-string" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0C465E92F9DDAF2007EBFEC /* Debug */,
+				A0C465EA2F9DDAF2007EBFEC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
