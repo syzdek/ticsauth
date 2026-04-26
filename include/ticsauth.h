@@ -267,7 +267,7 @@ tics_hash_verify_str(
 //-----------------//
 #pragma mark hmac prototypes
 
-_TICS_F void *
+_TICS_F int
 tics_hmac(
          int                           algo,
          const void *                  key,

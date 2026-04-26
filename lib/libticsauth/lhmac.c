@@ -55,7 +55,7 @@
 /////////////////
 // MARK: - Functions
 
-void *
+int
 tics_hmac(
          int                           algo,
          const void *                  key,
@@ -65,11 +65,12 @@ tics_hmac(
          uint8_t *                     md,
          size_t                        md_len )
 {
+   int               rc;
    tics_hmac_t       ctx;
 
-   tics_assert(NULL, ((key))  || ((!(key))  && (!(key_len))) );
-   tics_assert(NULL, ((data)) || ((!(data)) && (!(data_len))) );
-   tics_assert(NULL, md != NULL);
+   tics_assert(TICS_EARGS, ((key))  || ((!(key))  && (!(key_len))) );
+   tics_assert(TICS_EARGS, ((data)) || ((!(data)) && (!(data_len))) );
+   tics_assert(TICS_EARGS, md != NULL);
 
    memset(&ctx, 0, sizeof(tics_hmac_t));
 
@@ -80,16 +81,16 @@ tics_hmac(
    if (!(data))
       data     = "";
 
-   if (tics_hmac_reset(&ctx, algo) != TICS_SUCCESS)
-      return(NULL);
-   if (tics_hmac_update_key(&ctx, key, key_len) != TICS_SUCCESS)
-      return(NULL);
-   if (tics_hmac_update(&ctx, data, data_len) != TICS_SUCCESS)
-      return(NULL);
-   if (tics_hmac_result(&ctx, md, md_len) != TICS_SUCCESS)
-      return(NULL);
+   if ((rc = tics_hmac_reset(&ctx, algo)) != TICS_SUCCESS)
+      return(rc);
+   if ((rc = tics_hmac_update_key(&ctx, key, key_len)) != TICS_SUCCESS)
+      return(rc);
+   if ((rc = tics_hmac_update(&ctx, data, data_len)) != TICS_SUCCESS)
+      return(rc);
+   if ((rc = tics_hmac_result(&ctx, md, md_len)) != TICS_SUCCESS)
+      return(rc);
 
-   return(md);
+   return(TICS_SUCCESS);
 }
 
 
