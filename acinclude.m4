@@ -55,6 +55,29 @@ AC_DEFUN([AC_TICSAUTH_EXAMPLES],[dnl
 ])dnl
 
 
+# AC_TICSAUTH_EXTRA_DOCS()
+# ______________________________________________________________________________
+AC_DEFUN([AC_TICSAUTH_EXTRA_DOCS],[dnl
+
+   enableval=""
+   AC_ARG_ENABLE(
+      extra-docs,
+      [AS_HELP_STRING([--enable-extra-docs], [install extra documentation])],
+      [ EEXTRA_DOCS=$enableval ],
+      [ EEXTRA_DOCS=$enableval ]
+   )
+
+   if test "x${EEXTRA_DOCS}" == "xyes";then
+      ENABLE_EXTRA_DOCS=install
+   else
+      ENABLE_EXTRA_DOCS=skip
+   fi
+
+   AM_CONDITIONAL([ENABLE_EXTRA_DOCS],  [test "$ENABLE_EXTRA_DOCS"  = "install"])
+   AM_CONDITIONAL([DISABLE_EXTRA_DOCS], [test "$ENABLE_EXTRA_DOCS" != "install"])
+])dnl
+
+
 # AC_TICSAUTH_EXTRA_TESTS()
 # ______________________________________________________________________________
 AC_DEFUN([AC_TICSAUTH_EXTRA_TESTS],[dnl

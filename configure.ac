@@ -160,6 +160,7 @@ AC_BINDLE_GIT_PACKAGE_VERSION([contrib/bindletools/build-aux/git-package-version
 AC_BINDLE_ENABLE_WARNINGS([-Wno-unknown-pragmas -Wno-missing-format-attribute -Wno-implicit-fallthrough -Wno-alloc-size-larger-than -Wno-larger-than], [], [c11])
 AC_TICSAUTH_EXAMPLES
 AC_TICSAUTH_EXTRA_TESTS
+AC_TICSAUTH_EXTRA_DOCS
 
 # Creates outputs
 AC_CONFIG_FILES([Makefile])
@@ -172,6 +173,7 @@ AC_MSG_NOTICE([ ])
 AC_MSG_NOTICE([   Features:])
 AC_MSG_NOTICE([      Debug Output               ${USE_DEBUG}])
 AC_MSG_NOTICE([      Example Programs           ${ENABLE_EXAMPLES}])
+AC_MSG_NOTICE([      Extra Documentation        ${ENABLE_EXTRA_DOCS}])
 AC_MSG_NOTICE([      Extra Tests                ${ENABLE_ADDITIONAL_TESTS}])
 AC_MSG_NOTICE([ ])
 AC_MSG_NOTICE([   Options:])

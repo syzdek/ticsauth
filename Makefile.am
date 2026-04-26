@@ -60,6 +60,7 @@ DEFS					=
 
 # directory locations
 moddir					= $(pkglibexecdir)/modules
+examplesdir				= $(docdir)/examples
 
 
 # automake targets
@@ -86,6 +87,7 @@ pkgdata_DATA				=
 sbin_SCRIPTS				=
 sbin_PROGRAMS				=
 mod_LTLIBRARIES				=
+examples_DATA				=
 EXTRA_PROGRAMS				= tests/proofofconcept
 EXTRA					=
 
@@ -166,6 +168,7 @@ tests_proofofconcept_SOURCES		= tests/tests.h \
 
 
 # makefile includes
+include examples/makefile-examples.am
 include tests/makefile-basexx.am
 include tests/makefile-hash.am
 include tests/makefile-hmac.am
