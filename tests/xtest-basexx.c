@@ -382,8 +382,12 @@ test_convenience(
          {  fprintf(stderr, "%s: pass %i: padding 0x%02x: tics_encode() message does not match\n", PROGRAM_NAME, count, pad[0]);
             return(1);
          };
-         if ((memcmp(&buff[rec->encoded_len], pad, rec->encoded_len)))
+         if ((memcmp(&buff[rec->encoded_len+1], pad, rec->encoded_len-1)))
          {  fprintf(stderr, "%s: pass %i: padding 0x%02x: tics_encode() wrote data past buffer\n", PROGRAM_NAME, count, pad[0]);
+            return(1);
+         };
+         if (buff[rec->encoded_len] != '\0')
+         {  fprintf(stderr, "%s: pass %i: padding 0x%02x: tics_encode() did not NULL terminate buffer\n", PROGRAM_NAME, count, pad[0]);
             return(1);
          };
       };

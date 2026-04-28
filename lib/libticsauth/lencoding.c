@@ -357,9 +357,15 @@ tics_encode(
    len = (src_len / bxx.block_dec) * bxx.block_enc;
    if ((src_len % bxx.block_dec))
       len += bxx.block_enc;
+   len++;
 
    if (dst_len < len)
       return(TICS_EBUFFSIZE);
+
+   if ((rc = bxx.func_enc(bxx.map_chars, src, src_len, dst)) <= TICS_SUCCESS)
+      return(rc);
+
+   dst[rc] = '\0';
 
    return(bxx.func_enc(bxx.map_chars, src, src_len, dst));
 }
