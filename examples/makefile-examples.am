@@ -30,7 +30,13 @@
 #
 
 # lists
-EXAMPLES_LIST				= examples/hash-string \
+EXAMPLES_LIST				= examples/decode-string \
+					  examples/encode-string \
+					  examples/hash-incremental \
+					  examples/hash-stream \
+					  examples/hash-string \
+					  examples/hmac-incremental \
+					  examples/hmac-stream \
 					  examples/hmac-string
 EXTRA_PROGRAMS				+= $(EXAMPLES_LIST)
 
@@ -39,15 +45,57 @@ if ENABLE_EXAMPLES
    noinst_PROGRAMS			+= $(EXAMPLES_LIST)
 endif
 if ENABLE_EXTRA_DOCS
-   examples_DATA			+= examples/hash-string.c \
+   examples_DATA			+= examples/decode-string.c \
+					   examples/encode-string.c \
+					   examples/hash-incremental.c \
+					   examples/hash-stream.c \
+					   examples/hash-string.c \
+					   examples/hmac-incremental.c \
+					   examples/hmac-stream.c \
 					   examples/hmac-string.c
 endif
+
+
+# macros for examples/decode-string
+examples_decode_string_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+examples_decode_string_LDADD		= $(lib_LTLIBRARIES)
+examples_decode_string_SOURCES		= examples/decode-string.c
+
+
+# macros for examples/encode-string
+examples_encode_string_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+examples_encode_string_LDADD		= $(lib_LTLIBRARIES)
+examples_encode_string_SOURCES		= examples/encode-string.c
+
+
+# macros for examples/hash-incremental
+examples_hash_incremental_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+examples_hash_incremental_LDADD		= $(lib_LTLIBRARIES)
+examples_hash_incremental_SOURCES	= examples/hash-incremental.c
+
+
+# macros for examples/hash-stream
+examples_hash_stream_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+examples_hash_stream_LDADD		= $(lib_LTLIBRARIES)
+examples_hash_stream_SOURCES		= examples/hash-stream.c
 
 
 # macros for examples/hash-string
 examples_hash_string_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 examples_hash_string_LDADD		= $(lib_LTLIBRARIES)
 examples_hash_string_SOURCES		= examples/hash-string.c
+
+
+# macros for examples/hmac-incremental
+examples_hmac_incremental_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+examples_hmac_incremental_LDADD		= $(lib_LTLIBRARIES)
+examples_hmac_incremental_SOURCES	= examples/hmac-incremental.c
+
+
+# macros for examples/hmac-stream
+examples_hmac_stream_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+examples_hmac_stream_LDADD		= $(lib_LTLIBRARIES)
+examples_hmac_stream_SOURCES		= examples/hmac-stream.c
 
 
 # macros for examples/hmac-string
