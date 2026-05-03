@@ -30,7 +30,11 @@
 #
 
 # lists
-HASH_TESTS_LIST				= tests/hash-md5 \
+HASH_TESTS_LIST				= tests/hash-crc32 \
+					  tests/hash-crc32-ctx \
+					  tests/hash-crc32-seg \
+					  tests/hash-crc32-str \
+					  tests/hash-md5 \
 					  tests/hash-md5-ctx \
 					  tests/hash-md5-seg \
 					  tests/hash-md5-str \
@@ -56,6 +60,34 @@ HASH_TESTS_LIST				= tests/hash-md5 \
 					  tests/hash-sha512-str
 EXTRA_PROGRAMS				+= $(HASH_TESTS_LIST)
 TESTS					+= $(HASH_TESTS_LIST)
+
+
+# macros for tests/hash-crc32
+tests_hash_crc32_DEPENDENCIES		= Makefile config.h $(lib_LTLIBRARIES)
+tests_hash_crc32_LDADD			= $(lib_LTLIBRARIES)
+tests_hash_crc32_CFLAGS			= $(AM_CFLAGS) -DTEST_HASH=TICS_HASH_CRC32
+tests_hash_crc32_SOURCES		= tests/xtest-hash.c
+
+
+# macros for tests/hash-crc32-ctx
+tests_hash_crc32_ctx_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_hash_crc32_ctx_LDADD		= $(lib_LTLIBRARIES)
+tests_hash_crc32_ctx_CFLAGS		= $(AM_CFLAGS) -DTEST_CRC32_CTX=1
+tests_hash_crc32_ctx_SOURCES		= tests/tests.h tests/test-hash.c tests/data-crc32.c
+
+
+# macros for tests/hash-crc32-seg
+tests_hash_crc32_seg_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_hash_crc32_seg_LDADD		= $(lib_LTLIBRARIES)
+tests_hash_crc32_seg_CFLAGS		= $(AM_CFLAGS) -DTEST_CRC32_SEG=1
+tests_hash_crc32_seg_SOURCES		= tests/tests.h tests/test-hash.c tests/data-crc32.c
+
+
+# macros for tests/hash-crc32-str
+tests_hash_crc32_str_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+tests_hash_crc32_str_LDADD		= $(lib_LTLIBRARIES)
+tests_hash_crc32_str_CFLAGS		= $(AM_CFLAGS) -DTEST_CRC32_STR=1
+tests_hash_crc32_str_SOURCES		= tests/tests.h tests/test-hash.c tests/data-crc32.c
 
 
 # macros for tests/hash-md5

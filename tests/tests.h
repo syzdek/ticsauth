@@ -152,8 +152,22 @@
 
 
 //
+// hash: crc32
+#if defined(TEST_CRC32_CTX)
+#  define PROGRAM_SUFFIX      "-crc32-ctx"
+#  define TEST_HASH           TICS_HASH_CRC32
+#  define TEST_FUNC           TEST_FUNC_CTX
+#elif defined(TEST_CRC32_SEG)
+#  define PROGRAM_SUFFIX      "-crc32-seg"
+#  define TEST_HASH           TICS_HASH_CRC32
+#  define TEST_FUNC           TEST_FUNC_SEG
+#elif defined(TEST_CRC32_STR)
+#  define PROGRAM_SUFFIX      "-crc32-str"
+#  define TEST_HASH           TICS_HASH_CRC32
+#  define TEST_FUNC           TEST_FUNC_STR
+//
 // hash: md5
-#if defined(TEST_MD5_CTX)
+#elif defined(TEST_MD5_CTX)
 #  define PROGRAM_SUFFIX      "-md5-ctx"
 #  define TEST_HASH           TICS_HASH_MD5
 #  define TEST_FUNC           TEST_FUNC_CTX
@@ -240,7 +254,9 @@
 #endif
 
 
-#if (TEST_HASH == TICS_HASH_MD5)
+#if (TEST_HASH == TICS_HASH_CRC32)
+#   define TEST_DATA  data_crc32
+#elif (TEST_HASH == TICS_HASH_MD5)
 #   define TEST_DATA  data_md5
 #elif (TEST_HASH == TICS_HASH_SHA1)
 #   define TEST_DATA  data_sha1
@@ -304,6 +320,7 @@ extern test_encoding_t *      data_base32;
 extern test_encoding_t *      data_base32hex;
 extern test_encoding_t *      data_base64;
 
+extern test_digest_t *        data_crc32;
 extern test_digest_t *        data_md5;
 extern test_digest_t *        data_sha1;
 extern test_digest_t *        data_sha224;

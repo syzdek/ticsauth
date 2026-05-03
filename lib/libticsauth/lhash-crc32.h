@@ -30,8 +30,8 @@
  *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  *  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-#ifndef __LIB_LIBTICSAUTH_LHASH_H
-#define __LIB_LIBTICSAUTH_LHASH_H 1
+#ifndef __LIB_LIBTICSAUTH_LHASH_CRC32_H
+#define __LIB_LIBTICSAUTH_LHASH_CRC32_H 1
 
 ///////////////
 //           //
@@ -42,12 +42,6 @@
 
 #include <sys/types.h>
 
-#include "lhash-crc32.h"
-#include "lhash-md5.h"
-#include "lhash-sha1.h"
-#include "lhash-sha256.h"
-#include "lhash-sha512.h"
-
 
 //////////////////
 //              //
@@ -56,23 +50,11 @@
 //////////////////
 // MARK: - Data Types
 
-struct _tics_hash_ctx
-{  size_t                           algo;
-   size_t                           md_len;
-   size_t                           hmac_pad_len;
-   size_t                           state_size;
-   int(*func_reset)(void *);
-   int(*func_result)(void *, uint8_t *);
-   int(*func_update)(void *, const void *, size_t);
-   union
-   {  tics_hash_crc32_t             crc32;
-      tics_hash_md5_t               md5;
-      tics_hash_sha1_t              sha1;
-      tics_hash_sha224_t            sha224;
-      tics_hash_sha256_t            sha256;
-      tics_hash_sha384_t            sha384;
-      tics_hash_sha512_t            sha512;
-   } hash;
+typedef struct _tics_hash_ctx_crc32    tics_hash_crc32_t;
+
+
+struct _tics_hash_ctx_crc32
+{  uint32_t                crc;
 };
 
 
@@ -83,5 +65,23 @@ struct _tics_hash_ctx
 //////////////////
 // MARK: - Prototypes
 
+extern int
+tics_crc32_reset(
+         tics_hash_crc32_t *           ctx );
+
+
+extern int
+tics_crc32_result(
+         tics_hash_crc32_t *           ctx,
+         uint8_t *                     md );
+
+
+extern int
+tics_crc32_update(
+         tics_hash_crc32_t *           ctx,
+         const void *                  data,
+         size_t                        data_len );
+
 
 #endif /* end of header */
+

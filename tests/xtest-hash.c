@@ -91,7 +91,15 @@
 #define TEST_DATA_LEN   34
 
 
-#if (TEST_HASH == TICS_HASH_MD5)
+#if (TEST_HASH == TICS_HASH_CRC32)
+#  define TEST_MD_LEN         TICS_MD_SIZE_CRC32
+#  define TEST_RESULT         (const uint8_t []){0x27, 0x06, 0xcf, 0x92}
+#  define TEST_RESULT5        (const uint8_t []){0x6e, 0xe9, 0x0d, 0x70}
+#  define TEST_RESULT10       (const uint8_t []){0xb3, 0x55, 0x19, 0xb0}
+#  define TEST_RESULT_STR     "2706cf92"
+#  define TEST_RESULT_STR5    "6ee90d70"
+#  define TEST_RESULT_STR10   "b35519b0"
+#elif (TEST_HASH == TICS_HASH_MD5)
 #  define TEST_MD_LEN         TICS_MD_SIZE_MD5
 #  define TEST_RESULT         (const uint8_t []){0x3d, 0x1a, 0xae, 0x96, 0x66, 0x14, 0xa4, 0x32, 0x07, 0xc3, 0x66, 0xa6, 0x81, 0x94, 0x97, 0x39}
 #  define TEST_RESULT5        (const uint8_t []){0x20, 0x33, 0x72, 0xda, 0x9b, 0x39, 0xce, 0xc4, 0x9a, 0x9b, 0xbc, 0x4c, 0x76, 0xe5, 0xcb, 0x1b}

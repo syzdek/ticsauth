@@ -81,7 +81,8 @@ tics_algo2str(
          int                           algo )
 {
    switch (algo)
-   {  case TICS_HASH_MD5:     return("MD5");
+   {  case TICS_HASH_CRC32:   return("CRC-32");
+      case TICS_HASH_MD5:     return("MD5");
       case TICS_HASH_SHA1:    return("SHA-1");
       case TICS_HASH_SHA224:  return("SHA-224");
       case TICS_HASH_SHA256:  return("SHA-256");

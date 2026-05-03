@@ -147,6 +147,8 @@ lib_libticsauth_la_SOURCES		= include/ticsauth.h \
 					  lib/libticsauth/lencoding.c \
 					  lib/libticsauth/lhash.c \
 					  lib/libticsauth/lhash.h \
+					  lib/libticsauth/lhash-crc32.c \
+					  lib/libticsauth/lhash-crc32.h \
 					  lib/libticsauth/lhash-md5.c \
 					  lib/libticsauth/lhash-md5.h \
 					  lib/libticsauth/lhash-sha1.c \

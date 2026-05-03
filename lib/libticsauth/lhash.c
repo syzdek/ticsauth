@@ -164,7 +164,16 @@ tics_hash_reset(
    memset(ctx, 0, sizeof(tics_hash_t));
 
    switch (ctx->algo = algo)
-   {  case TICS_HASH_MD5:
+   {  case TICS_HASH_CRC32:
+         ctx->md_len          = TICS_MD_SIZE_CRC32;
+         ctx->hmac_pad_len    = 0;
+         ctx->state_size      = sizeof(tics_hash_crc32_t);
+         ctx->func_reset      = (int(*)(void *))&tics_crc32_reset;
+         ctx->func_result     = (int(*)(void *, uint8_t *))&tics_crc32_result;
+         ctx->func_update     = (int(*)(void *, const void *, size_t))&tics_crc32_update;
+         return(tics_crc32_reset(&ctx->hash.crc32));
+
+      case TICS_HASH_MD5:
          ctx->md_len          = TICS_MD_SIZE_MD5;
          ctx->hmac_pad_len    = TICS_HMAC_PAD_LEN_MD5;
          ctx->state_size      = sizeof(tics_hash_md5_t);
@@ -279,7 +288,8 @@ tics_hash_size(
          int                           algo )
 {
    switch(algo)
-   {  case TICS_HASH_MD5:     return(TICS_MD_SIZE_MD5);
+   {  case TICS_HASH_CRC32:   return(TICS_MD_SIZE_CRC32);
+      case TICS_HASH_MD5:     return(TICS_MD_SIZE_MD5);
       case TICS_HASH_SHA1:    return(TICS_MD_SIZE_SHA1);
       case TICS_HASH_SHA224:  return(TICS_MD_SIZE_SHA224);
       case TICS_HASH_SHA256:  return(TICS_MD_SIZE_SHA256);

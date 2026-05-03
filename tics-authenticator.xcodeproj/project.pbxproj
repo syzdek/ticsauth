@@ -75,6 +75,10 @@
 		A06E09D72F9424AD00F342A5 /* lhash-sha512.h in Headers */ = {isa = PBXBuildFile; fileRef = A06E09D52F9424AD00F342A5 /* lhash-sha512.h */; };
 		A06E09D82F9424AD00F342A5 /* lhash-sha512.c in Sources */ = {isa = PBXBuildFile; fileRef = A06E09D62F9424AD00F342A5 /* lhash-sha512.c */; };
 		A06E09E22F971A6D00F342A5 /* lencoding.c in Sources */ = {isa = PBXBuildFile; fileRef = A06E09D92F971A6D00F342A5 /* lencoding.c */; };
+		A07331CE2FA786B30037600E /* lhash-crc32.c in Sources */ = {isa = PBXBuildFile; fileRef = A07331CD2FA786B30037600E /* lhash-crc32.c */; };
+		A07331CF2FA786B30037600E /* lhash-crc32.h in Headers */ = {isa = PBXBuildFile; fileRef = A07331CC2FA786B30037600E /* lhash-crc32.h */; };
+		A07331D12FA78B7F0037600E /* data-crc32.c in Sources */ = {isa = PBXBuildFile; fileRef = A07331D02FA78B7F0037600E /* data-crc32.c */; };
+		A07331D22FA78B7F0037600E /* data-crc32.c in Sources */ = {isa = PBXBuildFile; fileRef = A07331D02FA78B7F0037600E /* data-crc32.c */; };
 		A0C465682F9AA0A3007EBFEC /* xtest-hash.c in Sources */ = {isa = PBXBuildFile; fileRef = A0C4655C2F9A9186007EBFEC /* xtest-hash.c */; };
 		A0C4656D2F9AA0BB007EBFEC /* libticsauth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A00540B32F8766F80092E27B /* libticsauth.a */; };
 		A0C4657B2F9B50C5007EBFEC /* libticsauth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A00540B32F8766F80092E27B /* libticsauth.a */; };
@@ -485,6 +489,9 @@
 		A06E09E82F97768400F342A5 /* data-base32.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "data-base32.c"; sourceTree = "<group>"; };
 		A06E09E92F97768400F342A5 /* data-base32hex.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "data-base32hex.c"; sourceTree = "<group>"; };
 		A06E09EA2F97768400F342A5 /* data-base64.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "data-base64.c"; sourceTree = "<group>"; };
+		A07331CC2FA786B30037600E /* lhash-crc32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "lhash-crc32.h"; sourceTree = "<group>"; };
+		A07331CD2FA786B30037600E /* lhash-crc32.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "lhash-crc32.c"; sourceTree = "<group>"; };
+		A07331D02FA78B7F0037600E /* data-crc32.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "data-crc32.c"; sourceTree = "<group>"; };
 		A0A6CFAF2F8AF4790003659C /* acinclude.m4 */ = {isa = PBXFileReference; explicitFileType = text.script; path = acinclude.m4; sourceTree = "<group>"; };
 		A0A6CFB02F8AF4790003659C /* AUTHORS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AUTHORS.md; sourceTree = "<group>"; };
 		A0A6CFB12F8AF4790003659C /* autogen.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = autogen.sh; sourceTree = "<group>"; };
@@ -674,6 +681,8 @@
 				A06E09D92F971A6D00F342A5 /* lencoding.c */,
 				A06E08962F8B655300F342A5 /* lhash.c */,
 				A06E08FC2F8DC80B00F342A5 /* lhash.h */,
+				A07331CD2FA786B30037600E /* lhash-crc32.c */,
+				A07331CC2FA786B30037600E /* lhash-crc32.h */,
 				A06E093E2F8F242100F342A5 /* lhash-md5.c */,
 				A06E093D2F8F242100F342A5 /* lhash-md5.h */,
 				A00540AC2F8766D40092E27B /* lhash-sha1.c */,
@@ -778,6 +787,7 @@
 				A06E09E82F97768400F342A5 /* data-base32.c */,
 				A06E09E92F97768400F342A5 /* data-base32hex.c */,
 				A06E09EA2F97768400F342A5 /* data-base64.c */,
+				A07331D02FA78B7F0037600E /* data-crc32.c */,
 				A06E09AA2F90AB2500F342A5 /* data-md5.c */,
 				A06E09AB2F90AB2500F342A5 /* data-sha1.c */,
 				A06E09C52F92DE6D00F342A5 /* data-sha224.c */,
@@ -855,6 +865,7 @@
 				A06E08FF2F8DC9B800F342A5 /* lhmac.h in Headers */,
 				A06E09402F8F242100F342A5 /* lhash-md5.h in Headers */,
 				A06E09D32F9329B700F342A5 /* lhash-sha256.h in Headers */,
+				A07331CF2FA786B30037600E /* lhash-crc32.h in Headers */,
 				A00540BC2F8806010092E27B /* ticsauth.h in Headers */,
 				A06E08FD2F8DC80B00F342A5 /* lhash.h in Headers */,
 				A06E09D72F9424AD00F342A5 /* lhash-sha512.h in Headers */,
@@ -1290,6 +1301,7 @@
 			files = (
 				A06E08982F8B655300F342A5 /* lhash.c in Sources */,
 				A06E09D42F9329B700F342A5 /* lhash-sha256.c in Sources */,
+				A07331CE2FA786B30037600E /* lhash-crc32.c in Sources */,
 				A06E08FB2F8DC79D00F342A5 /* lhmac.c in Sources */,
 				A06E093F2F8F242100F342A5 /* lhash-md5.c in Sources */,
 				A06E09D82F9424AD00F342A5 /* lhash-sha512.c in Sources */,
@@ -1324,6 +1336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A06E09BD2F90AB2500F342A5 /* data-md5.c in Sources */,
+				A07331D12FA78B7F0037600E /* data-crc32.c in Sources */,
 				A06E09CD2F9326CB00F342A5 /* data-sha384.c in Sources */,
 				A06E09CE2F9326CB00F342A5 /* data-sha512.c in Sources */,
 				A06E09C12F90AB2500F342A5 /* data-sha1.c in Sources */,
@@ -1352,6 +1365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0C465682F9AA0A3007EBFEC /* xtest-hash.c in Sources */,
+				A07331D22FA78B7F0037600E /* data-crc32.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

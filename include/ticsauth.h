@@ -92,6 +92,7 @@
 #define TICS_ENCODE_BASE32HEX       50 // HEX(0x32) == DECIMAL(50)
 #define TICS_ENCODE_BASE64          64
 
+#define TICS_HASH_CRC32             32
 #define TICS_HASH_MD5               5
 #define TICS_HASH_SHA1              1
 #define TICS_HASH_SHA224            224
@@ -100,6 +101,7 @@
 #define TICS_HASH_SHA512            512
 
 #define TICS_MD_SIZE                64
+#define TICS_MD_SIZE_CRC32           4
 #define TICS_MD_SIZE_MD5            16
 #define TICS_MD_SIZE_SHA1           20
 #define TICS_MD_SIZE_SHA224         28
@@ -108,6 +110,7 @@
 #define TICS_MD_SIZE_SHA512         64
 
 #define TICS_MD_STR_SIZE            ((TICS_MD_SIZE*2)+1)
+#define TICS_MD_STR_SIZE_CRC32      ((TICS_MD_SIZE_CRC32*2)+1)
 #define TICS_MD_STR_SIZE_MD5        ((TICS_MD_SIZE_MD5*2)+1)
 #define TICS_MD_STR_SIZE_SHA1       ((TICS_MD_SIZE_SHA1*2)+1)
 #define TICS_MD_STR_SIZE_SHA224     ((TICS_MD_SIZE_SHA224*2)+1)
