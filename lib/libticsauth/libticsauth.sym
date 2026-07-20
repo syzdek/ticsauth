@@ -17,6 +17,7 @@ tics_hash_size
 tics_hash_update
 tics_hash_verify
 tics_hash_verify_str
+tics_hexdump
 tics_hmac
 tics_hmac_free
 tics_hmac_init

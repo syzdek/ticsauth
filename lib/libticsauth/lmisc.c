@@ -41,7 +41,9 @@
 // MARK: - Headers
 
 #include <string.h>
+#include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include <assert.h>
 
 
@@ -106,6 +108,66 @@ tics_encoding2str(
       default:                      break;
    }
    return(NULL);
+}
+
+
+void
+tics_hexdump(
+         const uint8_t *               dat,
+         size_t                        len,
+         size_t                        offset,
+         int                           indent )
+{
+   size_t   idx;
+   size_t   pos;
+   size_t   off;
+
+   printf("%*soffset   0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f  0123456789abcdef\n", indent, "");
+
+   idx = offset / 16;
+   for(idx *= 16; (idx < offset); idx++)
+   {  if (((idx) & 0x0f) == 0)
+         printf("%*s%06zx ", indent, "", idx);
+      printf("  .");
+   };
+
+   for(pos = 0; (pos < len); pos++, idx++)
+   {  if (((idx) & 0x0f) == 0)
+         printf("%*s%06zx ", indent, "", idx);
+      if (((idx) & 0x0f) != 0x0f)
+      {  printf(" %02x", dat[pos]);
+         continue;
+      };
+      printf(" %02x  ", dat[pos]);
+      for(off = 16; (off > 0); off--)
+      {  if ((idx-off) < offset)
+            printf(".");
+         else if ((isprint(dat[pos-off])))
+            printf("%c", dat[pos-off]);
+         else
+            printf(".");
+      };
+      printf("\n");
+   };
+
+   if (((idx) & 0x0f) != 0)
+   {  for(; (((idx) & 0x0f) != 0); idx++)
+         printf("  .");
+      printf("  ");
+      for(off = 16; (off > 0); off--)
+      {  if ((idx-off) < offset)
+            printf(".");
+         else if ((idx-off) > (offset+len))
+            printf(".");
+         else if ((isprint(dat[pos-off])))
+            printf("%c", dat[pos-off]);
+         else
+            printf(".");
+      };
+      printf("\n");
+   };
+
+   return;
 }
 
 

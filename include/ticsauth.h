@@ -374,6 +374,14 @@ tics_encoding2str(
          int                           encoding );
 
 
+_TICS_F void
+tics_hexdump(
+         const uint8_t *               dat,
+         size_t                        len,
+         size_t                        offset,
+         int                           indent );
+
+
 _TICS_F const char *
 tics_strerror(
          int                           err );
