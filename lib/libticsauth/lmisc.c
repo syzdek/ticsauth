@@ -140,10 +140,10 @@ tics_hexdump(
       };
       printf(" %02x  ", dat[pos]);
       for(off = 16; (off > 0); off--)
-      {  if ((idx-off) < offset)
+      {  if ((idx-off+1) < offset)
             printf(".");
-         else if ((isprint(dat[pos-off])))
-            printf("%c", dat[pos-off]);
+         else if ((isprint(dat[idx-off-offset+1])))
+            printf("%c", dat[idx-off-offset+1]);
          else
             printf(".");
       };
@@ -157,10 +157,10 @@ tics_hexdump(
       for(off = 16; (off > 0); off--)
       {  if ((idx-off) < offset)
             printf(".");
-         else if ((idx-off) > (offset+len))
+         else if ((idx-off) >= (offset+len))
             printf(".");
-         else if ((isprint(dat[pos-off])))
-            printf("%c", dat[pos-off]);
+         else if ((isprint(dat[idx-off-offset])))
+            printf("%c", dat[idx-off-offset]);
          else
             printf(".");
       };
