@@ -117,7 +117,8 @@ EXTRA_DIST				= AUTHORS.md \
 					  doc/standards/rfc6234.txt \
 					  doc/standards/rfc6238.txt \
 					  doc/standards/rfc5741.txt \
-					  doc/standards/standards.txt
+					  doc/standards/standards.txt \
+					  doc/tics-obfuscation.md
 CLEANFILES				= $(builddir)/a.out   $(srcdir)/a.out \
 					  $(builddir)/*/a.out $(srcdir)/*/a.out \
 					  config.h.in~ $(srcdir)/config.h.in~ \
