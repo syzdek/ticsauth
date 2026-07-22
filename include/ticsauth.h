@@ -126,6 +126,13 @@
 #define TICS_HMAC_PAD_LEN_SHA384    128
 #define TICS_HMAC_PAD_LEN_SHA512    128
 
+// secret obfuscations parameters
+#define TICS_OBPARAM_HASHED         0x01
+
+// secret obfuscations
+#define TICS_OBFUSCATE_NONE         0x00
+#define TICS_OBFUSCATE_TICS1        0x10
+
 
 //////////////////
 //              //

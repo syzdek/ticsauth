@@ -37,7 +37,8 @@ EXAMPLES_LIST				= examples/decode-string \
 					  examples/hash-string \
 					  examples/hmac-incremental \
 					  examples/hmac-stream \
-					  examples/hmac-string
+					  examples/hmac-string \
+					  examples/poc-obfuscation1
 EXTRA_PROGRAMS				+= $(EXAMPLES_LIST)
 
 # conditional build
@@ -52,7 +53,8 @@ if ENABLE_EXTRA_DOCS
 					   examples/hash-string.c \
 					   examples/hmac-incremental.c \
 					   examples/hmac-stream.c \
-					   examples/hmac-string.c
+					   examples/hmac-string.c \
+					   examples/poc-obfuscation1.c
 endif
 
 
@@ -102,6 +104,12 @@ examples_hmac_stream_SOURCES		= examples/hmac-stream.c
 examples_hmac_string_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
 examples_hmac_string_LDADD		= $(lib_LTLIBRARIES)
 examples_hmac_string_SOURCES		= examples/hmac-string.c
+
+
+# macros for examples/poc-obfuscation1
+examples_poc_obfuscation1_DEPENDENCIES	= Makefile config.h $(lib_LTLIBRARIES)
+examples_poc_obfuscation1_LDADD		= $(lib_LTLIBRARIES)
+examples_poc_obfuscation1_SOURCES	= examples/poc-obfuscation1.c
 
 
 # end of automake file

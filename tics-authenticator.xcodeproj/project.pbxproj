@@ -13,6 +13,7 @@
 			buildPhases = (
 			);
 			dependencies = (
+				A06F9D4E300D4D79001E997F /* PBXTargetDependency */,
 				A0C466342FA013AC007EBFEC /* PBXTargetDependency */,
 				A0C466362FA013AC007EBFEC /* PBXTargetDependency */,
 				A0C466142FA011E4007EBFEC /* PBXTargetDependency */,
@@ -75,6 +76,8 @@
 		A06E09D72F9424AD00F342A5 /* lhash-sha512.h in Headers */ = {isa = PBXBuildFile; fileRef = A06E09D52F9424AD00F342A5 /* lhash-sha512.h */; };
 		A06E09D82F9424AD00F342A5 /* lhash-sha512.c in Sources */ = {isa = PBXBuildFile; fileRef = A06E09D62F9424AD00F342A5 /* lhash-sha512.c */; };
 		A06E09E22F971A6D00F342A5 /* lencoding.c in Sources */ = {isa = PBXBuildFile; fileRef = A06E09D92F971A6D00F342A5 /* lencoding.c */; };
+		A06F9D4C300D4D59001E997F /* poc-obfuscation1.c in Sources */ = {isa = PBXBuildFile; fileRef = A06F9D3F300D4785001E997F /* poc-obfuscation1.c */; };
+		A06F9D4F300FF445001E997F /* libticsauth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A00540B32F8766F80092E27B /* libticsauth.a */; };
 		A07331CE2FA786B30037600E /* lhash-crc32.c in Sources */ = {isa = PBXBuildFile; fileRef = A07331CD2FA786B30037600E /* lhash-crc32.c */; };
 		A07331CF2FA786B30037600E /* lhash-crc32.h in Headers */ = {isa = PBXBuildFile; fileRef = A07331CC2FA786B30037600E /* lhash-crc32.h */; };
 		A07331D12FA78B7F0037600E /* data-crc32.c in Sources */ = {isa = PBXBuildFile; fileRef = A07331D02FA78B7F0037600E /* data-crc32.c */; };
@@ -166,6 +169,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = A06E09742F8F343700F342A5;
 			remoteInfo = "hash-str";
+		};
+		A06F9D4D300D4D79001E997F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A00BA1142F87664D00F126F5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A06F9D44300D47ED001E997F;
+			remoteInfo = "poc-obfuscation1";
 		};
 		A0C465692F9AA0AF007EBFEC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -332,6 +342,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		A06F9D43300D47ED001E997F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		A0C4655F2F9AA094007EBFEC /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -489,6 +508,8 @@
 		A06E09E82F97768400F342A5 /* data-base32.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "data-base32.c"; sourceTree = "<group>"; };
 		A06E09E92F97768400F342A5 /* data-base32hex.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "data-base32hex.c"; sourceTree = "<group>"; };
 		A06E09EA2F97768400F342A5 /* data-base64.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "data-base64.c"; sourceTree = "<group>"; };
+		A06F9D3F300D4785001E997F /* poc-obfuscation1.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "poc-obfuscation1.c"; sourceTree = "<group>"; };
+		A06F9D45300D47ED001E997F /* poc-obfuscation1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "poc-obfuscation1"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A07331CC2FA786B30037600E /* lhash-crc32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "lhash-crc32.h"; sourceTree = "<group>"; };
 		A07331CD2FA786B30037600E /* lhash-crc32.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "lhash-crc32.c"; sourceTree = "<group>"; };
 		A07331D02FA78B7F0037600E /* data-crc32.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "data-crc32.c"; sourceTree = "<group>"; };
@@ -570,6 +591,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A06E09972F8F345B00F342A5 /* libticsauth.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A06F9D42300D47ED001E997F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A06F9D4F300FF445001E997F /* libticsauth.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -725,6 +754,7 @@
 				A0C466262FA01386007EBFEC /* example-hash-incremental */,
 				A0C466422FA01E41007EBFEC /* example-decode-string */,
 				A0C466502FA01E55007EBFEC /* example-encode-string */,
+				A06F9D45300D47ED001E997F /* poc-obfuscation1 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -851,6 +881,7 @@
 				A0C466162FA01365007EBFEC /* hmac-incremental.c */,
 				A0C466032FA011A6007EBFEC /* hmac-stream.c */,
 				A0C465DF2F9DDAE4007EBFEC /* hmac-string.c */,
+				A06F9D3F300D4785001E997F /* poc-obfuscation1.c */,
 			);
 			path = examples;
 			sourceTree = "<group>";
@@ -975,6 +1006,25 @@
 			);
 			productName = "hash-seg";
 			productReference = A06E09802F8F343D00F342A5 /* test-hmac */;
+			productType = "com.apple.product-type.tool";
+		};
+		A06F9D44300D47ED001E997F /* poc-obfuscation1 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A06F9D49300D47ED001E997F /* Build configuration list for PBXNativeTarget "poc-obfuscation1" */;
+			buildPhases = (
+				A06F9D41300D47ED001E997F /* Sources */,
+				A06F9D42300D47ED001E997F /* Frameworks */,
+				A06F9D43300D47ED001E997F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "poc-obfuscation1";
+			packageProductDependencies = (
+			);
+			productName = "poc-obfuscation1";
+			productReference = A06F9D45300D47ED001E997F /* poc-obfuscation1 */;
 			productType = "com.apple.product-type.tool";
 		};
 		A0C465602F9AA094007EBFEC /* xtest-hash */ = {
@@ -1224,6 +1274,9 @@
 					A06E097F2F8F343D00F342A5 = {
 						CreatedOnToolsVersion = 26.3;
 					};
+					A06F9D44300D47ED001E997F = {
+						CreatedOnToolsVersion = 26.5;
+					};
 					A0C465602F9AA094007EBFEC = {
 						CreatedOnToolsVersion = 26.3;
 					};
@@ -1289,6 +1342,7 @@
 				A0C465602F9AA094007EBFEC /* xtest-hash */,
 				A0C465712F9B50AF007EBFEC /* xtest-hmac */,
 				A0C465812F9C18DB007EBFEC /* xtest-basexx */,
+				A06F9D44300D47ED001E997F /* poc-obfuscation1 */,
 				A06E090E2F8E089C00F342A5 /* proofofconcept */,
 			);
 		};
@@ -1357,6 +1411,14 @@
 				A06E09BB2F90AB2500F342A5 /* data-sha1.c in Sources */,
 				A06E09C72F92DE6D00F342A5 /* data-sha224.c in Sources */,
 				A06E09C82F92DE6D00F342A5 /* data-sha256.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A06F9D41300D47ED001E997F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A06F9D4C300D4D59001E997F /* poc-obfuscation1.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1496,6 +1558,11 @@
 			isa = PBXTargetDependency;
 			target = A06E09742F8F343700F342A5 /* test-hash */;
 			targetProxy = A06E099F2F8F346C00F342A5 /* PBXContainerItemProxy */;
+		};
+		A06F9D4E300D4D79001E997F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A06F9D44300D47ED001E997F /* poc-obfuscation1 */;
+			targetProxy = A06F9D4D300D4D79001E997F /* PBXContainerItemProxy */;
 		};
 		A0C4656A2F9AA0AF007EBFEC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2229,6 +2296,125 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		A06F9D4A300D47ED001E997F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		A06F9D4B300D47ED001E997F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3607,6 +3793,15 @@
 			buildConfigurations = (
 				A06E09852F8F343D00F342A5 /* Debug */,
 				A06E09862F8F343D00F342A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A06F9D49300D47ED001E997F /* Build configuration list for PBXNativeTarget "poc-obfuscation1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A06F9D4A300D47ED001E997F /* Debug */,
+				A06F9D4B300D47ED001E997F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
