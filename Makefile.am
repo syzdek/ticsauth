@@ -61,7 +61,9 @@ DEFS					=
 # directory locations
 moddir					= $(pkglibexecdir)/modules
 examplesdir				= $(docdir)/examples
-
+win64_builddir				= build-win64-x86
+win64_distdir				= $(PACKAGE_TARNAME)-$(PACKAGE_VERSION)-win64-x86
+abs_win64_distdir			= $(abs_builddir)/$(win64_distdir)
 
 # automake targets
 check_PROGRAMS				=
@@ -188,11 +190,54 @@ include contrib/bindletools/build-aux/makefile-version.am
 
 
 # custom targets
-.PHONY: git-clean
+.PHONY: git-clean mingw32 clean-mingw32 distclean-mingw32 dist-mingw32
 
 git-clean:
 	git fsck --full --unreachable
 	git gc --auto --aggressive
+
+
+# MinGW targets
+dist-mingw32: $(win64_distdir).zip
+
+
+mingw32: $(win64_builddir)/Makefile
+	make -C "$(win64_builddir)" V=$(V)
+
+
+clean-mingw32:
+	if test -d "$(win64_builddir)"; then make -C "$(win64_builddir)" clean V=$(V); fi
+
+
+distclean-mingw32:
+	rm -Rf $(win64_builddir)
+	rm -Rf $(PACKAGE_TARNAME)-*-win64-x86
+	rm -Rf $(PACKAGE_TARNAME)-*-win64-x86.zip
+
+
+$(win64_distdir).zip: mingw32
+	@rm -Rf "$(@)" "$(win64_distdir)"
+	make -C "$(win64_builddir)" install
+	rm -f $(win64_distdir)/*.la
+	zip -r "$(@)" "$(win64_distdir)"
+	@touch "$(@)"
+
+
+$(win64_builddir)/Makefile: Makefile
+	@rm -Rf "$(win64_builddir)" "$(win64_distdir)"
+	@mkdir -p "$(win64_builddir)"
+	cd "$(win64_builddir)" && "$(abs_top_srcdir)/configure" \
+		--host=x86_64-w64-mingw32 \
+		--prefix="$(abs_win64_distdir)" \
+		--bindir="$(abs_win64_distdir)" \
+		--docdir="$(abs_win64_distdir)" \
+		--libdir="$(abs_win64_distdir)" \
+		--includedir="$(abs_win64_distdir)" \
+		--enable-strictwarnings \
+		--disable-debug \
+		--enable-static \
+		CFLAGS="-Wno-implicit-fallthrough"
+	@touch "$(@)"
 
 
 # local targets
@@ -204,9 +249,9 @@ install-data-hook:
 
 uninstall-local:
 
-clean-local:
+clean-local: clean-mingw32
 
-distclean-local:
+distclean-local: distclean-mingw32
 	rm -fR $(srcdir)/autom4te.cache
 
 # end of automake file
