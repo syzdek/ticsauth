@@ -1041,7 +1041,7 @@ my_summary(
    //
    printf("    # encoded using TICS Obfuscation Method 1\n");
    pos  = (size_t)printf("    %u;;", TICS_OBFUSCATE_TICS1);
-   my_base64((const uint8_t *)data, (secret_len-64), (pos-4));
+   my_base64((const uint8_t *)secret, (secret_len-64), (pos-4));
    printf("\n");
    //
    printf("    # encoded using TICS Obfuscation Method 1 with verification hash\n");
