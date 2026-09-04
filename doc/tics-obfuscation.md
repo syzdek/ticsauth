@@ -13,38 +13,57 @@ The goals of the TICS Obfuscation Methods are to:
 The following obfuscation methods are currently supported:
 
    * TICS Obfuscation NULL Method (0)
-   * TICS Obfuscation NULL Method with verification hash (1)
+   * TICS Obfuscation NULL Method with verification SHA-512 hash (1)
    * TICS Obfuscation Method 1 (16)
-   * TICS Obfuscation Method 1 with verification hash (7)
+   * TICS Obfuscation Method 1 with verification SHA-512 hash (7)
 
 The secret is either stored as unobfuscated base32 encoded text or as
-obfuscated text.  Text consisting of three fields delimited using the
+obfuscated text.  Obfuscated text consists of four fields delimited using the
 ';' character.  The first field is the numeric decimal string identifying the
-method used to obfuscate the secret.  The second field consists of the name
-of the pre-shared key used to obfuscate the secret.  The third field consists
-of the obfuscated secret encoded using base64. The following are examples of
-the encoding formats for the secret "drowssap":
+method used to obfuscate the secret.  The second field may be empty or is a
+numeric decimal number string providing the length, in bytes, of the
+obfuscated secret encoded using base64.  The third field consists of the
+obfuscated secret encoded using base64. The following are examples of the
+encoding formats for the secret "drowssap":
 
     # base32 secret
     MRZG653TONQXA===
 
-    # encoded using TICS Obfuscation NULL Method
+    # encoded using TICS Obfuscation NULL Method without length
     0;;ZHJvd3NzYXA=
+
+    # encoded using TICS Obfuscation NULL Method with length
+    0;12;ZHJvd3NzYXA=
 
     # encoded using TICS Obfuscation Method 1
     16;;b+Rny5iEw+0ons3E0WAdT84D86/n2kfuBmDhIQAmOR9iWi5wLXEymoXSenbO7ZUHpq2C5O
-    WU1B65JwiAHFXOzTWk7ownQz9M/mII3lMT2PRy8edUW96exhIBHupQ1/NrcmHw0nLDCeb5OmMo
-    r8inabaj+2grKcW364GqaSUHm4hj2EiyA5f5MVVQg0IIZHJvd3NzYXBqyMxcSD3Qd9iw2fet/C
-    2/enZ37Q1nJG+a0ljCoGCpqAEqozMC5jcytyLDPqn2IKMVHPnUfqOvSwCj4T9tMA6ACnjZbwKL
-    uzvFToxuQhb9yHejL65OHLcA9YYKFPRj6K01GkIiGbf5KhbHFw==
+    WU1B65JwiAHFXOzYWXHulcX6qsp5kjt0LRfoDdTAagxuHc6IKCecp/sNFOgeUOgnA7RT9vq3nl
+    WqaSibBGsHDw2Iec89+rESOyFqQldspJ75FIBBE3YCIxe8eGeeC9wt+GQ++Ar4FWIWgiPmO5Xo
+    ZxEBCeDOvQ1ZcTVcmJrcUIb6InLo6efuOQaOFalcURxQXAe7NH4FE9iqMgtC0VKvujWq774NaD
+    d7v0/V6fvRHC9oZVLkCc+1IAOatpzKRImAfCsOVXW4r4p3cQlg==
 
-    # encoded using TICS Obfuscation Method 1 with verification hash
+    # encoded using TICS Obfuscation Method 1 with SHA-512 hash
     17;;b+Rny5iEw+0ons3E0WAdT84D86/n2kfuBmDhIQAmOR9iWi5wLXEymoXSenbO7ZUHpq2C5O
     WU1B65JwiAHFXOzYWXHulcX6qsp5kjt0LRfoDdTAagxuHc6IKCecp/sNFOgeUOgnA7RT9vq3nl
     WqaSibBGsHDw2Iec89+rESOyFqQldspJ75FIBBE3YCIxe8eGeeC9wt+GQ++Ar4FWIWgiPmO5Xo
     ZxEBCeDOvQ1ZcTVcmJrcUIb6InLo6efuOQaOFalcURxQXAe7NH4FE9iqMgtC0VKvujWq774NaD
     d7v0/V6fvRHC9oZVLkCc+1IAOatpzKRImAfCsOVXW4r4p3cQlsb2uTx0odc8AVkuhr6uJwNO/O
     JVvK29grI032NMyoxL58BmjaRYlDahDbruwLNR2x0Q2bT2ahQcU+JFzzj5RUA=
+
+    # encoded using TICS Obfuscation Method 1 with length
+    16;256;b+Rny5iEw+0ons3E0WAdT84D86/n2kfuBmDhIQAmOR9iWi5wLXEymoXSenbO7ZUHpq2
+    C5OWU1B65JwiAHFXOzYWXHulcX6qsp5kjt0LRfoDdTAagxuHc6IKCecp/sNFOgeUOgnA7RT9vq
+    3nlWqaSibBGsHDw2Iec89+rESOyFqQldspJ75FIBBE3YCIxe8eGeeC9wt+GQ++Ar4FWIWgiPmO
+    5XoZxEBCeDOvQ1ZcTVcmJrcUIb6InLo6efuOQaOFalcURxQXAe7NH4FE9iqMgtC0VKvujWq774
+    NaDd7v0/V6fvRHC9oZVLkCc+1IAOatpzKRImAfCsOVXW4r4p3cQlg==
+
+    # encoded using TICS Obfuscation Method 1 with length and SHA-512 hash
+    17;320;b+Rny5iEw+0ons3E0WAdT84D86/n2kfuBmDhIQAmOR9iWi5wLXEymoXSenbO7ZUHpq2
+    C5OWU1B65JwiAHFXOzYWXHulcX6qsp5kjt0LRfoDdTAagxuHc6IKCecp/sNFOgeUOgnA7RT9vq
+    3nlWqaSibBGsHDw2Iec89+rESOyFqQldspJ75FIBBE3YCIxe8eGeeC9wt+GQ++Ar4FWIWgiPmO
+    5XoZxEBCeDOvQ1ZcTVcmJrcUIb6InLo6efuOQaOFalcURxQXAe7NH4FE9iqMgtC0VKvujWq774
+    NaDd7v0/V6fvRHC9oZVLkCc+1IAOatpzKRImAfCsOVXW4r4p3cQlsb2uTx0odc8AVkuhr6uJwN
+    O/OJVvK29grI032NMyoxL58BmjaRYlDahDbruwLNR2x0Q2bT2ahQcU+JFzzj5RUA=
 
 
 TICS Obfuscation Method 1
