@@ -12,37 +12,36 @@ The goals of the TICS Obfuscation Methods are to:
 
 The following obfuscation methods are currently supported:
 
-   * TICS Obfuscation NULL Method (0)
-   * TICS Obfuscation NULL Method with verification SHA-512 hash (1)
+   * clear text (0)
    * TICS Obfuscation Method 1 (16)
-   * TICS Obfuscation Method 1 with verification SHA-512 hash (7)
+   * TICS Obfuscation Method 1 with verification SHA-512 hash (17)
 
-The secret is either stored as unobfuscated base32 encoded text or as
-obfuscated text.  Obfuscated text consists of four fields delimited using the
-';' character.  The first field is the numeric decimal string identifying the
-method used to obfuscate the secret.  The second field may be empty or is a
-numeric decimal number string providing the length, in bytes, of the
-obfuscated secret encoded using base64.  The third field consists of the
-obfuscated secret encoded using base64. The following are examples of the
-encoding formats for the secret "drowssap":
+The secret is either stored as unpacked and unobfuscated base32 encoded text
+or as packed and obfuscated text.  Packed text consists of three fields
+delimited using the ';' character.  The first field is the numeric decimal
+string identifying the method used to obfuscate the secret.  The second field
+may be empty or contains the decimal numeric string providing the length in
+bytes of the obfuscated secret encoded using base64.  The third field consists
+of the obfuscated secret encoded using base64. The following are examples of
+the encoding formats for the secret "drowssap":
 
     # base32 secret
     MRZG653TONQXA===
 
-    # encoded using TICS Obfuscation NULL Method without length
+    # packed secret using clear text/no obfuscation
     0;;ZHJvd3NzYXA=
 
-    # encoded using TICS Obfuscation NULL Method with length
+    # packed length and secret using clear text/no obfuscation
     0;12;ZHJvd3NzYXA=
 
-    # encoded using TICS Obfuscation Method 1
+    # packed secret using obfuscation method 1
     16;;b+Rny5iEw+0ons3E0WAdT84D86/n2kfuBmDhIQAmOR9iWi5wLXEymoXSenbO7ZUHpq2C5O
     WU1B65JwiAHFXOzYWXHulcX6qsp5kjt0LRfoDdTAagxuHc6IKCecp/sNFOgeUOgnA7RT9vq3nl
     WqaSibBGsHDw2Iec89+rESOyFqQldspJ75FIBBE3YCIxe8eGeeC9wt+GQ++Ar4FWIWgiPmO5Xo
     ZxEBCeDOvQ1ZcTVcmJrcUIb6InLo6efuOQaOFalcURxQXAe7NH4FE9iqMgtC0VKvujWq774NaD
     d7v0/V6fvRHC9oZVLkCc+1IAOatpzKRImAfCsOVXW4r4p3cQlg==
 
-    # encoded using TICS Obfuscation Method 1 with SHA-512 hash
+    # packed secret using obfuscation method1 and SHA-512 hash
     17;;b+Rny5iEw+0ons3E0WAdT84D86/n2kfuBmDhIQAmOR9iWi5wLXEymoXSenbO7ZUHpq2C5O
     WU1B65JwiAHFXOzYWXHulcX6qsp5kjt0LRfoDdTAagxuHc6IKCecp/sNFOgeUOgnA7RT9vq3nl
     WqaSibBGsHDw2Iec89+rESOyFqQldspJ75FIBBE3YCIxe8eGeeC9wt+GQ++Ar4FWIWgiPmO5Xo
@@ -50,14 +49,14 @@ encoding formats for the secret "drowssap":
     d7v0/V6fvRHC9oZVLkCc+1IAOatpzKRImAfCsOVXW4r4p3cQlsb2uTx0odc8AVkuhr6uJwNO/O
     JVvK29grI032NMyoxL58BmjaRYlDahDbruwLNR2x0Q2bT2ahQcU+JFzzj5RUA=
 
-    # encoded using TICS Obfuscation Method 1 with length
+    # packed length and secret using obfuscation method 1
     16;256;b+Rny5iEw+0ons3E0WAdT84D86/n2kfuBmDhIQAmOR9iWi5wLXEymoXSenbO7ZUHpq2
     C5OWU1B65JwiAHFXOzYWXHulcX6qsp5kjt0LRfoDdTAagxuHc6IKCecp/sNFOgeUOgnA7RT9vq
     3nlWqaSibBGsHDw2Iec89+rESOyFqQldspJ75FIBBE3YCIxe8eGeeC9wt+GQ++Ar4FWIWgiPmO
     5XoZxEBCeDOvQ1ZcTVcmJrcUIb6InLo6efuOQaOFalcURxQXAe7NH4FE9iqMgtC0VKvujWq774
     NaDd7v0/V6fvRHC9oZVLkCc+1IAOatpzKRImAfCsOVXW4r4p3cQlg==
 
-    # encoded using TICS Obfuscation Method 1 with length and SHA-512 hash
+    # encoded length and secret using obfuscation method 1 and SHA-512 hash
     17;320;b+Rny5iEw+0ons3E0WAdT84D86/n2kfuBmDhIQAmOR9iWi5wLXEymoXSenbO7ZUHpq2
     C5OWU1B65JwiAHFXOzYWXHulcX6qsp5kjt0LRfoDdTAagxuHc6IKCecp/sNFOgeUOgnA7RT9vq
     3nlWqaSibBGsHDw2Iec89+rESOyFqQldspJ75FIBBE3YCIxe8eGeeC9wt+GQ++Ar4FWIWgiPmO
@@ -69,16 +68,16 @@ encoding formats for the secret "drowssap":
 TICS Obfuscation Method 1
 -------------------------
 
-Method 1 uses blocks of 64 bytes to encode the secret and then uses 
-psuedo random numbers from HMAC-SHA-512 to obfuscate the secret. The encoding
+Method 1 uses blocks of 64 bytes to pack the secret and then uses psuedo
+random numbers from HMAC-SHA-512 to obfuscate the secret. The packed secret
 consists of the following parts:
 
    * 64 byte salt
    * 64 byte seed
    * Payload consisting of a multiple blocks of 64 bytes
-   * An optional SHA-512 hash of the encoded data
+   * An optional SHA-512 hash of the packed data
 
-An encoded secret can be represented as the following:
+A packed secret can be represented as the following:
 
     +-------+-------+------...------+-------+
     | salt  | seed  |    payload    | hash  |
@@ -90,10 +89,10 @@ the offset of the data within the payload.
 
 The 64 byte salt consists of 64 bytes of random data which is not obfuscated.
 The 64 byte seed consists of 64 bytes of random data which is obfuscated. The
-seed is used to calculate the data offset within the payload section. The 
-payload consists of random padding, the length of the data, the data, and 
-additional random padding. The optional SHA-512 hash is the hash of the 
-concatenation of the salt, seed, and payload sections
+seed is used to calculate the data offset within the payload section. The
+payload consists of padding of random data, the length of the secret data, the
+secret data, and additional padding of random data. The optional SHA-512 hash
+is the hash from the concatenation of the salt, seed, and payload sections.
 
 The payload consists of the following parts:
 
@@ -108,7 +107,7 @@ The length of the payload must be a multiple of 64 bytes and the payload must
 be at least 64 bytes longer than the payload data. The length of the payload
 must be decided prior to the encoding of the payload data length.  The
 minimum length of the payload is determined by the length of the payload data.
-The maximum length of the payload is not restricted by this specification. 
+The maximum length of the payload is not restricted by this specification.
 
 The payload offset (amount of padding in the start of payload) is the modulo
 of the sum of each byte of the seed and 62.  For example:
@@ -136,7 +135,7 @@ according to the following table:
     16448 <= adjusted_length <= 32768         0x7fff         32767 bytes
     32832 <= adjusted_length                  0xffff         65535 bytes
 
-If the payload consists of 384 bytes, then the mask of 0x01ff is used to 
+If the payload consists of 384 bytes, then the mask of 0x01ff is used to
 extract the length of the data which must be 511 bytes or less.  Assuming that
 the values 0x2b and 0x07 are at the offset, then using the mask of 0x01ff, the
 length of the payload data would be 0x0107 (263) bytes:
